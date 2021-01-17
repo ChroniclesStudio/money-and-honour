@@ -1,4 +1,4 @@
-706
+721
 qstr_Next_Page Next_Page
 qstr_Game_Rules:^ Game_Rules:^
 qstr_0 0
@@ -62,6 +62,20 @@ qstr_{!}{reg3?+:}{reg0} {!}{reg3?+:}{reg0}
 qstr_TOTAL_SCORE:_{reg0} TOTAL_SCORE:_{reg0}
 qstr_{!}DEBUG____Adding_{ {!}DEBUG_--_Adding_{reg3}_items_to_{s3}
 qstr_None None
+qstr_Done Done
+qstr_Name:_{s1}^Level:_{r Name:_{s1}^Level:_{reg1}
+qstr_{s1}^HP:_{reg0} {s1}^HP:_{reg0}
+qstr_{s1} {s1}
+qstr_Attributes: Attributes:
+qstr_{s3}^STR:_{reg1}^INT {s3}^STR:_{reg1}^INT:_{reg2}^^Skills:
+qstr_{s3}^Power_Strike:_{ {s3}^Power_Strike:_{reg1}^Power_Draw:_{reg2}^Power_Throw:_{reg3}^Horse_Archery:_{reg4}^^Weapon_Proficiencies:
+qstr_{s3}^1_Hand_Wpns:_{r {s3}^1_Hand_Wpns:_{reg1}^2_Hand_Wpns:_{reg2}^Polearms:_{reg3}
+qstr_{s3} {s3}
+qstr_{s4}^AGI:_{reg1}^CHA {s4}^AGI:_{reg1}^CHA:_{reg2}^^
+qstr_{s4}^Ironflesh:_{reg {s4}^Ironflesh:_{reg1}^Athletics:_{reg2}^Shield:_{reg3}^Riding:_{reg4}^^
+qstr_{s4}^Archery:_{reg1} {s4}^Archery:_{reg1}^Crossbows:_{reg2}^Throwing:_{reg3}
+qstr_{s4} {s4}
+qstr_Equipments:_ Equipments:_
 qstr_{!}DEBUG_:_Completed {!}DEBUG_:_Completed_faction_troop_assignments,_cheat_mode:_{reg3}
 qstr_{!}ERROR:_Not_enough {!}ERROR:_Not_enough_banners_for_heroes!
 qstr_{!}DEBUG____initial_ {!}DEBUG_--_initial_war/peace_check_begins
@@ -361,6 +375,7 @@ qstr_Not_enough_archers_t Not_enough_archers_to_form_{s1},_but_holding.
 qstr_Infantry_formation_d Infantry_formation_disassembled.
 qstr_Cavalry_formation_di Cavalry_formation_disassembled.
 qstr_Archer_formation_dis Archer_formation_disassembled.
+qstr_{reg0} {reg0}
 qstr_You_got_keys_of_dung You_got_keys_of_dungeon.
 qstr_Forming_ranks. Forming_ranks.
 qstr_You_must_stay_behind You_must_stay_behind_the_line_on_the_ground!_Point_is_not_counted.
