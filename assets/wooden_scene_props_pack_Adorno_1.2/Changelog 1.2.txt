@@ -1,0 +1,67 @@
+Changelog 1.2
+
+- 2 textures added for the Windmill sails. Sized 512 x 512 pixels. Diffuse, normal map and specular map.
+
+Models added:
+
+- House planks
+- Post mill
+
+A set of props to form a wooden castle:
+- Gatehouse large
+- wall sections
+- wall section destroyed
+- wall corner
+- wall bending 45 degrees
+- wall tower
+
+
+
+
+
+Changelog 1.1
+
+None of the models from version 1.0 have been edited, so scenes made with these will not be affected by upgrading to 1.1
+
+- 1 more texture sheet added. Mainly to create the tourney props, but also for houses, barn and a few other props. Size 2028 x 1024. Diffuse, normal and specular.  
+- Changed specular map for ado_wood_props texture.
+
+Models added:
+
+- Cradle
+- Chair fine
+- Bench fine
+- Wheelbarrow
+- Cart (no. 2)
+- Cart (no. 2) broken
+- Cart (no. 3)
+- Palisade in decay
+- Barn
+- House
+- House small
+- House small v2
+- House small shingles
+- Stairs (medium sized, to fit the tourney props)
+
+- Tourney props:
+> Tourney arch
+> Tourney arch painted
+> Tourney arch painted dark
+> Tourney barrier
+> Tourney barrier painted 
+> Tourney barrier painted dark
+> Tourney barrier post
+> Tourney barrier short
+> Tourney barrier short painted
+> Tourney barrier short painted dark
+> Tourney fence
+> Tourney fence post
+> Tourney fence short
+> Tourney podium
+> Tourney podium painted
+> Tourney podium painted dark
+> Tourney post
+> Tourney scaffold short
+> Tourney scaffold tall
+> Tourney scaffold tall painted
+> Tourney scaffold tall paintede dark

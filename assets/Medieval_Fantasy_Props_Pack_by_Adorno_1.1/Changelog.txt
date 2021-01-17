@@ -1,0 +1,11 @@
+Changelog 1.1
+
+Changes in version 1.1.
+
+4 models added:
+- House brick wood
+- House long
+- House wood tall
+- Keep brick 
+
+Fully compatible with v. 1.0. No models or textures have been changed. Only added.
