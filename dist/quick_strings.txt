@@ -1,4 +1,4 @@
-691
+706
 qstr_Next_Page Next_Page
 qstr_Game_Rules:^ Game_Rules:^
 qstr_0 0
@@ -347,7 +347,22 @@ qstr_{!}destroy_prison_ca {!}destroy_prison_cart
 qstr_{!}spawning_prison_c {!}spawning_prison_cart_at_point_{reg0}
 qstr_{!}prison_cart_spawn {!}prison_cart_spawn_at_point_{reg0}
 qstr_{!}multiplayer_upgra {!}multiplayer_upgrade_player_equipment:_{reg0}
+qstr_ranks ranks
+qstr_shield_wall shield_wall
+qstr_wedge wedge
+qstr_square square
+qstr_up up
+qstr_Infantry_forming_{s1 Infantry_forming_{s1}.
+qstr_Not_enough_infantry_ Not_enough_infantry_to_form_{s1},_but_holding.
+qstr_Cavalry_forming_{s1} Cavalry_forming_{s1}.
+qstr_Not_enough_cavalry_t Not_enough_cavalry_to_form_{s1},_but_holding.
+qstr_Archers_forming_{s1} Archers_forming_{s1}.
+qstr_Not_enough_archers_t Not_enough_archers_to_form_{s1},_but_holding.
+qstr_Infantry_formation_d Infantry_formation_disassembled.
+qstr_Cavalry_formation_di Cavalry_formation_disassembled.
+qstr_Archer_formation_dis Archer_formation_disassembled.
 qstr_You_got_keys_of_dung You_got_keys_of_dungeon.
+qstr_Forming_ranks. Forming_ranks.
 qstr_You_must_stay_behind You_must_stay_behind_the_line_on_the_ground!_Point_is_not_counted.
 qstr_Tutorial Tutorial
 qstr_{!}sending_prisoner_ {!}sending_prisoner_cart_6_feet_underground!
