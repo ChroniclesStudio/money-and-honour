@@ -1897,3 +1897,19 @@ ACHIEVEMENT_QUEEN = 77,
 ACHIEVEMENT_EMPRESS = 78,
 ACHIEVEMENT_TALK_OF_THE_TOWN = 79,
 ACHIEVEMENT_LADY_OF_THE_LAKE = 80,
+# modmerger_start version=201 type=1
+try:
+    from util_common import logger
+    from modmerger_options import mods_active
+    modcomp_name = "constants"
+    for mod_name in mods_active:
+        try:
+            logger.info("Importing constants from mod \"%s\"..."%(mod_name))
+            code = "from %s_constants import *" % mod_name
+            exec code
+        except ImportError:
+            errstring = "Component \"%s\" not found for mod \"%s\"." % (modcomp_name, mod_name)
+            logger.debug(errstring)
+except:
+    raise
+# modmerger_end

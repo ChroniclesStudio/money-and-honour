@@ -2719,3 +2719,12 @@ upgrade(troops,"hunter_woman","fighter_woman")
 upgrade(troops,"fighter_woman","sword_sister")
 upgrade(troops,"refugee","follower_woman")
 upgrade(troops,"peasant_woman","follower_woman")
+# modmerger_start version=201 type=2
+try:
+    component_name = "troops"
+    var_set = { "troops" : troops }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end

@@ -2108,3 +2108,12 @@ animations = [
  ["unused_horse_anim_99", 0, 0, [1.0, "anim_horse", 0, 1, 0]],
  ["unused_horse_anim_100", 0, 0, [1.0, "anim_horse", 0, 1, 0]],
  ]
+# modmerger_start version=201 type=2
+try:
+    component_name = "animations"
+    var_set = { "animations" : animations }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end

@@ -8,7 +8,7 @@
 
 > Thirty Years' War backgrounded mod _Money & Honour_ source code repository from Chronicles Studio.
 
-[中文文档](https://github.com/ChroniclesStudio/Money-Honour/blob/master/README.md) | English Documentation
+[中文文档](./README.md) | English Documentation
 
 ---
 

@@ -8,7 +8,7 @@
 
 > 编年史制作组三十年战争背景模组《金钱与荣誉》代码库。
 
-中文文档 | [English Documentation](https://github.com/ChroniclesStudio/Money-Honour/blob/master/README-en.md)
+中文文档 | [English Documentation](./README-en.md)
 
 ---
 

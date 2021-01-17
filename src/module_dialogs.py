@@ -26285,3 +26285,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone|plyr,"free", [[neg|in_meta_mission]], " [Leave]", "close_window",[]],
 #  [anyone,"free", [], "NO MATCHING SENTENCE!", "close_window",[]],
 ]
+# modmerger_start version=201 type=2
+try:
+    component_name = "dialogs"
+    var_set = { "dialogs" : dialogs }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end

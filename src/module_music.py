@@ -129,3 +129,12 @@ tracks = [
 
   
 ]
+# modmerger_start version=201 type=4
+try:
+    component_name = "music"
+    var_set = { "tracks":tracks, }
+    from modmerger import modmerge
+    modmerge(var_set, component_name)
+except:
+    raise
+# modmerger_end

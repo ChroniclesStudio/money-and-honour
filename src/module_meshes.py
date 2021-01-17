@@ -612,3 +612,12 @@ meshes = [
   ("ccoop_mounted_class", 0, "ccoop_mounted_class", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 #INVASION MODE END
 ]
+# modmerger_start version=201 type=2
+try:
+    component_name = "meshes"
+    var_set = { "meshes" : meshes }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end

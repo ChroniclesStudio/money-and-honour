@@ -256,3 +256,12 @@ map_icons = [
   ("banner_136",0,"map_flag_15", banner_scale,0),
   ("bandit_lair",mcn_no_shadow,"map_bandit_lair", 0.45, 0),
 ]
+# modmerger_start version=201 type=2
+try:
+    component_name = "map_icons"
+    var_set = { "map_icons" : map_icons }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end

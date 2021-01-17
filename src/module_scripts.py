@@ -50780,3 +50780,12 @@ scripts = [
    #INVASION MODE END
      
 ]
+# modmerger_start version=201 type=2
+try:
+    component_name = "scripts"
+    var_set = { "scripts" : scripts }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end

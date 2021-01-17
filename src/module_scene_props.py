@@ -3182,3 +3182,12 @@ scene_props = [
 
 
 ]
+# modmerger_start version=201 type=2
+try:
+    component_name = "scene_props"
+    var_set = { "scene_props" : scene_props }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end

@@ -14510,3 +14510,12 @@ game_menus = [
 
   
  ]
+# modmerger_start version=201 type=2
+try:
+    component_name = "game_menus"
+    var_set = { "game_menus" : game_menus }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end

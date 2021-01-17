@@ -4339,4 +4339,12 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("npc16_1","-Good with throwing and 1h^-Poor with 2h and crossbows"),
   #INVASION MODE END
   
-]
+]# modmerger_start version=201 type=2
+try:
+    component_name = "strings"
+    var_set = { "strings" : strings }
+    from modmerger import modmerge
+    modmerge(var_set)
+except:
+    raise
+# modmerger_end
