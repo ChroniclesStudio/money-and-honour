@@ -1,35 +1,37 @@
-<h1 align="center">Welcome to # 👋</h1>
+<h1 align="center">Welcome to Money-Honour 👋</h1>
 <p>
-	<img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.1.2-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/ChroniclesStudio/money-and-honour/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
 
-> \#
+> Thirty Years' War backgrounded mod _Money & Honour_ source code repository from Chronicles Studio.
 
-[中文文档](#) | English Documentation
+[中文文档](https://github.com/ChroniclesStudio/Money-Honour/blob/master/README.md) | English Documentation
 
 ---
 
-### 💬 [Discuss](#)
+### 💬 [Discuss](http://bbs.chronicles.cc/t/money-honour)
 
-### 🏠 [Homepage](#)
+### 🏠 [Homepage](https://github.com/ChroniclesStudio/Money-Honour)
 
 ## 📥 Download
 
 ```sh
-git clone #
+git clone https://github.com/ChroniclesStudio/Money-Honour.git
 ```
 
 ## 👥 Author
 
 👤 **KnowsCount**
 
--   Blog: http://blog.knowscount.cc
+-   Blog: http://docs.knowscount.cc
 -   Github: [@KnowsCount](https://github.com/KnowsCount)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, [issues](https://github.com/ChroniclesStudio/Money-Honour/issues) and feature requests are welcomed!<br />
 
 ## 🎉 Show your support
 
