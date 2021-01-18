@@ -14,24 +14,24 @@
 
 ### 💬 [Discuss](http://bbs.chronicles.cc/t/money-honour)
 
-### 🏠 [Homepage](https://github.com/ChroniclesStudio/Money-Honour)
+### 🏠 [Homepage](https://github.com/ChroniclesStudio/money-and-honour)
 
 ## 📥 Download
 
 ```sh
-git clone https://github.com/ChroniclesStudio/Money-Honour.git
+git clone https://github.com/ChroniclesStudio/money-and-honour.git
 ```
 
 ## 👥 Author
 
 👤 **KnowsCount**
 
--   Blog: http://docs.knowscount.cc
+-   Blog: http://blog.knowscount.cc
 -   Github: [@KnowsCount](https://github.com/KnowsCount)
 
 ## 🤝 Contributing
 
-Contributions, [issues](https://github.com/ChroniclesStudio/Money-Honour/issues) and feature requests are welcomed!<br />
+Contributions, [issues](https://github.com/ChroniclesStudio/money-and-honour/issues) and feature requests are welcomed!<br />
 
 ## 🎉 Show your support
 

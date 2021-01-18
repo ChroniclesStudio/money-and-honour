@@ -14,24 +14,24 @@
 
 ### 💬 [讨论](http://bbs.chronicles.cc/t/money-honour)
 
-### 🏠 [主页](https://github.com/ChroniclesStudio/Money-Honour)
+### 🏠 [主页](https://github.com/ChroniclesStudio/money-and-honour)
 
 ## 📥 下载
 
 ```sh
-git clone https://github.com/ChroniclesStudio/Money-Honour.git
+git clone https://github.com/ChroniclesStudio/money-and-honour.git
 ```
 
 ## 👥 作者
 
 👤 **KnowsCount**
 
--   博客: http://docs.knowscount.cc
+-   博客: http://blog.knowscount.cc
 -   Github: [@KnowsCount](https://github.com/KnowsCount)
 
 ## 🤝 贡献
 
-代码贡献、[issues](https://github.com/ChroniclesStudio/Money-Honour/issues) 以及功能提议都是受欢迎的！<br />
+代码贡献、[issues](https://github.com/ChroniclesStudio/money-and-honour/issues) 以及功能提议都是受欢迎的！<br />
 
 ## 🎉 支持
 
