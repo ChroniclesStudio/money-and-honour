@@ -1417,8 +1417,11 @@ countersigns_end = names_begin
 secret_signs_begin = "str_secret_sign_1"
 secret_signs_end = countersigns_begin
 
-kingdom_titles_male_begin = "str_faction_title_male_player"
-kingdom_titles_female_begin = "str_faction_title_female_player"
+#KAOS  (POLITICAL)
+kingdom_titles_male_begin = "str_new_faction_title_male_player"
+kingdom_titles_female_begin = "str_new_faction_title_female_player"
+#KAOS  (POLITICAL)
+
 
 kingdoms_begin = "fac_player_supporters_faction"
 kingdoms_end = "fac_kingdoms_end"
@@ -1434,11 +1437,17 @@ kingdom_ladies_end = "trp_heroes_end"
 
 #active NPCs in order: companions, kings, lords, pretenders
 
-pretenders_begin = "trp_kingdom_1_pretender"
-pretenders_end = kingdom_ladies_begin
+# KAOS  (POLITICAL)
+# pretenders_begin = "trp_kingdom_1_pretender"
+# pretenders_end = kingdom_ladies_begin
+# KAOS  (POLITICAL)
+
 
 lords_begin = "trp_knight_1_1"
-lords_end = pretenders_begin
+#KAOS  (POLITICAL)
+lords_end = "trp_knight_1_1_wife"
+#KAOS  (POLITICAL)
+
 
 kings_begin = "trp_kingdom_1_lord"
 kings_end = lords_begin
@@ -1465,8 +1474,28 @@ soldiers_end = "trp_town_walker_1"
 ##rebel_factions_begin = "fac_kingdom_1_rebels"
 ##rebel_factions_end =   "fac_kingdoms_end"
 
+#KAOS (Rebellion) 
 pretenders_begin = "trp_kingdom_1_pretender"
-pretenders_end = active_npcs_end
+pretenders_end = "trp_knight_1_1"
+
+rebel_factions_begin = "fac_kingdom_7"
+rebel_factions_end =   "fac_kingdom_13"
+
+civil_factions_begin = "fac_kingdom_7"
+civil_factions_end =   "fac_kingdoms_end"
+
+# Jrider + for Heroes specialization titles and descriptions
+hero_titles_begin = "str_hero_titles_none"
+hero_specdesc_begin = "str_hero_specdesc_none"
+# Jrider -
+slot_rebellion_date = 244
+slot_kaoses_faction_title_type = 245
+
+cb_king = 8
+cb_vassal = 9
+cb_prince = 10
+#KAOS (Rebellion) 
+
 #Rebellion changes
 
 tavern_minstrels_begin = "trp_tavern_minstrel_1"

@@ -1881,6 +1881,11 @@ dialogs = [
             (troop_set_slot, "$g_talk_troop", slot_troop_occupation, 0),
             (troop_set_slot, "$g_talk_troop", slot_troop_playerparty_history, pp_history_dismissed),
             (remove_member_from_party, "$g_talk_troop"),
+
+            # Jrider + TITLES v 0.2, change companion title back to unattached one(s) when he/she leaves the party
+            (store_troop_faction, ":faction_no", "$g_talk_troop"),
+            (call_script, "script_troop_set_title_according_to_faction_gender_and_lands", "$g_talk_troop", ":faction_no"),
+            # Jrider -
        ]],
 
 
@@ -2851,18 +2856,22 @@ dialogs = [
 #		(troop_set_slot, "$g_talk_troop", slot_troop_readiness_to_join_army, 100), 
 #		(troop_set_slot, "$g_talk_troop", slot_troop_readiness_to_follow_orders, 100), 
 		
-		(str_store_troop_name_plural, s12, "$g_talk_troop"),
-		(troop_get_type, ":is_female", "$g_talk_troop"),
-		(try_begin),
-			(eq, "$g_talk_troop", "trp_npc10"),
-			(str_store_string, s14, "str_tribune_s12"),
-		(else_try),
-			(eq, ":is_female", 1),
-			(str_store_string, s14, "str_lady_s12"),
-		(else_try),	
-			(str_store_string, s14, "str_lord_s12"),
-		(try_end),
-		(troop_set_name, "$g_talk_troop", s14),
+	# Jrider + TITLES v0.2 comment to avoid overwrite of new title
+  #        (str_store_troop_name_plural, s12, "$g_talk_troop"),
+  #        (troop_get_type, ":is_female", "$g_talk_troop"),
+  #        (try_begin),
+  #            (eq, "$g_talk_troop", "trp_npc10"),
+  #            (str_store_string, s14, "str_tribune_s12"),
+  #        (else_try),
+  #            (eq, ":is_female", 1),
+  #            (str_store_string, s14, "str_lady_s12"),
+  #        (else_try),    
+  #            (str_store_string, s14, "str_lord_s12"),
+  #        (try_end),
+  #        (troop_set_name, "$g_talk_troop", s14),
+  # Jrider -
+
+    (call_script, "script_troop_set_title_according_to_faction", "$g_talk_troop", "fac_player_supporters_faction"), # KAOS Political
 		(unlock_achievement, ACHIEVEMENT_I_DUB_THEE),
 		
                 (call_script, "script_check_concilio_calradi_achievement"),
@@ -6002,6 +6011,32 @@ dialogs = [
                      (le,"$talk_context",tc_siege_commander),
                      ],
    "We meet again, {playername}...", "lord_start", []],
+
+#KAOS POLITICAL
+  [anyone ,"start", [
+                     (troop_get_slot, ":mother", "trp_player", slot_troop_mother),
+                     (troop_get_slot, ":father", "trp_player", slot_troop_father),
+                     (this_or_next|eq, "$g_talk_troop", ":mother"),
+                     (eq, "$g_talk_troop", ":father"),
+                     (troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_hero),
+                     (eq, "$g_talk_troop_met", 0),
+                     (ge, "$g_talk_troop_faction_relation", 0),
+                     (le,"$talk_context",tc_siege_commander),
+                     (assign, reg3, "$character_gender"),
+                     ],
+   "It is good to see you again my {reg3?daughter:son}", "lord_meet_child", []],
+  [anyone|plyr ,"lord_meet_child", [],  "I am glad to be home.", "lord_start", []],
+  [anyone ,"start", [
+                     (eq, "$background_type", cb_prince),
+                     (eq, "$g_talk_troop_faction", "$players_kingdom"),
+                     (troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_hero),
+                     (eq, "$g_talk_troop_met", 0),
+                     (ge, "$g_talk_troop_faction_relation", 0),
+                     (le,"$talk_context",tc_siege_commander),
+                     ],
+   "It is good to see you again Your Highness ", "lord_meet_prince", []],
+  [anyone|plyr ,"lord_meet_prince", [],  "I am glad to be home after so long away.", "lord_start", []],
+  #KAOS POLITICAL
 
   [anyone ,"start", [(troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_hero),
                      (eq, "$g_talk_troop_met", 0),
@@ -11626,13 +11661,20 @@ dialogs = [
 
 #Ask for marriage, following courtship, both with or against lady's wishes   
    
+#KAOS POLITICAL 
   [anyone|plyr,"lord_talk_ask_something_2", [ 
 	(neg|troop_slot_eq, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
 	(neg|troop_slot_ge, "trp_player", slot_troop_spouse, active_npcs_begin),
 	(troop_get_type, ":is_female", "$g_talk_troop"),
 	(neq, ":is_female", 1),
+ (troop_get_slot, ":mother", "trp_player", slot_troop_mother),
+ (troop_get_slot, ":father", "trp_player", slot_troop_father),
+ (this_or_next|eq, "$g_talk_troop", ":mother"),
+ (neq, "$g_talk_troop", ":father"),
   ],
    "What would it take to cement a lasting alliance with your house?", "lord_talk_ask_marriage_1",[]],
+#KAOS POLITICAL
+
 
 
 

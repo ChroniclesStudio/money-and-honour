@@ -29,6 +29,7 @@ mods_active = [
     "formAI",       # motomataru's formations v3 AI extension.  Comment this line out if you don't want ai to use formations
     "trees",
     "freelancer",
+    "KAOSPolitical", # KAOS Political (1.2) - Lazeras
 ]
 
 

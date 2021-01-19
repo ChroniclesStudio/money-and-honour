@@ -54,6 +54,22 @@ factions = [
 ##  ("kingdom_4_rebels",  "Nord rebels",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 ##  ("kingdom_5_rebels",  "Rhodok rebels",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 
+#KAOS (POLITICAL)
+  ("KINGDOM_7",  "SWADIAN REBELS", 0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCC9900),
+  ("KINGDOM_8",  "VAEGIR REBELS",    0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X669999),
+  ("KINGDOM_9",  "KHERGIT REBELS", 0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCC66FF),
+  ("KINGDOM_10",  "NORD REBELS",    0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X3333FF),
+  ("KINGDOM_11",  "RHODOK REBELS",  0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X99FF66),
+  ("KINGDOM_12",  "SARRANID REBELS",  0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCCFF66),
+
+  ("KINGDOM_13",  "EMPIRE OF SWADIA", 0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCC9900),
+  ("KINGDOM_14",  "EMPIRE OF VAEGIR",    0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X669999),
+  ("KINGDOM_15",  "KHERGIT EMPIRE", 0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCC66FF),
+  ("KINGDOM_16",  "EMPIRE OF NORD",    0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X3333FF),
+  ("KINGDOM_17",  "EMPIRE OF RHODOK",  0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X99FF66),
+  ("KINGDOM_18",  "SARRANID EMPIRE",  0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCCFF66),
+#KAOS (POLITICAL)
+
   ("kingdoms_end","{!}kingdoms_end", 0, 0,[], []),
 
   ("robber_knights",  "{!}robber_knights", 0, 0.1, [], []),
