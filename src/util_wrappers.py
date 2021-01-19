@@ -1,12 +1,32 @@
 # Experimental utility scripts to wrap game lists
 # by sphere
 
+##Additions by Caba'drin 15 Dec 2011
+## Added a wrapper for GameMenuOptions and Dialogs and a function to find
+## a specific dialog similar to FindTrigger (though it isn't within a class)
+## and a function to find the first "i" list item whose ID contains a value
+
+##Notes from Caba'drin testing:
+# The full Animations, Meshes, Dialogs, factions, troops, items, etc can be
+# wrapped with the OpBlockWrapper (since they are lists of tuples) to access
+# the additional InsertBefore/After type functions for lists
+# Also, animations and dialogs are lists with nested lists, not tuples and can be treated
+# as such.
+#
+# Changing elements in "immutable" tuples is possible by directly converting the
+# object to a list, setting the element, and reverting back to a tuple, like so:
+# ##Change re-arm interval to 0 (using work around to edit immutable tuple)
+# orig_mission_templates[mt_i][5][trigger_i] = list(orig_mission_templates[mt_i][5][trigger_i])
+# orig_mission_templates[mt_i][5][trigger_i][2] = 0
+# orig_mission_templates[mt_i][5][trigger_i] = tuple(orig_mission_templates[mt_i][5][trigger_i])
+# using a reference (for instance trigger = orig_mission_templates[mt_i][5][trigger_i] ) and then
+# trying to convert the trigger reference to/from a list/tuple will NOT work
 
 from types import *
 
 class BaseWrapper:
     """Base wrapper for tuples/list used in"""
-    """Mount and Blade: Warband ver 1127"""
+    """Mount and Blade: Warband ver 1143"""
 
     # _data cannot have default value, must wrap something
     def __init__(self, _data): 
@@ -22,8 +42,13 @@ class BaseWrapper:
         return self.data[i] # no range check.
 
     def SetElement(self, i, value): # NOTE: Can fail if data is tuple!!!
-        self.data[i] = value # no range check.
-
+		self.data[i] = value # no range check.
+		# try:
+			# self.data[i] = value # no range check.
+		# except TypeError: ##handle setting item in tuple #Caba'drin addition
+			# self.data = list(self.data)
+			# self.data[i] = value
+			# self.data = tuple(self.data)
 
 # op block directive masks
 D_SEARCH_START_MASK  	= 0x000F
@@ -53,7 +78,7 @@ D_INSERT_AFTER   	= 0x2000
 
 class OpBlockWrapper(BaseWrapper):
     """a wrapper for simple trigger tuple"""
-    """Mount and Blade: Warband ver 1127"""
+    """Mount and Blade: Warband ver 1143"""
 
     def __init__(self, _data):
         if( not isinstance(_data,ListType)):
@@ -269,7 +294,7 @@ class OpBlockWrapper(BaseWrapper):
 
 class SimpleTriggerWrapper(BaseWrapper):
         """a wrapper for simple trigger tuple"""
-        """Mount and Blade: Warband ver 1127"""
+        """Mount and Blade: Warband ver 1143"""
         def __init__(self, _data):
             # verify _data
             if( not isinstance(_data,TupleType)) and len(_data) == 2:
@@ -299,7 +324,7 @@ class SimpleTriggerWrapper(BaseWrapper):
 
 class TriggerWrapper(BaseWrapper):
         """a wrapper for trigger tuple"""
-        """Mount and Blade: Warband ver 1127"""
+        """Mount and Blade: Warband ver 1143"""
         def __init__(self, _data):
             # verify _data
             if( not isinstance(_data,TupleType)) or len(_data) < 5:
@@ -323,7 +348,7 @@ class TriggerWrapper(BaseWrapper):
 
 class PresentationWrapper(BaseWrapper):
         """a wrapper for presentation tuple"""
-        """Mount and Blade: Warband ver 1127"""
+        """Mount and Blade: Warband ver 1143"""
         def __init__(self, _data=("",0,0,[])):
                 BaseWrapper.__init__(self,_data)
 
@@ -377,7 +402,7 @@ class PresentationWrapper(BaseWrapper):
 
 class ScriptWrapper(BaseWrapper):
         """a wrapper for script tuple"""
-        """Mount and Blade: Warband ver 1127"""
+        """Mount and Blade: Warband ver 1143"""
         def __init__(self, _data):
             if( not isinstance(_data,TupleType)) and len(_data) == 2:                        
                 raise ValueError("ScriptWrapper: Wrapped must be a tuple.")            
@@ -393,7 +418,7 @@ class ScriptWrapper(BaseWrapper):
 
 class ItemWrapper(BaseWrapper):
         """a wrapper for item record"""
-        """Mount and Blade: Warband ver 1127"""
+        """Mount and Blade: Warband ver 1143"""
         def __init__(self, _data):
             if( not isinstance(_data,ListType)) and len(_data) >= 8:
                 raise ValueError("ScriptWrapper: Wrapped must be a item record.")            
@@ -431,7 +456,7 @@ class ItemWrapper(BaseWrapper):
 
 class GameMenuWrapper(BaseWrapper):
         """a wrapper for game menu record"""
-        """Mount and Blade: Warband ver 1127"""
+        """Mount and Blade: Warband ver 1143"""
         def __init__(self, _data):
             if( not isinstance(_data,TupleType)) and len(_data) < 6:
                 raise ValueError("GameMenuWrapper: Wrapped must be a game menu record.")            
@@ -459,14 +484,15 @@ class GameMenuWrapper(BaseWrapper):
             from util_common import list_find_first_match_i
             find_i = list_find_first_match_i(self.GetMenuOptions(), menu_option_id)
             if find_i <> -1:
-                return self.GetMenuOptions()[find_i]	    
+                #return self.GetMenuOptions()[find_i]
+				return GameMenuOptionWrapper(self.GetMenuOptions()[find_i]) ##Caba'drin
 
             return None # cannot find the option
             
 
 class MissionTemplateWrapper(BaseWrapper):
         """a wrapper for mission template record"""
-        """Mount and Blade: Warband ver 1127"""
+        """Mount and Blade: Warband ver 1143"""
         def __init__(self, _data):
             if( not isinstance(_data,TupleType)) and len(_data) < 6:
                 raise ValueError("MissionTemplateWrapper: Wrapped must be a mission template record.")            
@@ -496,18 +522,131 @@ class MissionTemplateWrapper(BaseWrapper):
 
         def FindTrigger(self, cinterval=None, dinterval=None, rinterval=None, conditionblock=None, consequenceblock=None, start=0, end=None):
             search_end = end
-            if( search_end is None or search_end > self.GetLength() ):
-                    search_end = self.GetLength()
+            if( search_end is None or search_end > len(self.GetTriggers()) ):   ##Caba'drin fix, GetLength() didn't work for the list
+                    search_end = len(self.GetTriggers())   ##Caba'drin fix, GetLength() didn't work for the list
             i_search = start
             while( i_search < search_end ):
                     trigger = self.GetTrigger(i_search)
                     if( (cinterval is None or cinterval == trigger.GetCheckInterval())
                         and (dinterval is None or dinterval == trigger.GetDelayInterval())
                         and (rinterval is None or rinterval == trigger.GetRearmInterval())
-                        and (conditionblock is None or conditionblock == trigger.GetConditionBlock()) 
-                        and (consequenceblock is None or consequenceblock == trigger.GetConsequenceBlock()) 
+                        and (conditionblock is None or conditionblock == trigger.GetConditionBlock().Unwrap())  ##Caba'drin fix, add Unwrap
+                        and (consequenceblock is None or consequenceblock == trigger.GetConsequenceBlock().Unwrap())  ##Caba'drin fix, add Unwrap
                         ):
                             return trigger
                     i_search += 1
             # while
             return None
+		##Added by Caba'drin -- allows inserting a trigger above another trigger, for instance
+        def FindTrigger_i(self, cinterval=None, dinterval=None, rinterval=None, conditionblock=None, consequenceblock=None, start=0, end=None):
+            search_end = end
+            if( search_end is None or search_end > len(self.GetTriggers()) ): ##Caba'drin fix, GetLength() didn't work for the list
+                    search_end = len(self.GetTriggers())  ##Caba'drin fix, GetLength() didn't work for the list
+            i_search = start
+            while( i_search < search_end ):
+                    trigger = self.GetTrigger(i_search)
+                    if( (cinterval is None or cinterval == trigger.GetCheckInterval())
+                        and (dinterval is None or dinterval == trigger.GetDelayInterval())
+                        and (rinterval is None or rinterval == trigger.GetRearmInterval())
+                        and (conditionblock is None or conditionblock == trigger.GetConditionBlock().Unwrap())  ##Caba'drin fix, add Unwrap
+                        and (consequenceblock is None or consequenceblock == trigger.GetConsequenceBlock().Unwrap())  ##Caba'drin fix, add Unwrap
+                        ): 
+                            return i_search
+                    i_search += 1
+            # while
+            return None
+
+			
+##Added by Caba`drin -- tested and functioning
+class DialogWrapper(BaseWrapper):
+		"""a wrapper for dialog tuple"""
+		"""Mount and Blade: Warband ver 1143"""
+		def __init__(self, _data):
+            # verify _data
+			if( not isinstance(_data,ListType)): #or len(_data) != 6) :	cannot get the length to check out for the life of me, so poor error handling
+				raise ValueError("DialogWrapper: Wrapped must be a dialog record.")
+			BaseWrapper.__init__(self,_data)
+
+		def GetPartner(self):
+			return self.GetElement(0)
+
+		def GetStartState(self):
+			return self.GetElement(1)
+
+		def GetConditionBlock(self):
+			return OpBlockWrapper(self.GetElement(2))
+		
+		def GetText(self):
+			return self.GetElement(3)
+
+		def GetEndState(self):
+			return self.GetElement(4)
+
+		def GetConsequenceBlock(self):
+			return OpBlockWrapper(self.GetElement(5))
+			
+		def GetVoiceOver(self):
+			return self.GetElement(6)
+
+
+class GameMenuOptionWrapper(BaseWrapper):
+		"""a wrapper for game menu record"""
+		"""Mount and Blade: Warband ver 1143"""
+		def __init__(self, _data):
+			if( not isinstance(_data,TupleType)) and len(_data) < 4:
+				raise ValueError("GameMenuOptionWrapper: Wrapped must be a game menu option record.")            
+			BaseWrapper.__init__(self,_data)
+		
+		def GetId(self):
+			return self.GetElement(0)
+
+		def GetConditionBlock(self):
+			return OpBlockWrapper(self.GetElement(1))
+
+		def GetText(self):
+			return self.GetElement(2)
+
+		def GetConsequenceBlock(self):
+			return OpBlockWrapper(self.GetElement(3))
+
+def FindDialog_i(objlist, partner=None, ststate=None, endstate=None, text=None, conditionblock=None, consequenceblock=None, voiceover=None, start=0, end=None):
+	search_end = end
+	objlist = BaseWrapper(objlist)
+	if( search_end is None or search_end > objlist.GetLength() ):
+		search_end = objlist.GetLength()
+	i_search = start
+	while( i_search < search_end ):
+			dialog = DialogWrapper(objlist.data[i_search])
+			if( (partner is None or partner == dialog.GetPartner())
+				and (ststate is None or ststate == dialog.GetStartState())
+				and (endstate is None or endstate == dialog.GetEndState())
+				and (text is None or text in dialog.GetText()) ##careful, don't need to duplicate text completely
+				and (conditionblock is None or conditionblock == dialog.GetConditionBlock()) 
+				and (consequenceblock is None or consequenceblock == dialog.GetConsequenceBlock()) 
+				and (voiceover is None or voiceover == dialog.GetVoiceOver()) 
+				):
+					return i_search
+			i_search += 1
+	# while
+	return None
+	
+def FindDialog(objlist, partner=None, ststate=None, endstate=None, text=None, conditionblock=None, consequenceblock=None, voiceover=None, start=0, end=None):
+	search_end = end
+	objlist = BaseWrapper(objlist)
+	if( search_end is None or search_end > objlist.GetLength() ):
+		search_end = objlist.GetLength()
+	i_search = start
+	while( i_search < search_end ):
+			dialog = DialogWrapper(objlist.data[i_search])
+			if( (partner is None or partner == dialog.GetPartner())
+				and (ststate is None or ststate == dialog.GetStartState())
+				and (endstate is None or endstate == dialog.GetEndState())
+				and (text is None or text in dialog.GetText()) ##careful, don't need to duplicate text completely
+				and (conditionblock is None or conditionblock == dialog.GetConditionBlock()) 
+				and (consequenceblock is None or consequenceblock == dialog.GetConsequenceBlock()) 
+				and (voiceover is None or voiceover == dialog.GetVoiceOver()) 
+				):
+					return dialog
+			i_search += 1
+	# while
+	return None

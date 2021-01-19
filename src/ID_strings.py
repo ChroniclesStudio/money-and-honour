@@ -3397,5 +3397,6 @@ str_npc13_1 = 3395
 str_npc14_1 = 3396
 str_npc15_1 = 3397
 str_npc16_1 = 3398
+str_faction_troop_tree = 3399
 
 

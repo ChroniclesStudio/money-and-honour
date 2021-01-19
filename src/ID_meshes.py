@@ -553,5 +553,8 @@ mesh_ccoop_default_class = 551
 mesh_ccoop_melee_class = 552
 mesh_ccoop_ranged_class = 553
 mesh_ccoop_mounted_class = 554
+mesh_pic_soldier_world_map = 555
+mesh_pic_soldier_rebel = 556
+mesh_pic_soldier_desert = 557
 
 

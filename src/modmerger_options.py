@@ -28,7 +28,7 @@ mods_active = [
     "formations",   # motomataru's formations v3
     "formAI",       # motomataru's formations v3 AI extension.  Comment this line out if you don't want ai to use formations
     "trees",
-    # "freelancer",
+    "freelancer",
 ]
 
 

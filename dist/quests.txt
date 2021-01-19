@@ -1,5 +1,5 @@
 questsfile version 1
-91
+94
 qst_deliver_message Deliver_Message_to_{s13} 2 {!}{s9}_asked_you_to_take_a_message_to_{s13}._{s13}_was_at_{s4}_when_you_were_given_this_quest. 
 qst_deliver_message_to_enemy_lord Deliver_Message_to_{s13} 2 {!}{s9}_asked_you_to_take_a_message_to_{s13}_of_{s15}._{s13}_was_at_{s4}_when_you_were_given_this_quest. 
 qst_raise_troops Raise_{reg1}_{s14} 2 {!}{s9}_asked_you_to_raise_{reg1}_{s14}_and_bring_them_to_him. 
@@ -90,4 +90,7 @@ qst_collect_men Collect_Five_Men 0 {!}{s9}_asked_you_to_collect_at_least_5_men_b
 qst_learn_where_merchant_brother_is Learn_Where_the_Hostages_are_Held. 0 {!}placeholder. 
 qst_save_relative_of_merchant Attack_the_Bandit_Lair 0 {!}placeholder. 
 qst_save_town_from_bandits Save_Town_from_Bandits 0 {!}placeholder. 
+qst_freelancer_enlisted Enlisted_in_the_Party_of_{s13} 0 {!}You_are_currently_enlisted_in_the_party_of_{s13}_of_{s14}. 
+qst_freelancer_vacation Enlisted:_On_Leave 0 {!}You_have_been_granted_leave_from_the_party_of_{s13}_of_{s14}. 
+qst_freelancer_captured Enlisted:_Captured 0 {!}Your_commander's_party_has_been_defeated_and_you_have_been_captured._Return_to_the_service_of_{s13}_of_{s14}. 
 qst_quests_end Quests_End 0 {!}. 

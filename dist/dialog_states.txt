@@ -714,6 +714,10 @@ lord_tell_mission_incriminate_commander_9
 lord_tell_mission_incriminate_commander_fin
 lord_tell_mission_incriminate_commander_10
 lord_mission_accepted
+lord_request_enlistment
+lord_request_retire
+lord_request_vacation
+ask_return_from_leave
 lord_leave_prison
 lord_leave
 lord_leave_give_quest
@@ -1352,3 +1356,4 @@ mayor_wealth_comparison_2
 mayor_wealth_comparison_3
 mayor_wealth_comparison_4
 mayor_wealth_comparison_5
+lord_request_enlistment_confirm

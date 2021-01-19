@@ -1,4 +1,4 @@
-721
+752
 qstr_Next_Page Next_Page
 qstr_Game_Rules:^ Game_Rules:^
 qstr_0 0
@@ -76,6 +76,18 @@ qstr_{s4}^Ironflesh:_{reg {s4}^Ironflesh:_{reg1}^Athletics:_{reg2}^Shield:_{reg3
 qstr_{s4}^Archery:_{reg1} {s4}^Archery:_{reg1}^Crossbows:_{reg2}^Throwing:_{reg3}
 qstr_{s4} {s4}
 qstr_Equipments:_ Equipments:_
+qstr_CURRENT_COMMANDER_S_ CURRENT_COMMANDER'S_REPORT!
+qstr_Your_Commander:_{s19 Your_Commander:_{s19}
+qstr_Commander_Relation:_ Commander_Relation:_{reg0}
+qstr_Enlisted_Faction:_{s Enlisted_Faction:_{s20}
+qstr_Current_Rank:_{s21} Current_Rank:_{s21}
+qstr_N/A N/A
+qstr_Experience_to_next_p Experience_to_next_promotion:_{s1}
+qstr_Days_in_service:_{re Days_in_service:_{reg20}
+qstr_Current_Wage:_{reg23 Current_Wage:_{reg23}_denars.
+qstr_Next_Pay/Promotion_d Next_Pay/Promotion_day:_{s25}
+qstr_Army_size:_{reg26} Army_size:_{reg26}
+qstr_Commander_s_Army Commander's_Army
 qstr_{!}DEBUG_:_Completed {!}DEBUG_:_Completed_faction_troop_assignments,_cheat_mode:_{reg3}
 qstr_{!}ERROR:_Not_enough {!}ERROR:_Not_enough_banners_for_heroes!
 qstr_{!}DEBUG____initial_ {!}DEBUG_--_initial_war/peace_check_begins
@@ -224,7 +236,6 @@ qstr_Falling_Back Falling_Back
 qstr_Standing_Closer Standing_Closer
 qstr_Spreading_Out Spreading_Out
 qstr_Standing Standing
-qstr_N/A N/A
 qstr_Free Free
 qstr_Any_Weapon Any_Weapon
 qstr_Blunt_Weapons Blunt_Weapons
@@ -376,6 +387,14 @@ qstr_Infantry_formation_d Infantry_formation_disassembled.
 qstr_Cavalry_formation_di Cavalry_formation_disassembled.
 qstr_Archer_formation_dis Archer_formation_disassembled.
 qstr_{reg0} {reg0}
+qstr_You_have_been_enlist You_have_been_enlisted!
+qstr_Current_rank:_{s5} Current_rank:_{s5}
+qstr_You_have_left_your_c You_have_left_your_commander!
+qstr_You_have_been_grante You_have_been_granted_leave!
+qstr_You_have_rejoined_yo You_have_rejoined_your_commander!
+qstr_{s3}_{s2} {s3},_{s2}
+qstr_The_equipment_of_a_{ The_equipment_of_a_{s1}:_{s2}is_assigned_to_you.
+qstr_The_equipment_of_a_{s The_equipment_of_a_{s1}:_{s2}is_taken_from_you.
 qstr_You_got_keys_of_dung You_got_keys_of_dungeon.
 qstr_Forming_ranks. Forming_ranks.
 qstr_You_must_stay_behind You_must_stay_behind_the_line_on_the_ground!_Point_is_not_counted.
@@ -574,6 +593,7 @@ qstr_There_has_been_an_al There_has_been_an_alleged_border_incident:_{s9}
 qstr_{!}{s11}{s12} {!}{s11}{s12}
 qstr_{!}DEBUG____Hours_si {!}DEBUG_--_Hours_since_last_feast_started:_{reg4}
 qstr_^^Note_that_so_long_ ^^Note_that_so_long_as_you_remain_marshal,_the_lords_of_the_realm_will_be_expecting_you_to_lead_them_on_campaign._So,_if_you_are_awaiting_a_feast,_either_for_a_wedding_or_for_other_purposes,_you_may_wish_to_resign_the_marshalship_by_speaking_to_your_liege.
+qstr_You_have_deserted_an You_have_deserted,_and_are_now_wanted!
 qstr_Breaking_camp... Breaking_camp...
 qstr_{!}{s3}_commander_of {!}{s3}_commander_of_party_#{reg4}_which_is_not_his_troop_leaded_party_{reg5}
 qstr_{!}DEBUG____Doing_po {!}DEBUG_--_Doing_political_calculations_for_{s9}
@@ -605,7 +625,18 @@ qstr_{!}DEBUG___{s4}_faction_chang {!}DEBUG_-_{s4}_faction_changed_from_slot_tro
 qstr_{s1}_has_switched_fr {s1}_has_switched_from_{s2}_to_{s3}.
 qstr_{!}DEBUG_:_{s2}_is_b {!}DEBUG_:_{s2}_is_besieging_by_{s3}
 qstr_{!}DEBUG___Checking_ {!}DEBUG_-_Checking_fire_at_{s4}_for_{s5}_-_current_time_{reg3},_last_nearby_fire_{reg4}
+qstr_You_are_not_strong_e You_are_not_strong_enough_to_lift_a_weapon_fit_for_your_promotion!
+qstr_You_are_not_strong_en You_are_not_strong_enough_to_hold_all_that_weight_required_with_promotion!.
+qstr_Your_arms_are_to_wea Your_arms_are_to_weak_to_advance_in_the_artillary_at_this_moment.
+qstr_You_require_more_hor You_require_more_horse_riding_skills_to_fit_your_next_poisition!
 qstr_{!}DEBUG____Wanted_b {!}DEBUG_--_Wanted_bandits_spotted_by_{s4}
+qstr_The_released_prisone The_released_prisoners_were_not_be_trusted_and_they_are_preparing_to_attack_you!
+qstr_Warning! Warning!
+qstr_The_released_prisoner The_released_prisoners_scattered_as_soon_as_the_battle_finished._You_will_not_be_seeing_them_again.
+qstr_Notice! Notice!
+qstr_The_released_prisoners The_released_prisoners_have_remained_loyal_and_will_join_your_party
+qstr_You_have_{reg0}_days_ You_have_{reg0}_days_left_till_you_are_declared_as_a_deserter!
+qstr_You_have_now_been_de You_have_now_been_declared_as_a_deserter!
 qstr_{reg65?my_Lady:my_Lo {reg65?my_Lady:my_Lord}
 qstr_{reg65?My_Lady:My_Lo {reg65?My_Lady:My_Lord}
 qstr_{reg65?madame:sir} {reg65?madame:sir}

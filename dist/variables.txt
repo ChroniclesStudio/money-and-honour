@@ -13,6 +13,9 @@ personality_clash_after_24_hrs
 npc_is_quitting
 npc_with_political_grievance
 npc_to_rejoin_party
+freelancer_state
+g_encountered_party
+enlisted_party
 g_number_of_targets_destroyed
 g_last_archery_point_earned
 g_tutorial_training_ground_current_score
@@ -238,6 +241,7 @@ welfare_inquired
 rumors_inquired
 info_inquired
 dialog_with_merchant_ended
+g_infinite_camping
 current_town
 g_starting_town
 g_journey_string
@@ -259,7 +263,6 @@ g_player_reading_book
 player_honor
 g_player_icon_state
 g_camp_mode
-g_infinite_camping
 cheat_find_item_range_begin
 g_prisoner_recruit_troop_id
 g_prisoner_recruit_size
@@ -353,7 +356,6 @@ qst_collect_taxes_menu_counter
 qst_collect_taxes_unrest_counter
 qst_collect_taxes_halve_taxes
 g_train_peasants_against_bandits_num_peasants
-g_encountered_party
 last_sneak_attempt_town
 last_sneak_attempt_time
 g_training_ground_melee_training_scene
@@ -373,6 +375,11 @@ debug_message_in_queue
 g_dont_give_fief_to_player_days
 g_dont_give_marshalship_to_player_days
 g_player_days_as_marshal
+g_encountered_party_faction
+g_encountered_party_relation
+g_encountered_party_type
+g_encountered_party_template
+player_cur_troop
 g_start_belligerent_drunk_fight
 g_belligerent_drunk
 g_start_hired_assassin_fight
@@ -1035,10 +1042,6 @@ g_multiplayer_is_game_type_captain
 g_quick_battle_team_0_banner
 g_quick_battle_team_1_banner
 g_encountered_party_2
-g_encountered_party_faction
-g_encountered_party_relation
-g_encountered_party_type
-g_encountered_party_template
 playerparty_prebattle_regulars
 marshall_defeated_in_battle
 total_battle_enemy_changes
@@ -1263,6 +1266,7 @@ team2_size
 team2_level
 team3_size
 team3_level
+enlisted_lord
 training_ground_position_changed
 bug_fix_version
 g_notification_menu_var1
@@ -1287,6 +1291,7 @@ qst_scout_waypoints_wp_2_visited
 qst_scout_waypoints_wp_3_visited
 qst_train_peasants_against_bandits_num_hours_trained
 g_last_report_control_day
+$g_next_pay_time
 $g_presentation_marshall_selection_max_renown_3
 $g_presentation_marshall_selection_max_renown_3_troop
 $g_presentation_marshall_selection_max_renown_3
