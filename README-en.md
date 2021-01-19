@@ -6,7 +6,7 @@
   </a>
 </p>
 
-> Thirty Years' War backgrounded mod _Money & Honour_ source code repository from Chronicles Studio.
+> Thirty Years' War Mount&Blade: Warband mod _Money & Honour_ source code repository from Chronicles Studio.
 
 [中文文档](./README.md) | English Documentation
 
