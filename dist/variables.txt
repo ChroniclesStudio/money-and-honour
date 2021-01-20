@@ -578,6 +578,11 @@ number_of_civilian_loses
 merchant_sign_count
 g_city_merchant_troop_id
 g_city_merchant_agent_id
+g_battle_map_width
+g_battle_map_scale
+g_battle_map_height
+g_battle_map_plane
+g_presentation_obj_39
 g_presentation_credits_obj_1
 g_presentation_credits_obj_2
 g_presentation_credits_obj_3
@@ -973,10 +978,6 @@ g_battle_allies_wounded
 g_battle_allies_routed
 g_battle_allies_dead
 g_battle_report_plane
-g_battle_map_width
-g_battle_map_scale
-g_battle_map_height
-g_battle_map_plane
 g_battle_map_infantry_order_flag
 g_battle_map_archers_order_flag
 g_battle_map_cavalry_order_flag

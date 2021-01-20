@@ -16,6 +16,77 @@ import string
 ####################################################################################################################
 
 presentations = [
+  # rubik battle field minimap
+  ("mini_map", prsntf_read_only, 0, [
+    (ti_on_presentation_load,
+     [
+      (set_fixed_point_multiplier, 1000),
+
+      (try_for_agents, ":agent_no"),
+        (agent_set_slot, ":agent_no", slot_agent_map_overlay_id, 0),
+      (try_end),
+
+      (get_scene_boundaries, pos2, pos3),
+      (position_transform_position_to_local, pos4, pos2, pos3),
+      (set_fixed_point_multiplier, 1000),
+      (position_get_x, ":map_width", pos4),
+      (position_get_y, ":map_height", pos4),
+      (set_fixed_point_multiplier, 1000),
+      (store_div, ":map_ratio", ":map_height", 100),
+      (store_div, ":map_ratio", ":map_width", ":map_ratio"),
+      (try_begin),
+        (gt, ":map_ratio", 100),
+        (assign, "$g_battle_map_width", 300),
+        (store_div, "$g_battle_map_scale", ":map_width", "$g_battle_map_width"),
+        (store_div, "$g_battle_map_height", ":map_height", "$g_battle_map_scale"),
+      (else_try),
+        (assign, "$g_battle_map_height", 300),
+        (store_div, "$g_battle_map_scale", ":map_height", "$g_battle_map_height"),
+        (store_div, "$g_battle_map_width", ":map_width", "$g_battle_map_scale"),
+      (try_end),
+
+      (create_mesh_overlay, "$g_battle_map_plane", "mesh_white_plane"),
+      (overlay_set_color, "$g_battle_map_plane", 0),
+      (store_add, ":map_bordered_width", "$g_battle_map_width", 20),
+      (store_add, ":map_bordered_height", "$g_battle_map_height", 20),
+      (store_mul, ":map_scale_x", ":map_bordered_width", 50),
+      (store_mul, ":map_scale_y", ":map_bordered_height", 50),
+      (position_set_x, pos1, ":map_scale_x"),
+      (position_set_y, pos1, ":map_scale_y"),
+      (overlay_set_size, "$g_battle_map_plane", pos1),
+      (store_sub, ":map_pos_x", 990, ":map_bordered_width"),
+      (store_sub, ":map_pos_y", 740, ":map_bordered_height"),
+      (position_set_x, pos1, ":map_pos_x"),
+      (position_set_y, pos1, ":map_pos_y"),
+      (overlay_set_position, "$g_battle_map_plane", pos1),
+      (overlay_set_alpha, "$g_battle_map_plane", 0x22),
+
+      # player_chest
+      (try_begin),
+        (scene_prop_get_instance, ":player_chest", "spr_inventory", 0),
+        (ge, ":player_chest", 0),
+        (create_mesh_overlay, "$g_presentation_obj_39", "mesh_white_plane"),
+        (overlay_set_color, "$g_presentation_obj_39", 0xFF00FF),
+        (position_set_x, pos1, 250),
+        (position_set_y, pos1, 250),
+        (overlay_set_size, "$g_presentation_obj_39", pos1),
+      (try_end),
+      (call_script, "script_update_order_panel_map"),
+        
+      (presentation_set_duration, 999999),
+     ]),
+    (ti_on_presentation_run,
+     [
+      (set_fixed_point_multiplier, 1000),
+
+      (try_begin),
+        (game_key_clicked, gk_view_orders),
+        (presentation_set_duration, 0),
+        (start_presentation, "prsnt_battle"),
+      (try_end),
+     ]),
+  ]),
+  # rubik battle field minimap
   ("game_credits",prsntf_read_only,mesh_load_window,[
       (ti_on_presentation_load,
        [(assign, "$g_presentation_credits_obj_1", -1),
@@ -11463,6 +11534,7 @@ presentations = [
             (agent_set_slot, ":cur_agent", slot_agent_map_overlay_id, 0),
           (try_end),
           (presentation_set_duration, 0),
+          (start_presentation, "prsnt_mini_map"), ## Rubik Battle Field Minimap
         (try_end),
         ]),
       ]),
