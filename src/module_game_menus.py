@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from header_game_menus import *
 from header_parties import *
 from header_items import *
@@ -4209,6 +4211,14 @@ game_menus = [
       (store_mul, "$g_strength_contribution_of_player", ":player_party_strength", 100),
       (val_div, "$g_strength_contribution_of_player", ":total_player_and_followers_strength"),
 
+      ## 坐镇指挥优化
+      (try_begin),
+        (store_mul, ":enemy_party_strength_mult_10", ":enemy_party_strength", 10),
+        (ge, ":total_player_and_followers_strength", ":enemy_party_strength_mult_10"),
+        (assign, ":enemy_party_strength", 0),
+      (try_end),
+      ## 坐镇指挥优化
+
       (inflict_casualties_to_party_group, "p_main_party", ":enemy_party_strength", "p_temp_casualties"),
       (call_script, "script_print_casualties_to_s0", "p_temp_casualties", 0),
       (str_store_string_reg, s8, s0),
@@ -5127,6 +5137,14 @@ game_menus = [
       (call_script, "script_party_calculate_strength", "p_collective_enemy", 0),
       (assign, ":enemy_party_strength", reg0),
       (val_div, ":enemy_party_strength", 5),
+
+      ## 坐镇指挥优化
+      (try_begin),
+        (store_mul, ":enemy_party_strength_mult_10", ":enemy_party_strength", 10),
+        (ge, ":friend_party_strength", ":enemy_party_strength_mult_10"),
+        (assign, ":enemy_party_strength", 0),
+      (try_end),
+      ## 坐镇指挥优化
 
       (try_begin),
         (eq, ":friend_party_strength", 0),
