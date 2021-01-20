@@ -97,6 +97,10 @@ scripts = [
   # INPUT: none
   ("game_start",
    [
+    (try_for_range, ":cur_troop", companions_begin, companions_end),
+      (troop_set_name, ":cur_troop","str_anonymous"),
+    (try_end),
+
       (faction_set_slot, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
       (assign, "$g_player_luck", 200),
       (assign, "$g_player_luck", 200),

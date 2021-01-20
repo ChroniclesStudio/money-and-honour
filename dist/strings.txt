@@ -15,13 +15,13 @@ str_s50_and_s51 {s50}_and_{s51}
 str_s52_comma_s51 {!}{s52},_{s51}
 str_s52_and_s51 {s52}_and_{s51}
 str_s5_s_party {s5}'s_Party
+str_anonymous anonymous_man
 str_given_by_s1_at_s2 Given_by_{s1}_at_{s2}
 str_given_by_s1_in_wilderness Given_by_{s1}_whilst_in_the_field
 str_s7_raiders {s7}_Raiders
 str_bandits_eliminated_by_another The_troublesome_bandits_have_been_eliminated_by_another_party.
 str_msg_battle_won Battle_won!_Press_tab_key_to_leave...
 str_tutorial_map1 You_are_now_viewing_the_overland_map._Left-click_on_the_map_to_move_your_party_to_that_location,_enter_the_selected_town,_or_pursue_the_selected_party._Time_will_pause_on_the_overland_map_if_your_party_is_not_moving,_waiting_or_resting._To_wait_anywhere_simply_press_and_hold_down_the_space_bar.
-str_anonymous anonymous_man
 str_change_color_1 {!}Change_Color_1
 str_change_color_2 {!}Change_Color_2
 str_change_background {!}Change_Background_Pattern

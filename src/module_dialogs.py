@@ -107,8 +107,10 @@ dialogs = [
 						
 						#Possible later activations of notes
 						(try_begin),
-							(is_between, "$g_talk_troop", kingdom_ladies_begin, kingdom_ladies_end),
-						(try_end),
+              (is_between,"$g_talk_troop",companions_begin, companions_end),
+              (str_store_troop_name_plural,s1,"$g_talk_troop"),
+              (troop_set_name, "$g_talk_troop",s1),
+            (try_end),
 						
 					 (try_end),
 					 
