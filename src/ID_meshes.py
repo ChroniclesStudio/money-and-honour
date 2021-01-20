@@ -556,5 +556,13 @@ mesh_ccoop_mounted_class = 554
 mesh_pic_soldier_world_map = 555
 mesh_pic_soldier_rebel = 556
 mesh_pic_soldier_desert = 557
+mesh_note_window_bottom = 558
+mesh_order_frame = 559
+mesh_flag4 = 560
+mesh_flag5 = 561
+mesh_flag6 = 562
+mesh_flag7 = 563
+mesh_flag8 = 564
+mesh_flag9 = 565
 
 

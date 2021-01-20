@@ -30,6 +30,7 @@ mods_active = [
     "trees",
     "freelancer",
     "KAOSPolitical", # KAOS Political (1.2) - Lazeras
+    "pbod",
 ]
 
 
