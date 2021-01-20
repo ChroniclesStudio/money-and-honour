@@ -1502,7 +1502,7 @@ update_camp_action_blank_2 = [
 
 update_camp_action = [
       #KAOS  (POLITICAL)
-      ("action_political_actions",[],"Goto Political Option's.",
+      ("action_political_actions",[],"Go to Political Options",
        [
           (jump_to_menu, "mnu_camp_political"),
        ]

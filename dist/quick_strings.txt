@@ -1,4 +1,4 @@
-1048
+1050
 qstr_Next_Page Next_Page
 qstr_Game_Rules:^ Game_Rules:^
 qstr_0 0
@@ -419,6 +419,8 @@ qstr_{s2}_{reg3?was:is}_b {s2}_{reg3?was:is}_being_held_captive_at_{s3}.
 qstr_{s2}_{reg3?was:has_b {s2}_{reg3?was:has_been}_taken_captive_by_{reg4?her:his}_enemies.
 qstr_{reg3?{s2}_s_locatio {reg3?{s2}'s_location_was_unknown:I_don't_know_where_{s2}_is}.
 qstr_{s6}_has_joined_your {s6}_has_joined_your_party.
+qstr_You_have_changed_you You_have_changed_your_cloth_into_a_casual_cloth_which_is_in_your_inventory.
+qstr_You_have_no_casual_c You_have_no_casual_clothes,_the_castle_guard_provides_you_a_common_casual_cloth_temporarily.
 qstr_{!}DEBUG____{s4}_is_p {!}DEBUG_--_{s4}_is_present_at_the_center_and_is_attending_the_feast
 qstr_{!}DEBUG____{s4}_is_pr {!}DEBUG_--_{s4}_is_present_at_the_center_and_is_awaiting_the_player_in_private
 qstr_{!}DEBUG____{s4}_is_pre {!}DEBUG_--_{s4}_is_present_at_the_center_and_is_allowed_to_meet_the_player

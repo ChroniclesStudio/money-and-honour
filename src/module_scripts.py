@@ -26084,6 +26084,34 @@ scripts = [
       (mission_tpl_entry_clear_override_items, "mt_visit_town_castle", 0),
       #(mission_tpl_entry_set_override_flags, "mt_visit_town_castle", 0, af_override_all),
       
+      # automatically changes to civillian outfit when entering court
+      (mission_tpl_entry_set_override_flags, "mt_visit_town_castle", 0, af_override_all),
+      (assign, ":have_civilian_cloth", 0),
+      # find civilian cloth
+      (assign, ":dest_cloth", "itm_tabard"), # default
+      (troop_get_inventory_capacity, ":inv_size", "trp_player"),
+      (assign, ":end_cond", ":inv_size"),
+      (try_for_range, ":i_slot", 0, ":end_cond"),
+        (troop_get_inventory_slot, ":item_id", "trp_player", ":i_slot"),
+        (ge, ":item_id", 0),
+        (item_get_type, ":i_type", ":item_id"),
+        (eq, ":i_type", itp_type_body_armor),
+        (item_has_property, ":item_id", itp_civilian),
+        (assign, ":dest_cloth", ":item_id"),
+        (assign, ":have_civilian_cloth", 1),
+        (assign, ":end_cond", 0), # stop
+      (try_end),
+      (try_begin), # cur equiped cloth is civilian, display nothing
+        (eq, ":i_slot", ek_body),
+      (else_try),
+        (eq, ":have_civilian_cloth", 1),
+        (display_message, "@You have changed your cloth into a casual cloth which is in your inventory."),
+      (else_try),
+        (display_message, "@You have no casual clothes, the castle guard provides you a common casual cloth temporarily."),
+      (try_end),
+      (mission_tpl_entry_add_override_item, "mt_visit_town_castle", 0, ":dest_cloth"),
+      # automatically changes to civillian outfit when entering court
+
       (party_get_slot, ":castle_scene", ":center_no", slot_town_castle),
       (modify_visitors_at_site,":castle_scene"),
       (reset_visitors),
