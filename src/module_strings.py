@@ -19,10 +19,6 @@ strings = [
   ("s52_and_s51", "{s52} and {s51}"),
   ("s5_s_party", "{s5}'s Party"),
 
-  # anonymous man
-  ("anonymous","anonymous man"),
-  # anonymous man
-
   ("given_by_s1_at_s2", "Given by {s1} at {s2}"),
   ("given_by_s1_in_wilderness", "Given by {s1} whilst in the field"),
   ("s7_raiders", "{s7} Raiders"),

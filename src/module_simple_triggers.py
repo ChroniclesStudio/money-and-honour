@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from header_common import *
 from header_operations import *
 from header_parties import *
@@ -32,6 +34,25 @@ simple_triggers = [
    [
     ]),
 
+  # 部队名称下面显示领主的性格
+  (1,
+  [
+    (try_for_parties, ":party_no"),
+      (gt, ":party_no", "p_spawn_points_end"),
+      (party_set_extra_text, ":party_no", "str_empty_string"),
+      (try_begin),
+        (party_slot_eq, ":party_no", slot_party_type, spt_kingdom_hero_party),
+        (party_stack_get_troop_id, ":troop_no", ":party_no", 0),
+        (gt, ":troop_no", 0),
+        (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+        (troop_get_slot, ":reputation", ":troop_no", slot_lord_reputation_type),
+        (store_add, ":rep_string", ":reputation", "str_personality_archetypes"),
+        (str_store_string, s0, ":rep_string"),
+        (party_set_extra_text, ":party_no", "str_s0"),
+      (try_end),
+    (try_end),
+  ]),  
+  # 部队名称下面显示领主的性格
 
   (1,
    [
