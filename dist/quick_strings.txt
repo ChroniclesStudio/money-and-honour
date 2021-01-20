@@ -1,4 +1,4 @@
-1050
+1051
 qstr_Next_Page Next_Page
 qstr_Game_Rules:^ Game_Rules:^
 qstr_0 0
@@ -888,6 +888,7 @@ qstr_You_are_your_fathers_{ You_are_your_fathers_{reg3?daughter:son},_and_the_de
 qstr_You_are_your_fathers_{r You_are_your_fathers_{reg3?daughter:son},_and_the_death_of_of_your_father_has_left_you_to_fill_his_spot_as_leader_of_the_Kingdom_of_Nords
 qstr_You_are_your_fathers_{re You_are_your_fathers_{reg3?daughter:son},_and_the_death_of_of_your_father_has_left_you_to_fill_his_spot_as_leader_of_the_Kingdom_of_Rhodoks
 qstr_You_are_your_fathers_{reg You_are_your_fathers_{reg3?daughter:son},_and_the_death_of_of_your_father_has_left_you_to_fill_his_spot_as_leader_of_the_Sarranid_Sultanate
+qstr_yanhuiinfo yanhuiinfo
 qstr_Breaking_camp... Breaking_camp...
 qstr_{!}{s3}_commander_of {!}{s3}_commander_of_party_#{reg4}_which_is_not_his_troop_leaded_party_{reg5}
 qstr_{reg0}.{reg1} {reg0}.{reg1}

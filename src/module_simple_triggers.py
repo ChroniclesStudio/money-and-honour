@@ -75,6 +75,28 @@ simple_triggers = [
       (rest_for_hours, 0, 0, 0), #stop resting
     ]),
 
+  ###检测玩家举办的宴会，增加好感 deskbook
+  (24,
+   [
+    (try_begin),
+      (check_quest_active, "qst_organize_feast"),###组织宴会任务激活中
+      (quest_get_slot,  ":venue", "qst_organize_feast", slot_quest_target_center,),###获取组织宴会任务的触发城市
+      (display_message,"@yanhuiinfo",0xF5B50D),###宴会信息
+
+        (try_for_range, ":troop_no", active_npcs_begin, active_npcs_end),
+            (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),###是领主
+            (troop_get_slot, ":leaded_party", ":troop_no", slot_troop_leaded_party),###获取领导的队伍
+            (party_is_active, ":leaded_party"),###队伍是激活的
+            (party_get_attached_to, ":leaded_party_attached", ":leaded_party"),###获取队伍附加到的目标
+            (eq, ":leaded_party_attached", ":venue"),###如果城市是宴会举办地
+
+            (assign, ":relation_booster", 1),###要增加的好感数量
+            (call_script, "script_troop_change_relation_with_troop", "trp_player", ":troop_no", ":relation_booster"),###更改参加宴会的领主和玩家的关系
+            (val_add, "$total_feast_changes", ":relation_booster"),
+        (try_end),
+
+    (try_end),
+    ]),
 
   (0,
    [
