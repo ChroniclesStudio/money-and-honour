@@ -41,34 +41,18 @@ factions = [
 
   ("player_faction","Player Faction",0, 0.9, [], []),
   ("player_supporters_faction","Player's Supporters",0, 0.9, [("player_faction",1.00),("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xFF4433), #changed name so that can tell difference if shows up on map
-  ("kingdom_1",  "Kingdom of Swadia", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xEE7744),
-  ("kingdom_2",  "Kingdom of Vaegirs",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCCBB99),
-  ("kingdom_3",  "Khergit Khanate", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC99FF),
-  ("kingdom_4",  "Kingdom of Nords",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DDDD),
-  ("kingdom_5",  "Kingdom of Rhodoks",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DD33),
-  ("kingdom_6",  "Sarranid Sultanate",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xDDDD33),
+  ("kingdom_1",  "Archduchy of Austria ", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xEE7744),
+  ("kingdom_2",  "Russian Empire",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCCBB99),
+  ("kingdom_3",  "Kingdom of Poland", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC99FF),
+  ("kingdom_4",  "Kingdom of Sweden",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DDDD),
+  ("kingdom_5",  "Kingdom of Spain",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DD33),
+  ("kingdom_6",  "Ottoman Empire",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xDDDD33),
 
 ##  ("kingdom_1_rebels",  "Swadian rebels", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 ##  ("kingdom_2_rebels",  "Vaegir rebels",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 ##  ("kingdom_3_rebels",  "Khergit rebels", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 ##  ("kingdom_4_rebels",  "Nord rebels",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 ##  ("kingdom_5_rebels",  "Rhodok rebels",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
-
-#KAOS (POLITICAL)
-  ("KINGDOM_7",  "SWADIAN REBELS", 0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCC9900),
-  ("KINGDOM_8",  "VAEGIR REBELS",    0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X669999),
-  ("KINGDOM_9",  "KHERGIT REBELS", 0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCC66FF),
-  ("KINGDOM_10",  "NORD REBELS",    0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X3333FF),
-  ("KINGDOM_11",  "RHODOK REBELS",  0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X99FF66),
-  ("KINGDOM_12",  "SARRANID REBELS",  0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCCFF66),
-
-  ("KINGDOM_13",  "EMPIRE OF SWADIA", 0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCC9900),
-  ("KINGDOM_14",  "EMPIRE OF VAEGIR",    0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X669999),
-  ("KINGDOM_15",  "KHERGIT EMPIRE", 0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCC66FF),
-  ("KINGDOM_16",  "EMPIRE OF NORD",    0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X3333FF),
-  ("KINGDOM_17",  "EMPIRE OF RHODOK",  0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0X99FF66),
-  ("KINGDOM_18",  "SARRANID EMPIRE",  0, 0.9, [("OUTLAWS",-0.05),("PEASANT_REBELS", -0.1),("DESERTERS", -0.02),("MOUNTAIN_BANDITS", -0.05),("FOREST_BANDITS", -0.05)], [], 0XCCFF66),
-#KAOS (POLITICAL)
 
   ("kingdoms_end","{!}kingdoms_end", 0, 0,[], []),
 
@@ -92,12 +76,3 @@ factions = [
   ("ccoop_all_stars","All Stars", 0, 0.5,[], []),
 #INVASION MODE END
 ]
-# modmerger_start version=201 type=4
-try:
-    component_name = "factions"
-    var_set = { "factions":factions,"default_kingdom_relations":default_kingdom_relations, }
-    from modmerger import modmerge
-    modmerge(var_set, component_name)
-except:
-    raise
-# modmerger_end
