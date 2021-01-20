@@ -711,11 +711,7 @@ scripts_directives = [
     [SD_OP_BLOCK_INSERT, "enter_court", D_SEARCH_FROM_TOP | D_SEARCH_SCRIPTLINE | D_INSERT_AFTER,(party_stack_get_troop_id, ":stack_troop","p_temp_party",":i_stack"),0,
 	[
 		(gt, ":stack_troop", 0),
-    ]],	
-	
-	##FLORIS ONLY - Trade with Merchant Caravans
-	[SD_OP_BLOCK_INSERT, "party_give_xp_and_gold", D_SEARCH_FROM_TOP | D_SEARCH_SCRIPTLINE | D_INSERT_BEFORE, (party_slot_eq, ":enemy_party", slot_party_type, spt_kingdom_caravan),0,not_in_party],	
-	##FLORIS ONLY END	
+    ]],		
 ]
                 
 def modmerge_scripts(orig_scripts):
