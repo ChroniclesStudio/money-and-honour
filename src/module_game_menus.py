@@ -8853,6 +8853,66 @@ game_menus = [
            (assign, "$g_tournament_next_team_size", 0),
            (jump_to_menu, "mnu_town_tournament"),
         ]),
+
+      # Recruit in towns
+      ("recruit_nobles",
+        [(troop_get_slot,"$player_noble_renown","trp_player",slot_troop_renown),
+         (party_get_free_companions_capacity, "$player_nobles_capacity", "p_main_party"),
+         (store_faction_of_party,"$nobles_faction","$current_town"), #tells in which faction you are    
+         (try_begin), #begins assigning nobles to variables determined by faction
+           (eq,"$nobles_faction",fac_kingdom_1),
+           (assign,"$nobles","trp_swadian_man_at_arms"), #you can change trp_swadian_man_at_arms,trp_vaegir_horseman...with wahtever you want.
+         (else_try),
+           (eq,"$nobles_faction",fac_kingdom_2),
+           (assign,"$nobles","trp_vaegir_horseman"),
+         (else_try),
+           (eq,"$nobles_faction",fac_kingdom_3),
+           (assign,"$nobles", "trp_khergit_horseman"),
+         (else_try),
+           (eq,"$nobles_faction",fac_kingdom_4),
+           (assign,"$nobles","trp_nord_veteran"),
+         (else_try),
+           (eq,"$nobles_faction",fac_kingdom_5),
+           (assign,"$nobles","trp_rhodok_veteran_spearman"),
+         (else_try),
+           (eq,"$nobles_faction",fac_kingdom_6),
+           (assign,"$nobles","trp_sarranid_horseman"),
+           (else_try), #in case leader of faction is player
+           (assign,"$nobles","trp_slave_crusher"), #put here player faction noble troops i puted (whatever)trp_slave_crusher as i was lazy :P xD
+         (try_end),
+        ]
+        ,"Recruit noble warriors.",
+        [(store_troop_gold,":gold","trp_player"),
+        (try_begin), #makes "more renown-more troops"
+            (ge,"$player_noble_renown",800), #if player has more than 800 renown he can get more nobles
+            (assign,":upper_num_nobles",10),
+            (store_random_in_range,":num_nobles",3,":upper_num_nobles"),
+          (else_try),
+            (store_random_in_range,":num_nobles",1,5),
+          (try_end),
+          (try_begin), #last check.if player have more than 500 renown and 10 free stacks at party
+            (gt,"$player_noble_renown",500), #500 renown is minimum for recruititing nobles.change it as you wish
+            (gt,"$player_nobles_capacity",10), #10 free party stacks is minimum for recuiting nobles change it as you wish.NOTE that you need to change :upper_num_nobles if you change this.
+            (store_mul,":nobles_cost",":num_nobles",98), #cost per noble is 98.Also change it as you wish.(2 nobles=2*98,3 nobles=3*98...etc)
+            (gt,":gold",":nobles_cost"),
+            (party_add_members,"p_main_party","$nobles",":num_nobles"), #this line add nobles to player party ($nobles=type of noble player is getting,:num_nobles=number of nobles player will get,by default this is random)
+            (str_store_troop_name_plural,s4,"$nobles"),
+            (assign,reg(4),":num_nobles"),
+            (display_message,"@{reg4} {s4} have just joined your party.",0x00dacd), #this will display message how much nobles and which type is recuited
+            (troop_remove_gold,"trp_player",":nobles_cost"),
+            (jump_to_menu,"mnu_got_nobles"), #this line redirects to mnu_got_nobles (check end of this file) if player succesfully recruited nobles
+          (else_try),
+            (le,"$player_noble_renown",500),
+            (jump_to_menu,"mnu_rejected_by_nobles"), #redirects to mnu_rejected_by_nobles if player renown is too small/little (whatever).By default min renown is 500
+          (else_try),
+            (lt,":gold",":nobles_cost"),
+            (jump_to_menu,"mnu_rejected_by_nobles_no_money"), #redirects to mnu_rejected_by_nobles_no_money if player doesnt have enough money to recruit (98 per noble and number of nobles is random)
+          (else_try),
+            (le,"$player_nobles_capacity",10),
+            (jump_to_menu,"mnu_rejected_by_nobles_no_place"), #redirects to mnu_rejected_by_nobles_no_place if player has not enough place in party.
+          (try_end),
+               ]),
+          # Recruit in towns
       
       ("town_castle",[        
           (party_slot_eq,"$current_town",slot_party_type, spt_town),        
@@ -14581,6 +14641,51 @@ game_menus = [
        ]),         
     ]
   ),
+
+  # Recruit in towns
+  ("rejected_by_nobles",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+    "As nobles never heard of you no one of them wants to follow you.",
+    "none",
+    [       (set_background_mesh, "mesh_pic_camp"),
+    ],
+    [
+     ("rejected_by_nobles_leave",[],"Leave.",
+       [(change_screen_map),]
+       ),
+    ]
+  ),
+
+      ("rejected_by_nobles_no_place",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+    "Even if some of them want to follow you,your leadership is not high enough to lead them.(need more than 10 free slots in party).",
+    "none",
+    [       (set_background_mesh, "mesh_pic_camp"),],
+    [
+     ("rejected_by_nobles_leave",[],"Leave.",
+       [(change_screen_map),]
+       ),
+    ]
+  ),
+
+        ("rejected_by_nobles_no_money",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+    "You don't have enough money to hire nobles.",
+    "none",
+    [(set_background_mesh, "mesh_pic_camp"),],
+    [("rejected_by_nobles_leave",[],"Leave.",
+     [(change_screen_map),]
+       ),
+    ]
+  ),
+
+          ("got_nobles",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+    "You just got trained and hardened soldiers.If you treat them well they will defend you in many battles.",
+    "none",
+    [(set_background_mesh, "mesh_pic_camp"),],
+    [("rejected_by_nobles_leave",[],"Leave.",
+    [(change_screen_map),]
+       ),
+    ]
+  ),
+  # Recruit in towns
 
   # Easy regulars upgrading kit
   ("ready_upgrade", 0,

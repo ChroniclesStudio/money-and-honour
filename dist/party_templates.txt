@@ -2,19 +2,19 @@ partytemplatesfile version 1
 63
 pt_none none 2 0 1 7 -1 -1 -1 -1 -1 -1 
 pt_rescued_prisoners Rescued_Prisoners 2 0 1 7 -1 -1 -1 -1 -1 -1 
-pt_enemy Enemy 2 0 41 7 -1 -1 -1 -1 -1 -1 
+pt_enemy Enemy 2 0 29 7 -1 -1 -1 -1 -1 -1 
 pt_hero_party Hero_Party 2 0 1 7 -1 -1 -1 -1 -1 -1 
 pt_village_defenders Village_Defenders 6 0 1 7 25 10 20 0 133 0 4 0 -1 -1 -1 -1 
 pt_cattle_herd Cattle_Herd 2814749767106598 0 3 7 24 80 120 0 -1 -1 -1 -1 -1 
 pt_looters Looters 2251799813685257 0 2 312 113 3 45 0 -1 -1 -1 -1 -1 
-pt_manhunters Manhunters 2 0 37 137 123 9 40 0 -1 -1 -1 -1 -1 
+pt_manhunters Manhunters 2 0 25 137 123 9 40 0 -1 -1 -1 -1 -1 
 pt_steppe_bandits Steppe_Bandits 562949953421319 0 2 312 119 4 58 0 -1 -1 -1 -1 -1 
 pt_taiga_bandits Tundra_Bandits 562949953421321 0 2 312 120 4 58 0 -1 -1 -1 -1 -1 
 pt_desert_bandits Desert_Bandits 562949953421315 0 2 312 121 4 58 0 -1 -1 -1 -1 -1 
-pt_forest_bandits Forest_Bandits 562949953421321 0 40 312 117 4 52 0 -1 -1 -1 -1 -1 
-pt_mountain_bandits Mountain_Bandits 562949953421321 0 39 312 116 4 60 0 -1 -1 -1 -1 -1 
+pt_forest_bandits Forest_Bandits 562949953421321 0 28 312 117 4 52 0 -1 -1 -1 -1 -1 
+pt_mountain_bandits Mountain_Bandits 562949953421321 0 27 312 116 4 60 0 -1 -1 -1 -1 -1 
 pt_sea_raiders Sea_Raiders 562949953421321 0 2 312 118 5 50 0 -1 -1 -1 -1 -1 
-pt_deserters Deserters 844424930131971 0 38 312 -1 -1 -1 -1 -1 -1 
+pt_deserters Deserters 844424930131971 0 26 312 -1 -1 -1 -1 -1 -1 
 pt_merchant_caravan Merchant_Caravan 5629499534606338 0 1 11 134 1 1 0 28 5 25 0 -1 -1 -1 -1 
 pt_troublesome_bandits Troublesome_Bandits 2533274790658057 0 2 312 114 14 55 0 -1 -1 -1 -1 -1 
 pt_bandits_awaiting_ransom Bandits_Awaiting_Ransom 2533274790789129 0 3 312 114 24 58 0 135 1 1 1 -1 -1 -1 -1 

@@ -1,4 +1,4 @@
-1062
+1063
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
 qstr_{reg2}^^Upgrade_to_{ {reg2}^^Upgrade_to_{s2}
@@ -853,6 +853,7 @@ qstr__This_castle_has_no_ _This_castle_has_no_garrison.
 qstr__This_town_has_no_ga _This_town_has_no_garrison.
 qstr__You_have_successful _You_have_successfully_sneaked_in.
 qstr_{s13}_A_tournament_w {s13}_A_tournament_will_be_held_here_soon.
+qstr_{reg4}_{s4}_have_jus {reg4}_{s4}_have_just_joined_your_party.
 qstr_{!}DEBUG___Current_t {!}DEBUG_-_Current_town_is_{s3},_but_also_checking_{s4}
 qstr___{reg1}_denars_per_ _({reg1}_denars_per_night)
 qstr_Moreover_you_earn_{r Moreover,_you_earn_{reg8}_denars_from_the_clever_bets_you_placed_on_yourself...

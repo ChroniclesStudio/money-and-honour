@@ -341,6 +341,10 @@ g_tournament_bet_win_amount
 g_tournament_last_bet_tier
 g_tournament_next_num_teams
 g_tournament_next_team_size
+player_noble_renown
+player_nobles_capacity
+nobles_faction
+nobles
 g_last_assassination_attempt_time
 love_interest_in_town
 love_interest_in_town_2
