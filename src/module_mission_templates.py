@@ -1998,7 +1998,21 @@ mission_templates = [
       [
         (assign, "$g_main_attacker_agent", 0),
 	  ]),
-		 
+		 (0, 0, ti_once, [],### replace static horse
+      [(neg|is_edit_mode_enabled),
+        (try_for_range, ":horse", all_items_begin, all_items_end), # horses_begin, horses_end
+            (item_get_type, ":type", ":horse"),
+            (eq, ":type", itp_type_horse),
+            (scene_item_get_num_instances, ":num_instances", ":horse"),
+            (try_for_range, ":number", 0, ":num_instances"),
+                (scene_item_get_instance, ":scene_item", ":horse", ":number"),
+                (prop_instance_get_position, pos53, ":scene_item"),
+                (prop_instance_set_scale, ":scene_item", 0, 0, 0),
+                (set_spawn_position, pos53),
+                (spawn_horse, ":horse", 0),
+            (try_end),
+        (try_end),
+     ]),
       (1, 0, ti_once, 
       [],
       [
