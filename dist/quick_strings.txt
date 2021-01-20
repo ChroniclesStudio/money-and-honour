@@ -1,4 +1,4 @@
-857
+867
 qstr_Next_Page Next_Page
 qstr_Game_Rules:^ Game_Rules:^
 qstr_0 0
@@ -476,6 +476,16 @@ qstr_# #
 qstr_{s0}{s1} {s0}{s1}
 qstr_You_got_keys_of_dung You_got_keys_of_dungeon.
 qstr_Forming_ranks. Forming_ranks.
+qstr_You_were_defeated. You_were_defeated.
+qstr_Rotate_with_the_mous Rotate_with_the_mouse._Move_with_standard_keys.
+qstr_Shift/Control_for_Up Shift/Control_for_Up/Down._Space_Bar_to_increase_speed.
+qstr_Numpad_Plus/Minus_to Numpad_Plus/Minus_to_change_sensitivity._Numpad_to_rotate.
+qstr_Home_to_reset_positi Home_to_reset_position._End_to_flip_Y_rotation
+qstr_Y_Rotation_Inverted Y-Rotation_Inverted
+qstr_Y_Rotation_Normal Y-Rotation_Normal
+qstr_Sensitivity___25%__{ Sensitivity_-_25%_({reg8},_{reg9})
+qstr_Sensitivity_+_25%__{ Sensitivity_+_25%_({reg8},_{reg9})
+qstr_Press_TAB_to_end_the Press_TAB_to_end_the_battle.
 qstr_You_must_stay_behind You_must_stay_behind_the_line_on_the_ground!_Point_is_not_counted.
 qstr_Tutorial Tutorial
 qstr_{!}sending_prisoner_ {!}sending_prisoner_cart_6_feet_underground!
