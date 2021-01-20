@@ -61,6 +61,165 @@ def modmerge(var_set):
 
 scripts = [
 
+  # Easy regulars upgrading kit
+  ("calculate_upgrade_troops", 
+  [
+    (call_script, "script_party_copy", "p_temp_party", "p_main_party"), ## before
+    ## upgrade all troops in first upgrade path with total 1 xp
+    ## everyone get 0 xp at last, but they all upgraded
+    (party_upgrade_with_xp, "p_main_party", 1, 1),
+    (call_script, "script_party_copy", "p_temp_party_2", "p_main_party"), ## after
+    
+    ## remove prisoners and heroes
+    (call_script, "script_party_remove_all_prisoners", "p_temp_party"),
+    (call_script, "script_party_remove_all_prisoners", "p_temp_party_2"),
+    (call_script, "script_party_remove_heroes", "p_temp_party"),
+    (call_script, "script_party_remove_heroes", "p_temp_party_2"),
+    
+    ## Initialize trp_temp_array_a, trp_temp_array_b, trp_temp_array_c
+    (try_for_range, ":slot_no", 0, 32),
+      (troop_set_slot, "trp_temp_array_a", ":slot_no", -1),
+      (troop_set_slot, "trp_temp_array_b", ":slot_no", 0),
+      (troop_set_slot, "trp_temp_array_c", ":slot_no", 0),
+    (try_end),
+    
+    (assign, ":slot_id", 0),
+    (assign, ":num_times", 1),
+    (try_for_range, ":unused", 0, ":num_times"),
+      ## find all current root troops
+      (party_get_num_companion_stacks, ":num_stacks", "p_temp_party"),
+      (try_for_range, ":cur_stack", 0, ":num_stacks"),
+        (party_stack_get_troop_id, ":cur_troop", "p_temp_party", ":cur_stack"),
+        (troop_set_slot, ":cur_troop", slot_root_troop, 1),
+      (try_end),
+      
+      (try_for_range, ":cur_stack", 0, ":num_stacks"),
+        (party_stack_get_troop_id, ":cur_troop", "p_temp_party", ":cur_stack"),
+        (troop_get_upgrade_troop, ":upgrade_troop", ":cur_troop", 0),
+        (gt, ":upgrade_troop", 0),
+        (call_script, "script_party_has_troop", "p_temp_party", ":upgrade_troop"),
+        (eq, reg0, 1),
+        (troop_set_slot, ":upgrade_troop", slot_root_troop, 0), ## not a root troop
+      (try_end),
+      
+      ## calculate upgrade troops and upgrade size
+      (try_for_range_backwards, ":cur_stack", 0, ":num_stacks"),
+        (party_stack_get_troop_id, ":cur_troop", "p_temp_party", ":cur_stack"),
+        (gt, ":cur_troop", 0),
+        (troop_slot_eq, ":cur_troop", slot_root_troop, 1),
+        (party_stack_get_size, ":stack_size", "p_temp_party", ":cur_stack"),
+        
+        (call_script, "script_party_has_troop", "p_temp_party_2", ":cur_troop"),
+        (try_begin),
+          (eq, reg0, 0),
+          (assign, ":stack_size_2", 0),
+        (else_try),
+          (party_get_num_companion_stacks, ":num_stacks_2", "p_temp_party_2"),
+          (try_for_range, ":cur_stack_2", 0, ":num_stacks_2"),
+            (party_stack_get_troop_id, ":cur_troop_2", "p_temp_party_2", ":cur_stack_2"),
+            (eq, ":cur_troop_2", ":cur_troop"),
+            (party_stack_get_size, ":stack_size_2", "p_temp_party_2", ":cur_stack_2"),
+          (try_end),
+        (try_end),
+        
+        (try_begin),
+          (val_sub, ":stack_size", ":stack_size_2"),
+          (gt, ":stack_size", 0),
+          ## reduce the first upgrade path size
+          (troop_get_upgrade_troop, ":upgrade_troop", ":cur_troop", 0),
+          (party_remove_members, "p_temp_party_2", ":upgrade_troop", ":stack_size"),
+          ## reduce the first upgrade path size
+          (troop_set_slot, "trp_temp_array_a", ":slot_id", ":cur_troop"), ## troop which can upgrade
+          (troop_set_slot, "trp_temp_array_b", ":slot_id", ":stack_size"), ## troop upgrade size
+          (troop_set_slot, "trp_temp_array_c", ":slot_id", 0), ## troop upgrade second path size
+          (val_add, ":slot_id", 1),
+        (try_end),
+        
+        ## remove current root troop
+        (call_script, "script_party_remove_troop", "p_temp_party", ":cur_troop"),
+        (call_script, "script_party_remove_troop", "p_temp_party_2", ":cur_troop"),
+      (try_end),
+      
+      ## do the loop once more?
+      (try_begin),
+        (party_get_num_companion_stacks, ":num_stacks", "p_temp_party"),
+        (gt, ":num_stacks", 0),
+        (val_add, ":num_times", 1), ## once more
+      (try_end),
+    (try_end),
+  ]),
+
+("party_has_troop", 
+  [
+    (store_script_param_1, ":party_no"),
+    (store_script_param_2, ":troop_no"),
+    
+    (assign, reg0, 0),
+    (party_get_num_companion_stacks, ":num_stacks", ":party_no"),
+    (try_for_range, ":cur_stack", 0, ":num_stacks"),
+      (party_stack_get_troop_id, ":cur_troop", ":party_no", ":cur_stack"),
+      (eq, ":cur_troop", ":troop_no"),
+      (assign, reg0, 1),
+      (assign, ":num_stacks", 0), #end the loop
+    (try_end),
+  ]),
+
+("party_remove_troop", 
+  [
+    (store_script_param_1, ":party_no"),
+    (store_script_param_2, ":troop_no"),
+    
+    (party_get_num_companion_stacks, ":num_stacks", ":party_no"),
+    (try_for_range, ":cur_stack", 0, ":num_stacks"),
+      (party_stack_get_troop_id, ":cur_troop", ":party_no", ":cur_stack"),
+      (eq, ":cur_troop", ":troop_no"),
+      (party_stack_get_size, ":stack_size", ":party_no", ":cur_stack"),
+      (party_remove_members, ":party_no", ":troop_no", ":stack_size"),
+    (try_end),
+  ]),
+
+("party_remove_heroes", 
+  [
+    (store_script_param_1, ":party_no"),
+    
+    (party_get_num_companion_stacks, ":num_stacks", ":party_no"),
+    (try_for_range_backwards, ":cur_stack", 0, ":num_stacks"),
+      (party_stack_get_troop_id, ":cur_troop", ":party_no", ":cur_stack"),
+      (troop_is_hero, ":cur_troop"),
+      (party_remove_members, ":party_no", ":cur_troop", 1),
+    (try_end),
+  ]),
+
+("has_enough_slot", 
+  [
+    (party_clear, "p_temp_party"),
+    (party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
+    (try_for_range, ":stack_no", 0, ":num_stacks"),
+      (party_stack_get_troop_id, ":cur_troop", "p_main_party", ":stack_no"),
+      (try_begin),
+        (troop_get_upgrade_troop, ":upgraded_troop_1", ":cur_troop", 0),
+        (gt, ":upgraded_troop_1", 0),
+        (neg|main_party_has_troop, ":upgraded_troop_1"),
+        (party_add_members, "p_temp_party", ":upgraded_troop_1", 1),
+      (else_try),
+        (troop_get_upgrade_troop, ":upgraded_troop_2", ":cur_troop", 1),
+        (gt, ":upgraded_troop_2", 0),
+        (neg|main_party_has_troop, ":upgraded_troop_2"),
+        (party_add_members, "p_temp_party", ":upgraded_troop_2", 1),
+      (try_end),
+    (try_end),
+    (store_num_free_stacks, ":free_stacks", "p_main_party"),
+    (party_get_num_companion_stacks, ":num_stack_increase", "p_temp_party"),
+    
+    (try_begin),
+      (ge, ":free_stacks", ":num_stack_increase"),
+      (assign, reg0, 1),
+    (else_try),
+      (assign, reg0, 0),
+    (try_end),
+  ]),
+  # Easy regulars upgrading kit
+
   # Rubik Battle Field Minimap
   # script_update_order_panel_map
   # Input: none

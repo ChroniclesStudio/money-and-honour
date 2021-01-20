@@ -600,7 +600,7 @@ slot_center_last_reconnoitered_by_faction_time 				= 350
 #slot_center_last_reconnoitered_by_faction_cached_strength 	= 360
 #slot_center_last_reconnoitered_by_faction_friend_strength 	= 370
 
-
+slot_root_troop                             = 251 
 
 
 #slot_party_type values

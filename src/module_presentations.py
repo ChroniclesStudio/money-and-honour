@@ -16,6 +16,166 @@ import string
 ####################################################################################################################
 
 presentations = [
+  # Easy regulars upgrading kit
+  ("upgrade_troops", 0, mesh_load_window, [
+  (ti_on_presentation_load,
+    [
+      (set_fixed_point_multiplier, 1000),
+      (presentation_set_duration, 999999),
+      
+      (assign, ":slot_id", reg11),
+      ## upgrade troop and total size
+      # upgrade size will not change
+      (troop_get_slot, ":upgrade_troop", "trp_temp_array_a", ":slot_id"),
+      (troop_get_slot, ":upgrade_size", "trp_temp_array_b", ":slot_id"),
+      (str_store_troop_name_by_count, s0, ":upgrade_troop", ":upgrade_size"),
+      (assign, reg3, ":upgrade_size"),
+      
+      ## upgrade 2nd path: troop and size
+      (troop_get_slot, ":upgrade_2_size", "trp_temp_array_c", ":slot_id"),
+      (troop_get_upgrade_troop, ":upgrade_2_troop", ":upgrade_troop", 1),
+      (try_begin),
+        (gt, ":upgrade_2_troop", 0),
+        (str_store_troop_name, s2, ":upgrade_2_troop"),
+        (assign, reg2, ":upgrade_2_size"),
+      (try_end),
+      
+      ## upgrade 1st path: troop and size
+      (troop_get_upgrade_troop, ":upgrade_1_troop", ":upgrade_troop", 0),
+      # upgrade 1 size = upgrade size - upgrade 2 size
+      (store_sub, ":upgrade_1_size", ":upgrade_size", ":upgrade_2_size"), 
+      (str_store_troop_name, s1, ":upgrade_1_troop"),
+      (assign, reg1, ":upgrade_1_size"),
+      
+      (create_text_overlay, reg0, "@{reg3} {s0} can upgrade.", tf_center_justify|tf_vertical_align_center),
+      (position_set_x, pos1, 500),
+      (position_set_y, pos1, 450),
+      (overlay_set_position, reg0, pos1),
+      
+      (try_begin),
+        (gt, ":upgrade_2_troop", 0),
+        (create_text_overlay, "$g_presentation_obj_1", "@{reg1}^^Upgrade to {s1}", tf_center_justify|tf_vertical_align_center),
+        (position_set_x, pos1, 320),
+        (position_set_y, pos1, 350),
+        (overlay_set_position, "$g_presentation_obj_1", pos1),
+        
+        (create_text_overlay, "$g_presentation_obj_2", "@{reg2}^^Upgrade to {s2}", tf_center_justify|tf_vertical_align_center),
+        (position_set_x, pos1, 680),
+        (position_set_y, pos1, 350),
+        (overlay_set_position, "$g_presentation_obj_2", pos1),
+        
+        (create_slider_overlay, "$g_presentation_obj_3", 0, ":upgrade_size"),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 350),
+        (overlay_set_val, "$g_presentation_obj_3", ":upgrade_2_size"),
+        (overlay_set_position, "$g_presentation_obj_3", pos1),
+      (else_try),
+        (create_text_overlay, "$g_presentation_obj_1", "@Upgrade to {s1}({reg3})", tf_center_justify|tf_vertical_align_center),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 350),
+        (overlay_set_position, "$g_presentation_obj_1", pos1),
+        
+        (create_text_overlay, "$g_presentation_obj_2", "@ ", tf_center_justify|tf_vertical_align_center),
+        (position_set_x, pos1, 1200),
+        (position_set_y, pos1, 1200),
+        (overlay_set_position, "$g_presentation_obj_2", pos1),
+        
+        (create_slider_overlay, "$g_presentation_obj_3", 0, 10),
+        (position_set_x, pos1, 1200),
+        (position_set_y, pos1, 1200),
+        (overlay_set_val, "$g_presentation_obj_3", 0),
+        (overlay_set_position, "$g_presentation_obj_3", pos1),
+      (try_end),
+      
+      (create_button_overlay, "$g_presentation_obj_4", "@Previous"),
+      (try_begin),
+        (gt, reg11, 0),
+        (position_set_x, pos1, 200),
+        (position_set_y, pos1, 200),
+      (else_try),
+        (position_set_x, pos1, 1200),
+        (position_set_y, pos1, 1200),
+      (try_end),
+      (overlay_set_position, "$g_presentation_obj_4", pos1),
+      
+      (position_set_x, pos1, 800),
+      (position_set_y, pos1, 200),
+      (store_add, ":next_slot", reg11, 1),
+      (try_begin),
+        (neg|troop_slot_eq, "trp_temp_array_a", ":next_slot", -1),
+        (str_store_string, s0, "@Next"),
+      (else_try),
+        (str_store_string, s0, "@Done"),
+      (try_end),
+      (create_button_overlay, "$g_presentation_obj_5", "@{s0}"),
+      (overlay_set_position, "$g_presentation_obj_5", pos1),
+    ]),
+
+  (ti_on_presentation_run,
+    [
+      (set_fixed_point_multiplier, 1000),
+
+      (assign, ":slot_id", reg11),
+      (troop_get_slot, ":upgrade_troop", "trp_temp_array_a", ":slot_id"),
+      (troop_get_upgrade_troop, ":upgrade_2_troop", ":upgrade_troop", 1),
+      (try_begin),
+        (gt, ":upgrade_2_troop", 0),
+        (troop_get_slot, ":upgrade_size", "trp_temp_array_b", ":slot_id"),
+        (troop_get_slot, ":upgrade_2_size", "trp_temp_array_c", ":slot_id"),
+        (assign, reg2, ":upgrade_2_size"),
+        (store_sub, ":upgrade_1_size", ":upgrade_size", ":upgrade_2_size"),
+        (assign, reg1, ":upgrade_1_size"),
+        
+        (overlay_set_text, "$g_presentation_obj_1", "@{reg1}^^Upgrade to {s1}"),
+        (overlay_set_text, "$g_presentation_obj_2", "@{reg2}^^Upgrade to {s2}"),
+      (try_end),
+    ]),
+
+  (ti_on_presentation_event_state_change,
+    [
+      (store_trigger_param_1, ":object"),
+      (store_trigger_param_2, ":value"),
+
+      (try_begin),
+        (eq, ":object", "$g_presentation_obj_3"),
+        (assign, ":slot_id", reg11),
+        (troop_get_slot, ":upgrade_2_size", "trp_temp_array_c", ":slot_id"),
+        (try_begin),
+          (neq, ":upgrade_2_size", ":value"),
+          (assign, ":upgrade_2_size", ":value"),
+        (try_end),
+        (troop_set_slot, "trp_temp_array_c", ":slot_id", ":upgrade_2_size"),
+      (else_try),
+        (eq, ":object", "$g_presentation_obj_4"),
+        (val_sub, reg11, 1),
+        (start_presentation, "prsnt_upgrade_troops"),
+      (else_try),
+        (eq, ":object", "$g_presentation_obj_5"),
+        (store_add, ":next_slot", reg11, 1),
+        (try_begin),
+          (neg|troop_slot_eq, "trp_temp_array_a", ":next_slot", -1),
+          (val_add, reg11, 1),
+          (start_presentation, "prsnt_upgrade_troops"),
+        (else_try),
+          ## is the end, switch troops from 1st path to 2nd path
+          (try_for_range, ":slot_id", 0, 32),
+            (troop_get_slot, ":upgrade_troop", "trp_temp_array_a", ":slot_id"),
+            (gt, ":upgrade_troop", 0),
+            (troop_get_slot, ":upgrade_2_size", "trp_temp_array_c", ":slot_id"),
+            (gt, ":upgrade_2_size", 0),
+            (troop_get_upgrade_troop, ":upgrade_1_troop", ":upgrade_troop", 0),
+            (troop_get_upgrade_troop, ":upgrade_2_troop", ":upgrade_troop", 1),
+            (party_remove_members, "p_main_party", ":upgrade_1_troop", ":upgrade_2_size"),
+            (party_add_members, "p_main_party", ":upgrade_2_troop", ":upgrade_2_size"),
+          (try_end),
+          ## all finished back to camp menu
+          (presentation_set_duration, 0),
+        (try_end),
+      (try_end),
+    ]),
+  ]),
+  # Easy regulars upgrading kit
+
   # rubik battle field minimap
   ("mini_map", prsntf_read_only, 0, [
     (ti_on_presentation_load,

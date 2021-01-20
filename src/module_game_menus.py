@@ -3011,6 +3011,26 @@ game_menus = [
         (change_screen_mission),
         ]
        ),
+########################################################
+## Easy regulars upgrading kit begin
+########################################################
+    ("camp_upgrade_troops",
+      [
+        (call_script, "script_has_enough_slot"),
+        (eq, reg0, 1),
+      ],
+    "Upgrade your troops.", [(jump_to_menu, "mnu_ready_upgrade")]),
+    
+    ("camp_upgrade_troops_no",
+      [
+        (call_script, "script_has_enough_slot"),
+        (eq, reg0, 0),
+        (disable_menu_option),
+      ],
+    "No slot for upgrading.", []),
+########################################################
+## Easy regulars upgrading kit end
+########################################################
       ("camp_action",[],"Take an action.",
        [(jump_to_menu, "mnu_camp_action"),
         ]
@@ -14562,7 +14582,68 @@ game_menus = [
     ]
   ),
 
-  
+  # Easy regulars upgrading kit
+  ("ready_upgrade", 0,
+  "{s0}",
+    "none", 
+    [
+      ## use reg10 to record wheather can continue or not
+      ## use reg11 to record the progress of upgrading
+      (try_begin),
+        (party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
+        (eq, ":num_stacks", 1),
+        (str_store_string, s0, "@ No one can upgrade."),
+        (assign, reg10, 0),
+      (else_try),
+        (call_script, "script_calculate_upgrade_troops"),
+        (try_begin),
+          (troop_slot_eq, "trp_temp_array_a", 0, -1),
+          (str_store_string, s0, "@ No one can upgrade."),
+          (assign, reg10, 0),
+        (else_try),
+          (assign, reg10, 1),
+          (assign, ":kinds_of_upgrade_troop", 0),
+          (try_for_range, ":slot_id", 0, 32),
+            (troop_get_slot, ":upgrade_troop", "trp_temp_array_a", ":slot_id"),
+            (troop_get_slot, ":upgrade_size", "trp_temp_array_b", ":slot_id"),
+            (gt, ":upgrade_troop", 0),
+            (try_begin),
+              (eq, ":kinds_of_upgrade_troop", 0),
+              (str_store_troop_name_by_count, s1, ":upgrade_troop", ":upgrade_size"),
+              (assign, reg1, ":upgrade_size"),
+              (str_store_string, s0, "@{reg1} {s1} can upgrade."),
+            (else_try),
+              (eq, ":kinds_of_upgrade_troop", 1),
+              (str_store_troop_name_by_count, s1, ":upgrade_troop", ":upgrade_size"),
+              (assign, reg1, ":upgrade_size"),
+              (str_store_string, s0, "@{reg1} {s1} and {s0}"),
+            (else_try),
+              (str_store_troop_name_by_count, s1, ":upgrade_troop", ":upgrade_size"),
+              (assign, reg1, ":upgrade_size"),
+              (str_store_string, s0, "@{reg1} {s1}, {s0}"),
+            (try_end),
+            (val_add, ":kinds_of_upgrade_troop", 1),
+          (try_end),
+        (try_end),
+      (try_end),
+    ],
+    [
+      ("upgrade_back", [(eq, reg10, 0)],
+        "Go back.",
+        [(jump_to_menu, "mnu_camp")]
+      ),
+      
+      ("upgrade_continue", [(eq, reg10, 1)],
+        "Continue...",
+        [
+          (jump_to_menu, "mnu_camp"),
+          (assign, reg11, 0),
+          (start_presentation, "prsnt_upgrade_troops"),
+        ]
+      ),
+    ]
+  ),
+  # Easy regulars upgrading kit
   
 
   

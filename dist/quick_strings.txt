@@ -1,4 +1,13 @@
-1051
+1062
+qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
+qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
+qstr_{reg2}^^Upgrade_to_{ {reg2}^^Upgrade_to_{s2}
+qstr_Upgrade_to_{s1}_{reg Upgrade_to_{s1}({reg3})
+qstr__ _
+qstr_Previous Previous
+qstr_Next Next
+qstr_Done Done
+qstr_{s0} {s0}
 qstr_Next_Page Next_Page
 qstr_Game_Rules:^ Game_Rules:^
 qstr_0 0
@@ -62,7 +71,6 @@ qstr_{!}{reg3?+:}{reg0} {!}{reg3?+:}{reg0}
 qstr_TOTAL_SCORE:_{reg0} TOTAL_SCORE:_{reg0}
 qstr_{!}DEBUG____Adding_{ {!}DEBUG_--_Adding_{reg3}_items_to_{s3}
 qstr_None None
-qstr_Done Done
 qstr_Name:_{s1}^Level:_{r Name:_{s1}^Level:_{reg1}
 qstr_{s1}^HP:_{reg0} {s1}^HP:_{reg0}
 qstr_{s1} {s1}
@@ -156,7 +164,6 @@ qstr_Sovereign_color_of_t Sovereign_color_of_the_{s0}:
 qstr_Red: Red:
 qstr_Green: Green:
 qstr_Blue: Blue:
-qstr__ _
 qstr_HTML_code:_{s0} HTML_code:_{s0}
 qstr_Randomize Randomize
 qstr_Plan_Deployment Plan_Deployment
@@ -875,6 +882,10 @@ qstr_There_has_been_an_al There_has_been_an_alleged_border_incident:_{s9}
 qstr_{!}{s11}{s12} {!}{s11}{s12}
 qstr_{!}DEBUG____Hours_si {!}DEBUG_--_Hours_since_last_feast_started:_{reg4}
 qstr_^^Note_that_so_long_ ^^Note_that_so_long_as_you_remain_marshal,_the_lords_of_the_realm_will_be_expecting_you_to_lead_them_on_campaign._So,_if_you_are_awaiting_a_feast,_either_for_a_wedding_or_for_other_purposes,_you_may_wish_to_resign_the_marshalship_by_speaking_to_your_liege.
+qstr__No_one_can_upgrade. _No_one_can_upgrade.
+qstr_{reg1}_{s1}_can_upgr {reg1}_{s1}_can_upgrade.
+qstr_{reg1}_{s1}_and_{s0} {reg1}_{s1}_and_{s0}
+qstr_{reg1}_{s1}_{s0} {reg1}_{s1},_{s0}
 qstr_You_have_deserted_an You_have_deserted,_and_are_now_wanted!
 qstr_Because_of_the_old_d Because_of_the_old_debt_King_Harlaus_owed_your_father_he_has_taken_you_in_as_a_vassal_of_Kingdom_of_Swadia
 qstr_Because_of_the_old_de Because_of_the_old_debt_King_Yaroglek_owed_your_father_he_has_taken_you_in_as_a_vassal_of_Kingdom_of_Vaegirs

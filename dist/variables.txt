@@ -578,6 +578,11 @@ number_of_civilian_loses
 merchant_sign_count
 g_city_merchant_troop_id
 g_city_merchant_agent_id
+g_presentation_obj_1
+g_presentation_obj_2
+g_presentation_obj_3
+g_presentation_obj_4
+g_presentation_obj_5
 g_battle_map_width
 g_battle_map_scale
 g_battle_map_height
@@ -1015,11 +1020,7 @@ g_multiplayer_respawn_wave_hint_overlay
 g_multiplayer_ccoop_victory_overlay
 g_multiplayer_ccoop_victory_subtitle_overlay
 g_presentation_obj_21
-g_presentation_obj_1
 faction_display
-g_presentation_obj_2
-g_presentation_obj_3
-g_presentation_obj_5
 g_presentation_obj_20
 g_presentation_obj_22
 g_presentation_obj_23
@@ -1050,7 +1051,6 @@ kaos_king_titles
 kaos_use_custom_title
 kaos_use_custom_name
 kaos_use_suffixes
-g_presentation_obj_4
 g_presentation_obj_6
 g_presentation_obj_7
 g_presentation_obj_8
