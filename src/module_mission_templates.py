@@ -2824,6 +2824,7 @@ mission_templates = [
 
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
 
     ],
   ),
@@ -2880,6 +2881,7 @@ mission_templates = [
       common_battle_inventory,      
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
       
     ],
   ),
@@ -3199,6 +3201,7 @@ mission_templates = [
       
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
       common_battle_inventory,
     ],
   ),
@@ -3362,6 +3365,7 @@ mission_templates = [
 
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
       common_battle_inventory,
     ],
   ),
@@ -3440,6 +3444,7 @@ mission_templates = [
       common_siege_check_defeat_condition,
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
       common_inventory_not_available,
       common_siege_init_ai_and_belfry,
       common_siege_move_belfry,
@@ -3487,6 +3492,7 @@ mission_templates = [
       common_siege_check_defeat_condition,
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
       common_inventory_not_available,
 
       (ti_on_agent_killed_or_wounded, 0, 0, [],
@@ -15463,6 +15469,7 @@ mission_templates = [
 
        common_battle_order_panel,
        common_battle_order_panel_tick,
+       (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
 
        (1, 4, ti_once,
        [

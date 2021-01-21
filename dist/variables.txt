@@ -582,6 +582,7 @@ number_of_civilian_loses
 merchant_sign_count
 g_city_merchant_troop_id
 g_city_merchant_agent_id
+presentation_killcount
 g_presentation_obj_1
 g_presentation_obj_2
 g_presentation_obj_3

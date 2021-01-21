@@ -1,4 +1,5 @@
-1066
+1067
+qstr_{reg1}_kills {reg1}_kills
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
 qstr_{reg2}^^Upgrade_to_{ {reg2}^^Upgrade_to_{s2}

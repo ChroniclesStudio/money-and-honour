@@ -16,6 +16,48 @@ import string
 ####################################################################################################################
 
 presentations = [
+
+######################################################################################
+### BEGIN + PERSONAL KILL COUNT by Artam
+######################################################################################
+  ("killcount",prsntf_read_only,0,[
+      (ti_on_presentation_load,
+       [
+		(assign, "$presentation_killcount"),
+		(set_fixed_point_multiplier, 1000),
+		
+		(create_mesh_overlay, "$g_presentation_obj_1", "mesh_white_plane"),
+		(overlay_set_color, "$g_presentation_obj_1", 0x000000),
+		(overlay_set_alpha, "$g_presentation_obj_1", 0x80),
+		(position_set_x, pos1, 4200),
+		(position_set_y, pos1, 1700),
+		(overlay_set_size, "$g_presentation_obj_1", pos1),
+		(position_set_x, pos1, 0),
+		(position_set_y, pos1, 700),
+		(overlay_set_position, "$g_presentation_obj_1", pos1),
+
+		(create_text_overlay, "$g_presentation_obj_2", s1, tf_with_outline|tf_left_align),
+		(overlay_set_color, "$g_presentation_obj_2", 0xFFFFFF),
+		(overlay_set_position, "$g_presentation_obj_2", pos1),
+		
+		(presentation_set_duration, 999999),
+       ]),
+
+      (ti_on_presentation_run,
+       [
+		(get_player_agent_no, ":player_agent"),
+		(agent_get_kill_count, reg1, ":player_agent", 1),           #SupaNinjaMan
+		(agent_get_kill_count, ":kill_count", ":player_agent"),     #SupaNinjaMan
+		(agent_get_kill_count, ":wound_count", ":player_agent", 1), #SupaNinjaMan
+		(store_add, reg1, ":kill_count", ":wound_count"),
+		(str_store_string, s1, "@{reg1} kills"),
+		(overlay_set_text, "$g_presentation_obj_2", s1),
+       ]),
+     ]),
+######################################################################################
+### END - PERSONAL KILL COUNT
+######################################################################################
+
   # Easy regulars upgrading kit
   ("upgrade_troops", 0, mesh_load_window, [
   (ti_on_presentation_load,
@@ -11692,6 +11734,13 @@ presentations = [
           (game_key_clicked, gk_view_orders),
           (try_for_agents, ":cur_agent"),
             (agent_set_slot, ":cur_agent", slot_agent_map_overlay_id, 0),
+######################################################################################
+### BEGIN + PERSONAL KILL COUNT by Artam
+######################################################################################
+          (start_presentation, "prsnt_killcount"),
+######################################################################################
+### END - PERSONAL KILL COUNT
+###################################################################################### 
           (try_end),
           (presentation_set_duration, 0),
           (start_presentation, "prsnt_mini_map"), ## Rubik Battle Field Minimap
