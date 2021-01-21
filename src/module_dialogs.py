@@ -326,6 +326,11 @@ dialogs = [
      (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", ":players_kingdom_relation"),
      ]],
    # Expanding cheat menu - forcing truce and increase faction relations (Encounter with faction leader)
+
+  # Expanding cheat menu - making women (single/married) like you by 20
+  [anyone|plyr,"lady_talk", [(ge, "$cheat_mode", 1),],
+   "{!}CHEAT: Like me.", "lady_pretalk",[(call_script,"script_change_player_relation_with_troop","$g_talk_troop",20)]],
+  # Expanding cheat menu - making women (single/married) like you by 20
    
    [anyone|plyr|repeat_for_troops,"award_fief_to_vassal",
    [  

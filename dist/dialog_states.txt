@@ -15,6 +15,7 @@ member_chat
 prisoner_chat
 award_fief_to_vassal
 award_fief_to_vassal_defer
+lord_pretalk
 award_fief_to_vassal_2
 center_captured_rebellion
 center_captured_rebellion_2
@@ -152,7 +153,6 @@ looter_leader_1
 looter_leader_2
 looter_leader_3
 rescue_prisoner_succeed_2
-lord_pretalk
 start_up_quest_1_next
 start_up_quest_2_next
 merchant_quest_2a
