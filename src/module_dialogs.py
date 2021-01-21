@@ -305,7 +305,27 @@ dialogs = [
 	 
      ]],
    
-   
+   # Expanding cheat menu - forcing truce and increase faction relations (Encounter with faction leader)
+   [anyone|plyr,"lord_suggest_action", [(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),],
+   "{!}CHEAT: Make peace with me.", "lord_pretalk",[
+     (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_talk_troop_faction", "$players_kingdom", 1),
+      	 (store_relation, ":players_kingdom_relation", "$g_talk_troop_faction", "$players_kingdom"),
+	 
+     (try_begin),
+       (this_or_next|eq, "$players_kingdom", 0),
+		(ge, ":players_kingdom_relation", 0),
+       (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
+     (else_try),
+       (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_talk_troop_faction", "$players_kingdom", 1),
+     (try_end),]],
+  [anyone|plyr,"lord_suggest_action", [(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),],
+   "{!}CHEAT: Make your faction like me.", "lord_pretalk",[
+     (store_relation, ":players_kingdom_relation", "$g_talk_troop_faction", "$players_kingdom"),
+     (val_add,":players_kingdom_relation",20),
+     (val_min,":players_kingdom_relation",100),
+     (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", ":players_kingdom_relation"),
+     ]],
+   # Expanding cheat menu - forcing truce and increase faction relations (Encounter with faction leader)
    
    [anyone|plyr|repeat_for_troops,"award_fief_to_vassal",
    [  

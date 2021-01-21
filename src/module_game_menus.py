@@ -2574,6 +2574,18 @@ game_menus = [
          (jump_to_menu, "mnu_faction_orders"),
         ]
        ),
+
+      # Expanding cheat menu - forcing truce between AI factions
+      ("faction_orders_peace", [],"{!}Force truce with other AI kingdoms.",
+       [
+        (try_for_range, ":faction", npc_kingdoms_begin, npc_kingdoms_end),
+          (neg|eq,":faction","$g_cheat_selected_faction"),
+          (call_script, "script_diplomacy_start_peace_between_kingdoms", ":faction", "$g_cheat_selected_faction", 1),
+        (try_end),
+        (jump_to_menu, "mnu_faction_orders"),
+        ]
+       ),
+      # Expanding cheat menu - forcing truce between AI factions
 	   
       ("faction_orders_political_collapse", [],"{!}CHEAT - Cause all lords in faction to fall out with their liege.",
        [
