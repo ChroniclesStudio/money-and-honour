@@ -1,4 +1,4 @@
-1063
+1066
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
 qstr_{reg2}^^Upgrade_to_{ {reg2}^^Upgrade_to_{s2}
@@ -1021,6 +1021,9 @@ qstr_{s11}_asked_you_to_d {s11}_asked_you_to_deliver_a_message_to_{s13},_who_is_
 qstr_You_agreed_to_challe You_agreed_to_challenge_{s13}_to_defend_{s11}'s_honour.
 qstr_{s5}__Persuasion_str {s5}_(Persuasion_strength:_{reg5})
 qstr_Persuasion_Attempt Persuasion_Attempt
+qstr_Your_army_s_morale_h Your_army's_morale_has_improved!
+qstr_Of_course_{sir/madam Of_course,_{sir/madam}._I_shall_have_them_delivered_to_your_company_as_soon_as_possible.
+qstr_You_don_t_have_enoug You_don't_have_enough_money,_{mate/lass}...
 qstr_{!}DEBUG:_Gossip_for {!}DEBUG:_Gossip_for_troop_{reg3}
 qstr_{!}DEBUG:_{s3} {!}DEBUG:_{s3}
 qstr_A_villager_from_{s7} A_villager_from_{s7}_begged_you_to_save_their_village_from_the_bandits_that_took_refuge_there.

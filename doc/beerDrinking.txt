@@ -1,0 +1,4 @@
+(This is to be taken semi-seriously... :wink:)
+So, here I was yesterday, sitting at the computer with a mug of beer, and all of a sudden I got an awesome idea - make beer drinking be an option in Warband. Today I got to working on it and here's the product of about 10-20 minutes. Tested and working.
+Why did I do it? Well, (almost) everyone loves beer, and an army of soldiers would perhaps also like to drink beer once in a while.
+This code allows your army to drink up to 9 beers each every 18 hours. You have to go to any tavern and buy beers for your army. Each beer costs 7 denars. Each drinking of beers improves your party's morale by 2. You can easilty change all of these fixed values. It's a rather pathetic attempt in terms of making logical sense and being realistic in any way, shape, or form, but I still think it's a mildly amusing option to have. Feel free to tweak it around and make something more sensible!

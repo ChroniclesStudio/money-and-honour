@@ -1877,6 +1877,12 @@ price_adjustment = 25 #the percent by which a trade at a center alters price
 
 fire_duration = 4 #fires takes 4 hours
 
+#-## TBS - Beer drinking
+# These are troop slots, so check for conflicting numbers in your mod.
+slot_beers_for_the_day = 420
+slot_last_beers_time   = 421
+#-## TBS - Beer drinking end
+
 #Viking Conquest patch 1.167 parameters for try_for_prop_instances
 somt_object = 1
 somt_entry = 2

@@ -955,6 +955,7 @@ tavernkeeper_deliver_wine
 tavernkeeper_pretalk
 tavernkeeper_deliver_wine_incomplete
 tavernkeeper_deliver_wine_lost
+tavernkeeper_drink_beer
 tavernkeeper_buy_drinks
 tavernkeeper_buy_drinks_2
 tavernkeeper_buy_drinks_end
