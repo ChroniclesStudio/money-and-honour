@@ -16,6 +16,7 @@ prisoner_chat
 award_fief_to_vassal
 award_fief_to_vassal_defer
 lord_pretalk
+lady_pretalk
 award_fief_to_vassal_2
 center_captured_rebellion
 center_captured_rebellion_2
@@ -506,7 +507,6 @@ lord_courtship_permission
 lord_talk_ask_marriage_1
 lord_talk_ask_location_2
 lord_talk_ask_location_3
-lady_pretalk
 lord_talk_ask_about_war_2
 lord_talk_ask_about_war_details
 lord_strategy_follow_evaluation

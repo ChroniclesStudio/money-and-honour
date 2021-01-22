@@ -2586,7 +2586,6 @@ game_menus = [
         ]
        ),
       # Expanding cheat menu - forcing truce between AI factions
-	   
       ("faction_orders_political_collapse", [],"{!}CHEAT - Cause all lords in faction to fall out with their liege.",
        [
 	   (try_for_range, ":lord", active_npcs_begin, active_npcs_end),
@@ -11199,6 +11198,14 @@ game_menus = [
     "none",
     [],
     [
+    # Expanding cheat menu - commerce
+      ("force_refresh_equip",[(ge,"$cheat_mode",1),(party_slot_ge, "$current_town", slot_town_horse_merchant, 1),(party_slot_ge, "$current_town", slot_town_weaponsmith, 1),(party_slot_ge, "$current_town", slot_town_armorer, 1)],
+       "Cheat: Refresh Equipment merchant inventories everywhere.",
+       [(call_script,"script_refresh_center_armories"),
+      (call_script,"script_refresh_center_weaponsmiths"),
+      (call_script,"script_refresh_center_stables"),
+        ]),
+      # Expanding cheat menu - commerce
       ("assess_prices",
        [
          (store_faction_of_party, ":current_town_faction", "$current_town"),
