@@ -3157,7 +3157,17 @@ game_menus = [
          (rest_for_hours_interactive, 10 * 24 * 365, 20), #10 year rest while not attackable with 20x speed
          (change_screen_return),
         ]
-       ),	   
+       ),	
+      
+      # Expand cheat menu - your party morale.
+      ("camp_cheat_7",[],"{!}Increase morale for player party.",
+       [
+        (party_get_morale, ":morale", "p_main_party"),
+        (val_add,":morale",10),
+        (party_set_morale, "p_main_party", ":morale"),
+        ]
+       ),
+      # Expand cheat menu - your party morale
 
       ("cheat_faction_orders",[(ge,"$cheat_mode",1)],
 	  "{!}Cheat: Set Debug messages to All.",
@@ -7722,7 +7732,18 @@ game_menus = [
        [(jump_to_menu,"mnu_center_reports"),
            ]),
 
-      # 会见村庄长老/镇长快捷菜单
+      # Expanding cheat menu - unloot the village
+      ("unloot",
+      [ (eq, "$cheat_mode", 1),
+	    (party_slot_eq,"$current_town",slot_party_type, spt_village),
+        (party_slot_eq, "$current_town", slot_village_state, svs_looted),
+      ],
+      "{!}CHEAT: unloot the village.",
+      [(party_set_slot, "$current_town", slot_village_state, svs_normal),
+      ]),
+      # Expanding cheat menu - unloot the village
+
+      #  会见村庄长老/镇长快捷菜单
       ("village_elder_meeting", [(neg|party_slot_eq, "$current_town", slot_village_state, svs_looted),
                                  (neg|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
                                  (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),]
