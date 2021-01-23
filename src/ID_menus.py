@@ -232,3 +232,5 @@ menu_start_vassal_1 = 230
 menu_start_prince_1 = 231
 menu_start_king_1 = 232
 menu_notification_kingdom_restoration = 233
+menu_Lazeras_banking_menu = 234
+menu_KAOS_faction_banking_menu = 235

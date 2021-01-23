@@ -739,5 +739,17 @@ script_weather_affect_proficiency = 737
 script_weather_troop_lower_proficiencies = 738
 script_weather_restore_proficiencies = 739
 script_prebattle_agents_set_start_positions = 740
+script_bank_update_business = 741
+script_bank_get_tottal_wealth = 742
+script_bank_get_prosperity_extra_to_s49 = 743
+script_bank_report_rates = 744
+script_bank_report_deposit = 745
+script_bank_report_debt = 746
+script_cf_bank_war_tax = 747
+script_convert_to_faction = 748
+script_convert_to_center = 749
+script_bank_report_faction_deposit = 750
+script_bank_report_faction_debt = 751
+script_cf_bank_war_faction_tax = 752
 
 

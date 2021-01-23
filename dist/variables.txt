@@ -16,6 +16,9 @@ npc_to_rejoin_party
 freelancer_state
 g_encountered_party
 enlisted_party
+g_bank_debt_interest_rate
+g_bank_deposit_interest_rate
+bank_availability
 g_number_of_targets_destroyed
 g_last_archery_point_earned
 g_tutorial_training_ground_current_score
@@ -387,6 +390,8 @@ g_encountered_party_relation
 g_encountered_party_type
 g_encountered_party_template
 player_cur_troop
+g_player_debt
+g_player_deposit
 g_start_belligerent_drunk_fight
 g_belligerent_drunk
 g_start_hired_assassin_fight
@@ -582,7 +587,6 @@ number_of_civilian_loses
 merchant_sign_count
 g_city_merchant_troop_id
 g_city_merchant_agent_id
-presentation_killcount
 g_presentation_obj_1
 g_presentation_obj_2
 g_presentation_obj_3
@@ -1062,6 +1066,8 @@ g_presentation_obj_8
 g_presentation_obj_9
 g_presentation_obj_banner_selection_2
 disable_npc_complaints
+g_jq_Return_to_menu
+g_apply_Kaoses_bank_report_to_gold
 g_player_luck
 g_player_party_icon
 g_lord_long_term_count

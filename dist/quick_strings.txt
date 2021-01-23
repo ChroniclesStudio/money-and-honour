@@ -1,4 +1,4 @@
-1067
+1113
 qstr_{reg1}_kills {reg1}_kills
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
@@ -293,6 +293,25 @@ qstr_Split_Active Split_Active
 qstr_Clear_All Clear_All
 qstr_Discard_Changes Discard_Changes
 qstr_Save Save
+qstr__Return_to_menu_ _Return_to_menu_
+qstr_Bank Bank
+qstr_Prosperity Prosperity
+qstr_Loan_Amount Loan_Amount
+qstr_Loan_Interest Loan_Interest
+qstr_Dsposit_Amount Dsposit_Amount
+qstr_Deposit_Interest Deposit_Interest
+qstr_{!}_presentation_INT {!}_presentation_INTEREST_RATES_player_debt_interest_rate_is_{reg0}_and_player_deposit_interest_rate_is_{reg1}
+qstr_{!}_presentation_DEB {!}_presentation_DEBT_player_debt_interest{reg0}__player_debt{reg1}
+qstr_{!}_presentation_DEP {!}_presentation_DEPOSIT_player_deposit_interest{reg0}__player_deposit{reg1}
+qstr_{!}_presentation_tot {!}_presentation_tottals_tottal_debt{reg30}_tottal_debt_interest{reg31}_tottal_deposit{reg32}_tottal_deposit_interest{reg33}
+qstr_{s9}_ {s9}_
+qstr_{!}_{s49} {!}_{s49}
+qstr_{s50}_{s49} {s50}_{s49}
+qstr_{reg6} {reg6}
+qstr__{reg6}__days_to_mak ({reg6})_days_to_make_a_payment.
+qstr_Liege_tax_of__{reg6} Liege_tax_of_({reg6})_.
+qstr_Total_Debt Total_Debt
+qstr_Total_Deposits Total_Deposits
 qstr_{!}DEBUG_:_Completed {!}DEBUG_:_Completed_faction_troop_assignments,_cheat_mode:_{reg3}
 qstr_{!}ERROR:_Not_enough {!}ERROR:_Not_enough_banners_for_heroes!
 qstr_{!}DEBUG____initial_ {!}DEBUG_--_initial_war/peace_check_begins
@@ -389,6 +408,7 @@ qstr__Being_Raided_ (Being_Raided)
 qstr__Looted_ (Looted)
 qstr__Under_Siege_ (Under_Siege)
 qstr_The_village_of_{s1}_ The_village_of_{s1}_has_been_looted_by_{s2}.
+qstr_{s9}_Is_under_siege_ {s9}_Is_under_siege_and_you_have_lost_{reg6}_denars_leaving_a_deposit_of_{reg7}_Denars
 qstr_{s3}_is_no_longer_un {s3}_is_no_longer_under_siege.
 qstr_{!}DEBUG_:_There_are {!}DEBUG_:_There_are_already_enemies_({s6})_inside_{s7}.
 qstr_{!}DEBUG____Calculat {!}DEBUG_--_Calculating_sortie_for_{s4}_strength_of_{reg3}_vs_{reg4}_enemies
@@ -649,6 +669,17 @@ qstr_No_Troops_Left. No_Troops_Left.
 qstr_Undefined! Undefined!
 qstr_DEBUG_:_Weather_pena DEBUG_:_Weather_penalty_{reg2}%_-_{s0}:_{reg0}_to_{reg1}
 qstr_DEBUG_:_{s0}_profici DEBUG_:_{s0}_proficiency_restored_to:_{reg1}
+qstr_Rating_{reg30} Rating_{reg30}
+qstr_0..19 0..19
+qstr_20..39 20..39
+qstr_40..59 40..59
+qstr_60..79 60..79
+qstr_80+ 80+
+qstr_{!}script_get_rates_ {!}script_get_rates_player_debt_interest_rate_{reg21}___player_deposit_interest_rate_{reg22}_
+qstr_Due_to_the_bad_relat Due_to_the_bad_relation_you_have_with_{s8}_you_have_lost_{reg6}_of_your_deposit_at_{s9}
+qstr_Due_to_the_status_of Due_to_the_status_of_war_between_your_faction_and_{s10}_you_have_lost_{reg6}_Denars_as_a_war_tax_from_{s9}
+qstr_Due_to_the_bad_relati Due_to_the_bad_relation_you_have_with_{s8}_you_have_lost_{reg6}_of_your_deposit_
+qstr_Due_to_the_status_of_ Due_to_the_status_of_war_between_your_faction_and_{s10}_you_have_lost_{reg6}_Denars_as_a_war_tax
 qstr_You_got_keys_of_dung You_got_keys_of_dungeon.
 qstr_You_were_defeated. You_were_defeated.
 qstr_Rotate_with_the_mous Rotate_with_the_mouse._Move_with_standard_keys.
@@ -901,6 +932,10 @@ qstr_You_are_your_fathers_{ You_are_your_fathers_{reg3?daughter:son},_and_the_de
 qstr_You_are_your_fathers_{r You_are_your_fathers_{reg3?daughter:son},_and_the_death_of_of_your_father_has_left_you_to_fill_his_spot_as_leader_of_the_Kingdom_of_Nords
 qstr_You_are_your_fathers_{re You_are_your_fathers_{reg3?daughter:son},_and_the_death_of_of_your_father_has_left_you_to_fill_his_spot_as_leader_of_the_Kingdom_of_Rhodoks
 qstr_You_are_your_fathers_{reg You_are_your_fathers_{reg3?daughter:son},_and_the_death_of_of_your_father_has_left_you_to_fill_his_spot_as_leader_of_the_Sarranid_Sultanate
+qstr_{s9}_Debt_payment_du {s9}_Debt_payment_due_in_{reg6}_days
+qstr_Payment_recieved_Deb Payment_recieved_Debt_payment_due_in_{reg6}_days
+qstr__You_have_no_more_de _You_have_no_more_debt_owning
+qstr_{s1}_Debt_payment_du {s1}_Debt_payment_due_in_{reg6}_days
 qstr_yanhuiinfo yanhuiinfo
 qstr_Breaking_camp... Breaking_camp...
 qstr_{!}{s3}_commander_of {!}{s3}_commander_of_party_#{reg4}_which_is_not_his_troop_leaded_party_{reg5}
@@ -941,6 +976,17 @@ qstr_Your_arms_are_to_wea Your_arms_are_to_weak_to_advance_in_the_artillary_at_t
 qstr_You_require_more_hor You_require_more_horse_riding_skills_to_fit_your_next_poisition!
 qstr_{!}_{s52}_has_a_rebe {!}_{s52}_has_a_rebelion_chance_of_{reg54}_must_be_gt_than_{reg53}_for_rebel_leader_{s55}
 qstr_{!}_{s52}_leader_{s5 {!}_{s52}_leader_{s55}_tottal_lords_{reg53}_total_disgruntled_lords_{reg54}
+qstr_A_messenger_informs_ A_messenger_informs_you_that_you_have_a_week_to_make_a_repayment_of_your_debt_.You_have_already_missed_the_deadline_multiple_times
+qstr_A_messenger_informs_y A_messenger_informs_you_that_you_have_a_week_to_make_a_repayment_of_you_debt_and_that_you_have_already_missed_severale_payments_
+qstr_A_messenger_informs_yo A_messenger_informs_you_that_you_have_a_week_to_make_a_repayment_of_your_debt_.You_have_already_missed_the_deadline_more_than_once
+qstr_A_messenger_informs_you A_messenger_informs_you_that_you_have_a_week_to_make_a_repayment_of_you_debt_and_that_you_have_already_missed_more_than_one_payment_
+qstr_A_messenger_informs_you_ A_messenger_informs_you_that_you_have_a_week_to_make_a_repayment_of_your_debt._You_have_already_missed_the_deadline_once
+qstr_A_messenger_informs_you_t A_messenger_informs_you_that_you_have_a_week_to_make_a_repayment_of_you_debt_and_that_you_have_already_missed_a_payment
+qstr_A_messenger_informs_you_th A_messenger_informs_you_that_you_have_a_week_to_make_a_repayment_of_your_debt
+qstr_A_messenger_informs_you_tha A_messenger_informs_you_that_you_have_a_week_to_make_a_repayment_of_you_debt_
+qstr_A_messenger_informs_you_that A_messenger_informs_you_that_you_have_failed_to_make_the_required_debt_repayment_and_have_lost_1_reputation_with_{s9}_You_have_20_days_to_make_a_payment_
+qstr_A_messenger_informs_you_that_ A_messenger_informs_you_that_you_have_failed_to_make_the_required_debt_repayment_again_and_have_lost_2_reputation_with_{s9}_this_has_also_caused_you_to_lose_1_reputation_with_{s8}_You_have_15_days_to_make_a_payment_
+qstr_A_messenger_informs_you_that_y A_messenger_informs_you_that_you_have_failed_to_make_another_required_debt_repayment_again_and_have_lost_3_reputation_with_{s9}_this_has_also_caused_you_to_lose_1_reputation_with_{s8}._You_have_15_days_to_make_a_payment_
 qstr_{!}DEBUG____Wanted_b {!}DEBUG_--_Wanted_bandits_spotted_by_{s4}
 qstr_The_released_prisone The_released_prisoners_were_not_be_trusted_and_they_are_preparing_to_attack_you!
 qstr_Warning! Warning!

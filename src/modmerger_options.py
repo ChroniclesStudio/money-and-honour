@@ -1,3 +1,9 @@
+'''
+Date: 19/01/2021 22.37.36 +0800
+Author: KnowsCount
+LastEditTime: 23/01/2021 22.58.00 +0800
+FilePath: /undefined/Users/admin/chronicles/money-and-honour/src/modmerger_options.py
+'''
 # master options for modmerger framework
 # by sphere
 
@@ -31,6 +37,7 @@ mods_active = [
     "freelancer",
     "KAOSPolitical", # KAOS Political (1.2) - Lazeras
     "pbod",
+    "KAOSBank",      # Kaos Bank (2.0)
 ]
 
 

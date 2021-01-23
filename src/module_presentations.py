@@ -23,7 +23,7 @@ presentations = [
   ("killcount",prsntf_read_only,0,[
       (ti_on_presentation_load,
        [
-		(assign, "$presentation_killcount"),
+		# (assign, "$presentation_killcount"),
 		(set_fixed_point_multiplier, 1000),
 		
 		(create_mesh_overlay, "$g_presentation_obj_1", "mesh_white_plane"),

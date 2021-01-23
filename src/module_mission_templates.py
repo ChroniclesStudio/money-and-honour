@@ -2969,6 +2969,7 @@ mission_templates = [
       common_battle_inventory,
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
 
 ##      #AI Tiggers
 ##      (0, 0, ti_once, [
@@ -3266,6 +3267,7 @@ mission_templates = [
 
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
       common_battle_inventory,
     ],
   ),
@@ -4305,6 +4307,7 @@ mission_templates = [
 
       common_battle_order_panel,
       common_battle_order_panel_tick,
+      (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
 
 ##      (0, 0, ti_once,
 ##       [
