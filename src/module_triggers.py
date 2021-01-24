@@ -1522,7 +1522,26 @@ triggers = [
    []
    ),
 
+(6.0, 0, 0.0,   #每6秒检测一次
+  [
+    (store_num_parties_of_template,reg2,"pt_knight_lair"), 
+    (neg|ge,reg2,20),  #当巡逻队在地图上少于20支的时候，运行这个触发器 刷出新的部队
 
+  ],
+  [
+    (set_spawn_radius,1),   #出生半径  这里是1
+    (store_add,":var_0","p_town_6",1),  #这句应该可以省去
+    (store_random_in_range,":var_2","p_town_16",":var_0"),  #在德赫瑞姆附近刷出
+    (store_random_in_range,":var_1","p_town_6",":var_0"),   #在帕拉汶附近刷出
+    (store_random_in_range,":var_3","p_town_4",":var_0"),   #在苏诺附近刷出
+    (store_random_in_range,":var_4","p_town_7",":var_0"),   #在乌克斯豪尔附近刷出
+    (spawn_around_party,":var_1","pt_swadian_knight_lair"),   
+    (spawn_around_party,":var_2","pt_swadian_knight_lair"),
+    (spawn_around_party,":var_3","pt_swadian_knight_lair"),
+    (spawn_around_party,":var_4","pt_swadian_knight_lair"),
+
+
+  ]),
 
 
 
