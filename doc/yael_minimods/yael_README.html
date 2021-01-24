@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- -*- coding: utf-8; mode: markdown -*- -->
+<!-- Short description for nexus -->
+<h1 id="summary">SUMMARY</h1>
+<p>A collection of independent modmerger (mini)mods, aimed at casual modders, who want to spice up an existing module with modmerger mods. Most notably improvements for red/blue color-blind players for the arena.</p>
+<p>Make cattle follow you, disable unwanted quests, color-blindness improvements for tournaments, customized tournament and arena rewards, sell prisoners in taverns, and a few items.</p>
+<p>Contains as most significant addition a tabular equipment manager, displaying all companions (and their skills) at once.</p>
+<p>Mods can be added independently.</p>
+<h1 id="changelog">CHANGELOG</h1>
+<p><strong>2018-06-09</strong> Added <code>yael_eqmgr</code> mod, which is so far by now the most complex part.</p>
+<p><strong>2017-11-19.3</strong> Fixed bug in <code>yael_ransomtavern</code> which caused prisoners to be sold at the 50 denars rate of the galley slave trader. Thematically fitting to the dialog, but not intended <code>‾\ツ/‾</code>.</p>
+<p><strong>2017-11-19.2</strong> <code>yael_tournamentrewards</code> was leading to an empty bet menu when trying to bet with money remaining in the range of 5-9 denars. This should now be fixed.</p>
+<p><strong>2017-11-19.1</strong> Fixed a bug in <code>yael_colorblind1</code>, that caused doors in towns to lead to the wrong place.</p>
+<h1 id="installation">INSTALLATION</h1>
+<p>Obtain a copy of the warband module system.</p>
+<p>Install the <a href="https://forums.taleworlds.com/index.php?topic=128890.0">ModMerger framework</a>.</p>
+<p>Copy the files from this mod into the module system directory.</p>
+<p>Add the names of the wanted mods from the subsequent listing to the variable <em>mods_active</em> in <em>modmerger_options.py</em>, e.g.</p>
+<pre><code>mods_active = [
+    &quot;yael_core&quot;,        ## ALWAYS NEEDED
+    &quot;yael_cattlefollow&quot;,
+    &quot;yael_colorblind1&quot;,
+]</code></pre>
+<h1 id="list-of-mods-and-files">LIST OF MODS AND FILES</h1>
+<p><strong>yael_core.</strong> Defines some resources shared across the submods.</p>
+<p><strong>yael_eqmgr.</strong> Adds a tabular equiment manager to the camp menu.</p>
+<p>In the equipment manager view, a table of all companion and player equipment and the player’s inventory are shown.</p>
+<ul>
+<li>Hover the mouse over an item to display tooltip, requirements, and highlight companions that cannot equip it.</li>
+<li>Click an item to select it. Click another slot to swap them. (Drag and drop wasn’t feasibly implementable.)</li>
+<li>Right-click on any slot to unselect the current slot.</li>
+</ul>
+<p>Additionally a second page provides a tabular overview of companion skills, in order to support planning upgrades.</p>
+<p><strong>yael_colorblind1.</strong> Manipulates the team assignment in tournaments to ensure that never the player <em>and</em> an enemy team are red/green – which are extremely hard to tell apart in a tournament at dusk or dawn when being among the 10% of male players affected by red-green colorblindness.</p>
+<p>When four teams are fighting, the player is ensured to be either yellow or blue. Though yellow is also affected by red-green color blindness, its higher relative brightness still makes it sufficiently distinct.</p>
+<p>I am not entirely sure if that last statement holds for stronger color-blindness (I can tell red and green apart, it is just more difficult), so if you can’t tell the yellow from the red and green teams, please let me know.</p>
+<p><strong>yael_colorblind2.</strong> The previous conflicts with mods that make major changes to the tournaments (in particular the script of the “Join next fight” menu entry). As an alternative, this mod switches green tournament clothing for the white set, which is unused in the vanilla game. This avoids having the green and red sets, which are the hardest to distinguish for red-green color-blind people, at the same time.</p>
+<p>This mod should be compatible with almost any mod, unless the other mod makes use of white tournament clothing.</p>
+<p><strong>yael_cattlefollow.</strong> In the menu of cattle, you get an option causing cattle to follow you instead of running from you. Less like herding, but more convenient if you dislike the herding quests.</p>
+<p><strong>yael_disablequests.</strong> Disables some of the randomized quests given by lords and villagers. What quests exactly are disabled, is defined by the variable <code>DISABLED_QUEST_IDS</code> in <code>yael_disablequests_dialogs.py</code>.</p>
+<p>Before enabling this mod, you will probably want to customize that variable. In order to find IDs, for which this mod works, search <code>module_dialogs.py</code> for the string</p>
+<pre><code>(eq,&quot;$random_quest_no&quot;,&lt;ID HERE&gt;),</code></pre>
+<p>The mod works by removing the dialogs, that have this as the first item in their conditions block.</p>
+<p><strong>yael_tournamentrewards.</strong> Doubles the allowed bets, making it easier to earn money from tournaments.</p>
+<p>Naive implementation, that simply replaces the <code>tournament_net</code> by a copy of the original menu with changed bet tiers. I probably won’t come around to creating a cleaner version of this mod.</p>
+<p><strong>yael_ransomtavern.</strong> Your local tavern keeper needs some help with the dishes. Don’t you have some hands to share? (Preferably some who won’t complain if they go unpaid, if you get my drift…)</p>
+<p>More seriously though, this mod adds an option to tavern keepers, that allows selling prisoners to them, so you are no longer dependent on the random luck of having a ransom broker around for emptying your prisoner-slots.</p>
+<p><strong>yael_arenarewards.</strong> Increases the amount of gold and experience earned upon completing an arena fight.</p>
+<p>For customization, the amounts are defined in <code>yael_arenarewards_constants.py</code>. The variable names should be self-explanatory.</p>
+<p><strong>yael_extraitems.</strong> Adds some customized items.</p>
+<pre><code>+------------ B E W A R E --------------+
+|  Mods  that  add  items  cannot  be   |
+|  removed without breaking savegames.  |
++---------------------------------------+</code></pre>
+<p>The items added are…</p>
+<ul>
+<li>An invisible nordic warlord helmet.</li>
+<li>A tribal warrior outfit with stats of the Sarranid elite armor.</li>
+</ul>
+<p>The items are statwise indistinguishable from their templates, and thus balanced. They should show up in merchants.</p>
+<p>If the items don’t show up in merchants, they can still be accessed by using the <em>cheatmenu</em> console command, going to “CHEAT MENU! → Find an item”. Added items should be in the highest range (around 600). The inivisble helmet will look like an empty inventory slot, where none should be, and can only be seen from its mouse-over menu.</p>
+<p>When removal of mods reduces the total number of items known to the game, old savegames crash the game. If the number of items is kept constant or increased, but the order of items changes, the savegame will contain mixed-up IDs. This might also crash the game, or cause your helmet to turn into a book.</p>
+<!-- ------------------------------------------------------------- -->
+</body>
+</html>

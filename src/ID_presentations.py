@@ -69,3 +69,4 @@ prsnt_caba_camera_mode_display = 67
 prsnt_prebattle_custom_divisions = 68
 prsnt_Lazeras_bank_prsnt = 69
 prsnt_Lazeras_bank_faction_prsnt = 70
+prsnt_yael_equip_overview = 71

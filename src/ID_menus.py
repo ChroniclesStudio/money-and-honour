@@ -234,3 +234,4 @@ menu_start_king_1 = 232
 menu_notification_kingdom_restoration = 233
 menu_Lazeras_banking_menu = 234
 menu_KAOS_faction_banking_menu = 235
+menu_yael_eqmgr_dummy_menu = 236

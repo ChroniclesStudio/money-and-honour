@@ -269,6 +269,7 @@ g_player_reading_book
 player_honor
 g_player_icon_state
 g_camp_mode
+g_yael_eqmgr_state
 cheat_find_item_range_begin
 g_prisoner_recruit_troop_id
 g_prisoner_recruit_size
@@ -1249,6 +1250,12 @@ key_order_10
 key_special_0
 key_special_1
 key_special_3
+yael_num_overlays
+yael_active_detail_overlay
+yael_selected_item_overlay
+yael_current_container_overlay
+yael_status_box
+yael_requirement_box
 training_ground_position_changed
 bug_fix_version
 g_notification_menu_var1
