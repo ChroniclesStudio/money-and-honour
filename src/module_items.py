@@ -68,6 +68,20 @@ items = [
 
  ["tutorial_dagger","Dagger", [("practice_dagger",0)], itp_type_one_handed_wpn|itp_primary|itp_secondary, itc_longsword, 3,weight(1.5)|spd_rtng(103)|weapon_length(40)|swing_damage(16,blunt)|thrust_damage(10,blunt),imodbits_none],
 
+ ["flintlock_pistol_1", "Flintlock Pistol", [("flintlock_pistol_1",0)], itp_type_pistol |itp_merchandise|itp_primary ,itcf_shoot_pistol|itcf_reload_pistol, 230 , weight(1.5)|difficulty(0)|spd_rtng(55) | shoot_speed(160) | thrust_damage(100 ,pierce)|max_ammo(1)|accuracy(65),imodbits_none,
+ [(ti_on_weapon_attack, [(play_sound,"snd_pistol_shot"),(position_move_x, pos1,27),(position_move_y, pos1,36),(particle_system_burst, "psys_pistol_smoke", pos1, 15)])]],
+
+ ["flintlock_rifle", "Flintlock Rifle",[("flintlock_rifle_1",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_next_item_as_melee|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(1.5)|abundance(90)|difficulty(0)|spd_rtng(38) | shoot_speed(160) | thrust_damage(160 ,pierce)|max_ammo(1)|accuracy(99),imodbits_none,
+[(ti_on_weapon_attack, [(play_sound,"snd_pistol_shot"),(position_move_x, pos1,0),(position_move_y, pos1,139),(particle_system_burst, "psys_pistol_smoke", pos1, 15)])]],
+
+ ["arquebus", "Arquebus",[("arquebus",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_next_item_as_melee|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(1.5)|abundance(90)|difficulty(0)|spd_rtng(38) | shoot_speed(160) | thrust_damage(160 ,pierce)|max_ammo(1)|accuracy(99),imodbits_none,
+[(ti_on_weapon_attack, [(play_sound,"snd_pistol_shot"),(position_move_x, pos1,0),(position_move_y, pos1,100),(particle_system_burst, "psys_pistol_smoke", pos1, 15)])]],
+["blunderbus", "Blunderbus",[("blunderbus",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_next_item_as_melee|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(1.5)|abundance(90)|difficulty(0)|spd_rtng(38) | shoot_speed(160) | thrust_damage(160 ,pierce)|max_ammo(1)|accuracy(99),imodbits_none,
+[(ti_on_weapon_attack, [(play_sound,"snd_pistol_shot"),(position_move_x, pos1,0),(position_move_y, pos1,72),(particle_system_burst, "psys_pistol_smoke", pos1, 15)])]],
+["matchlock_2", "Matchlock Rifle",[("matchlock_2",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_next_item_as_melee|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(1.5)|abundance(90)|difficulty(0)|spd_rtng(38) | shoot_speed(160) | thrust_damage(160 ,pierce)|max_ammo(1)|accuracy(99),imodbits_none,
+[(ti_on_weapon_attack, [(play_sound,"snd_pistol_shot"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst, "psys_pistol_smoke", pos1, 15)])]],
+["matchlock_1", "Matchlock Rifle",[("matchlock_1",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_next_item_as_melee|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(1.5)|abundance(90)|difficulty(0)|spd_rtng(38) | shoot_speed(160) | thrust_damage(160 ,pierce)|max_ammo(1)|accuracy(99),imodbits_none,
+[(ti_on_weapon_attack, [(play_sound,"snd_pistol_shot"),(position_move_x, pos1,0),(position_move_y, pos1,107),(particle_system_burst, "psys_pistol_smoke", pos1, 15)])]],
 
  ["horse_meat","Horse Meat", [("raw_meat",0)], itp_type_goods|itp_consumable|itp_food, 0, 12,weight(40)|food_quality(30)|max_ammo(40),imodbits_none],
 # Items before this point are hardwired and their order should not be changed!
