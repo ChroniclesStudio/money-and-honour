@@ -1,4 +1,4 @@
-# -*- coding: cp1254 -*-
+# -*- coding: utf-8 -*-
 from header_common import *
 from header_dialogs import *
 from header_operations import *
@@ -22391,6 +22391,69 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 
   [anyone,"mayor_begin", [], "What can I do for you?", "mayor_talk", []],
+  # 投资商队获利 - 龟龟龟761
+  [anyone|plyr,"mayor_talk",[], "I wish to buy off the trade of this town", "mayor_investment_possible2",[
+  ]],
+  
+  [anyone,"mayor_investment_possible2",[
+  (party_slot_eq, "$g_encountered_party", slot_center_caravan_company, 1),
+  ], "You already bought it off. ", "mayor_pretalk",[
+  ]],
+
+  
+  [anyone,"mayor_investment_possible2",[
+  (lt,"$g_encountered_party_relation",0),
+  (str_store_string, s9, "str_enterprise_enemy_realm"),
+        ], "{s9}", "mayor_pretalk",[
+        ]],
+
+  [anyone,"mayor_investment_possible2",[
+  (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
+  ], "Of course, {sir/my lady}. You are the lord of this town, and no one is going to stop you.", "mayor_investment_advice2",[
+  ]],
+  
+  [anyone,"mayor_investment_possible2",[
+  (party_get_slot, ":town_liege", "$g_encountered_party", slot_town_lord),
+  (is_between, ":town_liege", active_npcs_begin, active_npcs_end),
+  (call_script, "script_troop_get_relation_with_troop", "trp_player", ":town_liege"),
+  (assign, ":relation", reg0),
+  (lt, ":relation", 0),
+  (str_store_troop_name, s4, ":town_liege"),
+  ], "Well... Given your relationship with our liege, {s4}, I think that you will not find many here who are brave enough to sell you any caravan.", "mayor_investment",[
+  ]],
+
+  [anyone|auto_proceed,"mayor_investment",[], "{!}.", "mayor_pretalk",[]],
+
+  
+  [anyone,"mayor_investment_possible2",[
+        (neg|party_slot_ge, "$current_town", slot_center_player_relation, 0),
+  ], "Well... To be honest, I think that we in the guild would like to know you a little better. We can be very particular about outsiders coming in here and buying caravan.", "mayor_pretalk",[
+  ]],
+  
+  [anyone,"mayor_investment_possible2",[
+  ], "{sir/my lady}. You are the first one who want to do this, and that will cost a lot of money.", "mayor_investment_advice2",[]], 
+  
+  [anyone,"mayor_investment_advice2",[
+        (call_script, "script_cf_check_success_caravan","$g_encountered_party"),
+        (party_get_slot, ":num_visits", "$g_encountered_party", slot_caravan_number),
+        (val_max, ":num_visits",1),
+        (store_mul, reg4, ":num_visits", 1500),
+        (store_mul, reg5, ":num_visits", 365),
+        (store_mul, reg6, ":num_visits", 1),
+  ], "One thing to keep in mind - Your profits are depended on the number of caravan. And according to the situation of the town, we have sent out {reg6} caravans last week, I suppose you need to pay {reg4} to buy all caravans. And you can get back about {reg5} from next week.", "player_check",[
+  ]],
+  
+  [anyone|plyr,"player_check",[
+        (assign, ":cost", reg4),
+        (store_troop_gold, ":player_gold", "trp_player"),
+        (ge, ":player_gold", ":cost"),
+  ], "Sounds great. Here is the money.", "mayor_pretalk",[
+        (assign, ":cost", reg4),
+        (troop_remove_gold, "trp_player", ":cost"),
+        (party_set_slot, "$g_encountered_party", slot_center_caravan_company, 1),
+  ]],
+  [anyone|plyr,"player_check",[], "Never mind.", "mayor_pretalk",[]],
+  # 投资商队获利 - 龟龟龟761
   [anyone,"mayor_friendly_pretalk", [], "Now... What else may I do for you?", "mayor_talk",[]],
   [anyone,"mayor_pretalk", [], "Yes?", "mayor_talk",[]],
   

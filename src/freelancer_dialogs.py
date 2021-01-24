@@ -3,7 +3,7 @@
 # Edits by Caba'drin 14 Dec 2011
 # Mod-Merger'd by Windyplains, Monnikje and Caba'drin
 
-# -*- coding: cp1254 -*-
+# -*- coding: utf-8 -*-
 from header_common import *
 from header_dialogs import *
 from header_operations import *

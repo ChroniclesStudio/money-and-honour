@@ -1113,6 +1113,10 @@ mayor_friendly_pretalk
 merchant_debts_paid
 mayor_pretalk
 merchant_debts_not_paid
+mayor_investment_possible2
+mayor_investment_advice2
+mayor_investment
+player_check
 mayor_info_begin
 merchant_quest_requested
 merchant_quest_last_offered_job
@@ -1122,7 +1126,6 @@ mayor_economy_report_1
 mayor_wealth_comparison_1
 mayor_investment_possible
 mayor_investment_advice
-mayor_investment
 investment_choose_enterprise
 investment_summary
 mayor_investment_confirm

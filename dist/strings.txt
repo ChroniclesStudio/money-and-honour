@@ -1,5 +1,5 @@
 stringsfile version 1
-3711
+3712
 str_no_string NO_STRING!
 str_empty_string _
 str_yes Yes.
@@ -3399,6 +3399,7 @@ str_npc13_1 -Good_with_1h_and_bows^-Poor_with_2h
 str_npc14_1 -Good_with_1h^-Good_all-rounder
 str_npc15_1 -Good_with_2h_and_bows^-Poor_with_crossbows_and_throwing
 str_npc16_1 -Good_with_throwing_and_1h^-Poor_with_2h_and_crossbows
+str_profit_from_company_ Profit_from_your_companies._
 str_faction_troop_tree Faction's_Troop_Tree
 str_lord_defects_rebel Lord_Defects^^{s1}_has_denounced_{s4}_right_to_rule_{s3},_and_joined_{s2}_as_the_rightful_ruler
 str_lord_defects_marshall Lord_Defects^^{s1}_Marshall_of_{s3}_has_abandonded__{reg4?her:his}_allegiance_to_the_{s3},_and_joined_{s2}

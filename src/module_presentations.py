@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from header_common import *
 from header_presentations import *
 from header_mission_templates import *
@@ -12923,6 +12925,47 @@ presentations = [
           (val_sub, ":cur_y", 27),
         (try_end),
 
+    # 投资商队获利 - 龟龟龟761
+    # Company_check
+                (try_begin),
+                        (party_slot_eq, ":center_no", slot_center_caravan_company, 1),
+                        (call_script, "script_cf_check_success_caravan", ":center_no"),
+                        (party_get_slot, ":trade_num", ":center_no", slot_center_caravan_company),
+                        (str_store_party_name, s0, ":center_no"),
+                #        (store_random_in_range, ":profit",130,200),
+                        (store_mul, reg0, ":trade_num", 365),
+                 (store_faction_of_party, ":faction_no", ":center_no"),
+                    (store_relation, ":relation", ":faction_no", "$players_kingdom"),
+                        
+                #        (create_text_overlay, reg1, "str_profit_from_company_in_s0_", 0),
+                #        (position_set_x, pos1, 900),
+                #        (position_set_y, pos1, 900),
+                #        (overlay_set_size, reg1, pos1),
+                #        (position_set_x, pos1, 25),
+                #        (position_set_y, pos1, ":cur_y"),
+                #        (overlay_set_position, reg1, pos1),
+                  
+                  (try_begin),
+                    (lt, ":relation", 0),
+                    (assign, reg0, 0), 
+                    (assign, ":net_profit", 0),                   
+                  (else_try),
+            (val_add, "$company_income", reg0),
+          (try_end),
+                  (val_add, ":net_profit", reg0),        
+          (val_add, ":all_centers_accumulated_total", ":net_profit"),
+          (val_add, ":net_change", ":net_profit"),                  
+                  
+    #      (position_set_x, pos1, 900),
+    #      (position_set_y, pos1, 900),
+    #      (overlay_set_size, reg1, pos1),
+    #      (position_set_x, pos1, 500),
+    #      (position_set_y, pos1, ":cur_y"),
+    #      (overlay_set_position, reg1, pos1),
+    #      (val_sub, ":cur_y", 27),
+        (try_end),
+        # 投资商队获利 - 龟龟龟761
+
 		#Enterprise ends, taxes begin
         (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
         (party_get_slot, ":accumulated_rents", ":center_no", slot_center_accumulated_rents),
@@ -13012,6 +13055,26 @@ presentations = [
         (overlay_set_position, reg1, pos1),
         (val_sub, ":cur_y", 27),
       (try_end),
+
+      # 投资商队获利 - 龟龟龟761
+      (create_text_overlay, reg1, "str_profit_from_company_", 0),
+          (position_set_x, pos1, 900),
+          (position_set_y, pos1, 900),
+          (overlay_set_size, reg1, pos1),
+          (position_set_x, pos1, 25),
+          (position_set_y, pos1, ":cur_y"),
+          (overlay_set_position, reg1, pos1),
+          (assign, reg0, "$company_income"),
+          (create_text_overlay, reg1, "@{!}{reg0}", tf_right_align|tf_single_line),
+          (overlay_set_color, reg1, 0x00AA00),
+      (position_set_x, pos1, 900),
+      (position_set_y, pos1, 900),
+      (overlay_set_size, reg1, pos1),
+      (position_set_x, pos1, 500),
+      (position_set_y, pos1, ":cur_y"),
+      (overlay_set_position, reg1, pos1),
+      (val_sub, ":cur_y", 27),
+      # 投资商队获利 - 龟龟龟761
       
       (try_begin),
         (gt, ":num_owned_center_values_for_tax_efficiency", ":num_centers_needed_for_efficiency_loss"),

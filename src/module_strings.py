@@ -1,4 +1,4 @@
-# -*- coding: cp1254 -*-
+# -*- coding: utf-8 -*-
 strings = [
   ("no_string", "NO STRING!"),
   ("empty_string", " "),
@@ -4336,6 +4336,9 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("npc15_1","-Good with 2h and bows^-Poor with crossbows and throwing"),
   ("npc16_1","-Good with throwing and 1h^-Poor with 2h and crossbows"),
   #INVASION MODE END
+# 投资商队获利 - 龟龟龟761
+  ("profit_from_company_", "Profit from your companies. "),
+# 投资商队获利 - 龟龟龟761
   
 ]# modmerger_start version=201 type=2
 try:

@@ -370,6 +370,9 @@ slot_party_last_in_combat              = 68 #used for AI
 slot_party_last_in_home_center         = 69 #used for AI
 slot_party_leader_last_courted         = 70 #used for AI
 slot_party_last_in_any_center          = 71 #used for AI
+slot_center_caravan_company            = 80
+slot_caravan_belongs_to_company        = 90
+slot_caravan_number                    = 100
 
 
 

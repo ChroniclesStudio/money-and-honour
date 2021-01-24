@@ -1,4 +1,4 @@
-# -*- coding: cp1254 -*-
+# -*- coding: utf-8 -*-
 from header_common import *
 from header_operations import *
 from module_constants import *
@@ -51038,6 +51038,48 @@ scripts = [
     (cur_tableau_add_sun_light, pos8, 175,150,125),
     ]),
    #INVASION MODE END
+
+# 投资商队获利 - 龟龟龟761
+  ("cf_check_success_caravan", 
+    [
+        (store_script_param, ":town_trade", 1),        
+        (assign, ":num_visits", 0),
+        (assign, ":num_attacks", 0),
+        
+        (try_for_range, ":log_entry_iterator", 0, "$num_log_entries"),
+                (store_sub, ":log_entry_no", "$num_log_entries", ":log_entry_iterator"),
+                (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_party_traded),
+        #########get the number of trade slot
+                (troop_get_slot, ":event_time", "trp_log_array_entry_time", ":log_entry_no"),
+                (store_current_hours, ":cur_hour"),
+                (store_sub, ":hours_ago", ":cur_hour", ":event_time"),
+                (le, ":hours_ago", 168),
+
+                (troop_get_slot, ":origin",    "trp_log_array_center_object",          ":log_entry_no"),####get start place
+                (eq, ":origin", ":town_trade"),        
+                (troop_get_slot, ":destination",    "trp_log_array_troop_object",          ":log_entry_no"),
+                (is_between, ":destination", towns_begin, towns_end), #exclude village trading here
+                (val_add, ":num_visits", 1),
+        (try_end),
+        
+        (try_for_range, ":log_entry_iterator", 0, "$num_log_entries"),
+                (store_sub, ":log_entry_no", "$num_log_entries", ":log_entry_iterator"),
+                (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_traveller_attacked),
+                (troop_get_slot, ":event_time",            "trp_log_array_entry_time",              ":log_entry_no"),
+                (store_current_hours, ":cur_hour"),
+                (store_sub, ":hours_ago", ":cur_hour", ":event_time"),
+                (le, ":hours_ago", 168),
+
+                (troop_get_slot, ":origin",    "trp_log_array_center_object",          ":log_entry_no"),
+                (troop_get_slot, ":destination",    "trp_log_array_troop_object",          ":log_entry_no"),
+                (eq, ":origin", ":town_trade"),
+                (is_between, ":destination", towns_begin, towns_end),
+                (val_add, ":num_attacks", 1),
+        (try_end),
+        (val_sub, ":num_visits", ":num_attacks"),
+        (party_set_slot, ":town_trade", slot_caravan_number, ":num_visits"),
+  ]),
+# 投资商队获利 - 龟龟龟761
      
 ]
 # modmerger_start version=201 type=2
