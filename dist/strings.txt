@@ -1,5 +1,5 @@
 stringsfile version 1
-3715
+3735
 str_no_string NO_STRING!
 str_empty_string _
 str_yes Yes.
@@ -3715,3 +3715,23 @@ str_key_no13 Select_Order_10
 str_key_no14 Spear_Brace
 str_key_no15 Call_Horse
 str_key_no17 Shield_Bash_Attack
+str_kmt_reg0 {reg0}
+str_kmt_title_red Red
+str_kmt_title_green Green
+str_kmt_title_blue Blue
+str_kmt_title_x_pos Pos_X
+str_kmt_title_y_pos Pos_Y
+str_kmt_title_x_size Size_X
+str_kmt_title_y_size Size_Y
+str_kmt_title_alpha Alpha
+str_kmt_title_font_size Font_Size
+str_kmt_title_outline Outline_Text
+str_kmt_title_object_selected Selected_Object_#
+str_kmt_title_rgb Color_Changer
+str_kmt_title_movement Object_Movement
+str_kmt_title_resizing Object_Resizing
+str_kmt_title_current_position Last_Clicked_Position:
+str_kmt_reg1_reg2_pos (_{reg1},_{reg2}_)
+str_kmt_undo Undo
+str_kmt_hide Hide
+str_kmt_show Show

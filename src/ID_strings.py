@@ -3713,5 +3713,25 @@ str_key_no13 = 3711
 str_key_no14 = 3712
 str_key_no15 = 3713
 str_key_no17 = 3714
+str_kmt_reg0 = 3715
+str_kmt_title_red = 3716
+str_kmt_title_green = 3717
+str_kmt_title_blue = 3718
+str_kmt_title_x_pos = 3719
+str_kmt_title_y_pos = 3720
+str_kmt_title_x_size = 3721
+str_kmt_title_y_size = 3722
+str_kmt_title_alpha = 3723
+str_kmt_title_font_size = 3724
+str_kmt_title_outline = 3725
+str_kmt_title_object_selected = 3726
+str_kmt_title_rgb = 3727
+str_kmt_title_movement = 3728
+str_kmt_title_resizing = 3729
+str_kmt_title_current_position = 3730
+str_kmt_reg1_reg2_pos = 3731
+str_kmt_undo = 3732
+str_kmt_hide = 3733
+str_kmt_show = 3734
 
 

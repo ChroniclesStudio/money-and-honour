@@ -1,4 +1,4 @@
-1252
+1255
 qstr_{reg1}_kills {reg1}_kills
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
@@ -816,6 +816,9 @@ qstr_:err_swap_failed :err_swap_failed
 qstr_:err_stats_too_low :err_stats_too_low
 qstr_UNDEF_ERR UNDEF_ERR
 qstr_Item_swap_failure:_E Item_swap_failure:_Errorcode_{reg0}_({s0})
+qstr_DEBUG__GPU_:_Label__ DEBUG_(GPU):_Label_'{s31}'_stored_in_slot_{reg32},_value_{reg31}.
+qstr___{reg1}_{reg2}__ (_{reg1},_{reg2}_)
+qstr_{reg2} {reg2}
 qstr_You_got_keys_of_dung You_got_keys_of_dungeon.
 qstr_You_were_defeated. You_were_defeated.
 qstr_Rotate_with_the_mous Rotate_with_the_mouse._Move_with_standard_keys.

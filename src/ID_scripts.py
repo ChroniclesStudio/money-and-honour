@@ -780,5 +780,21 @@ script_yael_troop_eq_inventory_slot = 778
 script_yael_item_allowed_in_slot = 779
 script_yael_item_usable_by_troop = 780
 script_yael_troop_swap_inventory_slots = 781
+script_gpu_create_mesh = 782
+script_gpu_create_slider = 783
+script_gpu_create_button = 784
+script_gpu_create_game_button = 785
+script_gpu_create_text_label = 786
+script_gpu_create_checkbox = 787
+script_gpu_create_checkbox_white = 788
+script_gpu_resize_object = 789
+script_gpu_change_color = 790
+script_gpu_create_portrait = 791
+script_gpu_draw_line = 792
+script_gpu_container_heading = 793
+script_gpu_prsnt_panel_color_chooser = 794
+script_gpu_events_panel_color_chooser = 795
+script_gpu_mouseclick_panel_color_chooser = 796
+script_gpu_merge_color = 797
 
 

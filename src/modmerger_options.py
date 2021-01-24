@@ -44,6 +44,7 @@ mods_active = [
     "yael_tournamentrewards",
     "yael_arenarewards",
     "yael_eqmgr",
+    "gpu",
 ]
 
 
