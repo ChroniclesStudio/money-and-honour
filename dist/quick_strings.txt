@@ -1,4 +1,4 @@
-1244
+1246
 qstr_{reg1}_kills {reg1}_kills
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
@@ -1050,6 +1050,8 @@ qstr__No_one_can_upgrade. _No_one_can_upgrade.
 qstr_{reg1}_{s1}_can_upgr {reg1}_{s1}_can_upgrade.
 qstr_{reg1}_{s1}_and_{s0} {reg1}_{s1}_and_{s0}
 qstr_{reg1}_{s1}_{s0} {reg1}_{s1},_{s0}
+qstr_You_don_t_have_enoug You_don't_have_enough_place_for_so_much_meats.
+qstr_You_have_killed_them You_have_killed_them_all.
 qstr_You_have_deserted_an You_have_deserted,_and_are_now_wanted!
 qstr_Because_of_the_old_d Because_of_the_old_debt_King_Harlaus_owed_your_father_he_has_taken_you_in_as_a_vassal_of_Kingdom_of_Swadia
 qstr_Because_of_the_old_de Because_of_the_old_debt_King_Yaroglek_owed_your_father_he_has_taken_you_in_as_a_vassal_of_Kingdom_of_Vaegirs
@@ -1201,7 +1203,7 @@ qstr_{s5}__Persuasion_str {s5}_(Persuasion_strength:_{reg5})
 qstr_Persuasion_Attempt Persuasion_Attempt
 qstr_Your_army_s_morale_h Your_army's_morale_has_improved!
 qstr_Of_course_{sir/madam Of_course,_{sir/madam}._I_shall_have_them_delivered_to_your_company_as_soon_as_possible.
-qstr_You_don_t_have_enoug You_don't_have_enough_money,_{mate/lass}...
+qstr_You_don_t_have_enough You_don't_have_enough_money,_{mate/lass}...
 qstr_{!}DEBUG:_Gossip_for {!}DEBUG:_Gossip_for_troop_{reg3}
 qstr_{!}DEBUG:_{s3} {!}DEBUG:_{s3}
 qstr_A_villager_from_{s7} A_villager_from_{s7}_begged_you_to_save_their_village_from_the_bandits_that_took_refuge_there.

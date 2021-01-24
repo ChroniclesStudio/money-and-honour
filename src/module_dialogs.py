@@ -25303,7 +25303,25 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 # Ryan END
 
   [anyone|plyr,"prisoner_chat", [], "Do not try running away or trying something stupid. I will be watching you.", "prisoner_chat_2",[]],
-  [anyone,"prisoner_chat_2", [], "No, I swear I won't.", "close_window",[]],
+  [anyone,"prisoner_chat_2", [], "No, I swear I won't.", "prisoner_chat_3",[]],
+  [anyone|plyr,"prisoner_chat_3", [(store_conversation_troop, "$g_talk_troop"),(neg|troop_is_hero, "$g_talk_troop"),], "I know you won't, because I gonna eat you!", "prisoner_chat_4",[]],
+  [anyone|plyr,"prisoner_chat_3", [], "Good.", "close_window",[]],
+  [anyone|plyr,"prisoner_chat_4", [], "What? Nooo!", "close_window",[
+  (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
+  (try_for_range, ":cur_stack", 0, ":num_stacks"),
+         (party_prisoner_stack_get_troop_id, ":cur_troop_id", "p_main_party", ":cur_stack"),
+         (eq, ":cur_troop_id","$g_talk_troop"),
+         (party_prisoner_stack_get_size, ":g_used_troop_size", "p_main_party", ":cur_stack"),
+         (remove_troops_from_prisoners, ":cur_troop_id", ":g_used_troop_size"),
+         (troop_add_items,"trp_player" , "itm_dried_meat", ":g_used_troop_size"),
+         (val_div, ":g_used_troop_size", 2),
+         (val_sub,"$player_honor", ":g_used_troop_size"),
+  (try_end),
+  (play_sound,"snd_body_fall_big"),
+  (play_sound,"snd_man_hit_pierce_strong"),
+  (display_message, "@You have killed them all."),
+     (jump_to_menu, "mnu_camp"),
+  ]],
 
 
   [anyone,"start", [(party_slot_eq, "$current_town", slot_town_lord, "trp_player"),

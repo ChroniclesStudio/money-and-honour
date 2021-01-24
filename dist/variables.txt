@@ -240,6 +240,7 @@ training_fight_time
 g_mt_mode
 g_player_entry_point
 bandit_tribute
+player_honor
 welfare_inquired
 rumors_inquired
 info_inquired
@@ -266,7 +267,6 @@ g_cheat_selected_faction
 g_player_eligible_feast_center_no
 g_use_alternative_ai
 g_player_reading_book
-player_honor
 g_player_icon_state
 g_camp_mode
 g_yael_eqmgr_state
@@ -386,6 +386,7 @@ debug_message_in_queue
 g_dont_give_fief_to_player_days
 g_dont_give_marshalship_to_player_days
 g_player_days_as_marshal
+prisoner_kinds
 g_encountered_party_faction
 g_encountered_party_relation
 g_encountered_party_type

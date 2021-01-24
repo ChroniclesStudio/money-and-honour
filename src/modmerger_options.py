@@ -1,8 +1,8 @@
 '''
 Date: 19/01/2021 22.37.36 +0800
 Author: KnowsCount
-LastEditTime: 24/01/2021 10.53.23 +0800
-FilePath: /undefined/Users/admin/chronicles/money-and-honour/src/modmerger_options.py
+LastEditTime: 24/01/2021 11.02.16 +0800
+FilePath: /money-and-honour/src/modmerger_options.py
 '''
 # master options for modmerger framework
 # by sphere
@@ -43,7 +43,7 @@ mods_active = [
     "yael_ransomtavern",
     "yael_tournamentrewards",
     "yael_arenarewards",
-    "yael_eqmgr"
+    "yael_eqmgr",
 ]
 
 

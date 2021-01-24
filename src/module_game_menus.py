@@ -3234,6 +3234,12 @@ game_menus = [
 	   ]
        ),	   
 	   
+      ("camp_kill_prisoners",##meat
+       [], "Kill your prisoners for dried meat.",
+       [(jump_to_menu, "mnu_camp_kill_prisoners"),
+        ],
+       ),
+
       ("camp_action_4",[],"{!}Back to camp menu.",
        [(jump_to_menu, "mnu_camp"),
         ]
@@ -14789,6 +14795,62 @@ game_menus = [
     ]
   ),
   # Easy regulars upgrading kit
+
+  # 把俘虏做成风干肉
+  ("camp_kill_prisoners",0,
+   "You have {reg22} prisoners.Do you want to kill them for making dried meat ?",
+   "none",
+   [
+   (assign, "$prisoner_kinds", 0),
+   (assign, ":num", 0),
+   (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
+   (try_for_range, ":cur_stack", 0, ":num_stacks"),
+      (party_prisoner_stack_get_troop_id, ":cur_troop_id", "p_main_party", ":cur_stack"),
+      (neg|troop_is_hero, ":cur_troop_id"),
+      (val_add, "$prisoner_kinds", 1),
+          (party_prisoner_stack_get_size, ":g_used_troop_size", "p_main_party", ":cur_stack"),
+          (val_add, ":num", ":g_used_troop_size"),
+   (try_end),
+   (assign, reg22, ":num"),
+   (try_begin),
+      (eq, "$prisoner_kinds", 0),
+      (jump_to_menu, "mnu_camp_no_prisoners"),     
+   (try_end),
+    ],
+    [
+      ("camp_kill_prisoners_accept",[(gt, "$prisoner_kinds", 0)],"Kill all of them.",
+       [
+                (troop_get_inventory_capacity, ":cur_free", "trp_player"),
+                (party_get_num_prisoners,":num","p_main_party"),
+                (try_begin),
+                        (lt, ":cur_free", ":num"),
+                        (display_message, "@You don't have enough place for so much meats."),
+                (else_try),
+                                (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
+                                (try_for_range_backwards, ":cur_stack", 0, ":num_stacks"),
+                                        (party_prisoner_stack_get_troop_id, ":cur_troop_id", "p_main_party", ":cur_stack"),
+                                        (neg|troop_is_hero, ":cur_troop_id"),
+                                        (party_prisoner_stack_get_size, ":g_used_troop_size", "p_main_party", ":cur_stack"),
+                                        (remove_troops_from_prisoners, ":cur_troop_id", ":g_used_troop_size"),
+                                        (troop_add_items,"trp_player" , "itm_dried_meat", ":g_used_troop_size"),
+                                        (val_div,  ":g_used_troop_size", 2),
+                                        (val_sub,"$player_honor", ":g_used_troop_size"),
+                                (try_end),
+                        (play_sound,"snd_body_fall_big"),
+                        (play_sound,"snd_man_hit_pierce_strong"),
+                        (display_message, "@You have killed them all."),
+                        (jump_to_menu, "mnu_camp"),
+                (try_end),
+        ]
+       ),
+           
+      ("camp_action_4",[],"Back to camp menu.",
+       [(jump_to_menu, "mnu_camp"),
+        ]
+       ),
+      ]
+  ),
+  # 把俘虏做成风干肉
   
 
   

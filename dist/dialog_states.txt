@@ -1296,6 +1296,8 @@ party_encounter_routed_agents_are_caught
 party_encounter_routed_agents_are_caught2
 sell_prisoner_outlaws
 prisoner_chat_2
+prisoner_chat_3
+prisoner_chat_4
 town_merchant_talk
 trade_requested_weapons
 trade_requested_armor
