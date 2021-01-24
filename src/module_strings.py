@@ -4339,6 +4339,10 @@ We apologize sincerely if you contributed your suggestions and feedback but were
 # 投资商队获利 - 龟龟龟761
   ("profit_from_company_", "Profit from your companies. "),
 # 投资商队获利 - 龟龟龟761
+
+("your_ally_", "Your ally "),
+("s5_has_a_ally_with_s14_", "{s21}^* {s5} has a ally with {s14}. "),
+("seek_an_ally", "seek an ally"),
   
 ]# modmerger_start version=201 type=2
 try:

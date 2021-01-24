@@ -1172,6 +1172,8 @@ g_player_party_morale_modifier_leadership
 g_player_party_morale_modifier_food
 g_player_party_morale_modifier_no_food
 g_player_party_morale_modifier_debt
+player_ally
+ally_enemy
 players_kingdom_days_at_peace
 ai_team_1_battle_tactic
 ai_team_1
@@ -1230,6 +1232,7 @@ g_use_current_ai_object_as_s8
 g_target_after_gathering
 g_gathering_reason
 g_prison_cart_previous_point
+g_notification_menu_var1
 next_cavalry_place
 next_archer_place
 next_infantry_place
@@ -1260,7 +1263,6 @@ yael_status_box
 yael_requirement_box
 training_ground_position_changed
 bug_fix_version
-g_notification_menu_var1
 g_notification_menu_var2
 g_presentation_lines_to_display_begin
 g_presentation_lines_to_display_end

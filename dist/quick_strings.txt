@@ -1,4 +1,4 @@
-1246
+1252
 qstr_{reg1}_kills {reg1}_kills
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
@@ -437,8 +437,8 @@ qstr_Your_relation_with_{s Your_relation_with_{s1}_has_deteriorated.
 qstr_You_gain_honour. You_gain_honour.
 qstr_You_lose_honour. You_lose_honour.
 qstr_{s1}_has_declared_wa {s1}_has_declared_war_against_{s2}.
-qstr_{!}DEbug___{s5}_cara {!}DEbug_-_{s5}_caravan_attacked
 qstr_{s1}_and_{s2}_have_m {s1}_and_{s2}_have_made_peace_with_each_other.
+qstr_Your_ally_{s1}_have_ Your_ally_{s1}_have_joined_this_war.
 qstr_{!}DEBUG____Player_s {!}DEBUG_--_Player's_kingdom_has_had_{reg3}_days_of_peace
 qstr_{s2}_{reg3?was:is_cu {s2}_{reg3?was:is_currently}_at_{s3}.
 qstr_{s2}_{reg3?was:is}_t {s2}_{reg3?was:is}_travelling_to_{s3}_and_{reg4?she:he}_{reg3?was:should_be}_close_to_{s4}{reg3?:_at_the_moment}.
@@ -600,6 +600,11 @@ qstr_{!}destroy_prison_ca {!}destroy_prison_cart
 qstr_{!}spawning_prison_c {!}spawning_prison_cart_at_point_{reg0}
 qstr_{!}prison_cart_spawn {!}prison_cart_spawn_at_point_{reg0}
 qstr_{!}multiplayer_upgra {!}multiplayer_upgrade_player_equipment:_{reg0}
+qstr_{s2}_has_rejected_th {s2}_has_rejected_the_Ally_Request_of_{s1},_which_will_make_damages_between_two_kingdoms.
+qstr_{s1}_and_{s2}_have_ma {s1}_and_{s2}_have_made_ally_with_each_other.
+qstr_{s1}_has_cancelled_t {s1}_has_cancelled_the_Ally_relation_with_{s3}_and_make_ally_with_{s2}.
+qstr_{s2}_has_cancelled_t {s2}_has_cancelled_the_Ally_relation_with_{s3}_and_make_ally_with_{s1}.
+qstr_{s1}_and_{s2}_have_c {s1}_and_{s2}_have_cancelled_ally_with_each_other.
 qstr_ranks ranks
 qstr_shield_wall shield_wall
 qstr_wedge wedge
@@ -1052,6 +1057,7 @@ qstr_{reg1}_{s1}_and_{s0} {reg1}_{s1}_and_{s0}
 qstr_{reg1}_{s1}_{s0} {reg1}_{s1},_{s0}
 qstr_You_don_t_have_enoug You_don't_have_enough_place_for_so_much_meats.
 qstr_You_have_killed_them You_have_killed_them_all.
+qstr_You_and_{s1}_are_no_ You_and_{s1}_are_no_longer_allies.
 qstr_You_have_deserted_an You_have_deserted,_and_are_now_wanted!
 qstr_Because_of_the_old_d Because_of_the_old_debt_King_Harlaus_owed_your_father_he_has_taken_you_in_as_a_vassal_of_Kingdom_of_Swadia
 qstr_Because_of_the_old_de Because_of_the_old_debt_King_Yaroglek_owed_your_father_he_has_taken_you_in_as_a_vassal_of_Kingdom_of_Vaegirs

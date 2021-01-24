@@ -260,6 +260,9 @@ slot_faction_ai_current_state_started   = 97 #
 slot_faction_ai_last_decisive_event     = 98 #capture a fortress or declaration of war
 
 slot_faction_morale_of_player_troops    = 99
+slot_faction_ally                       = 100
+slot_faction_ally_in_war                = 105
+slot_caravan_number                     = 100
 
 #diplomacy
 slot_faction_truce_days_with_factions_begin 			= 120
@@ -968,6 +971,7 @@ npc_mission_seek_recognition            = 5
 npc_mission_test_waters                 = 6
 npc_mission_non_aggression              = 7
 npc_mission_rejoin_when_possible        = 8
+npc_mission_ally_request                = 9
 
 #Number of routed agents after battle ends.
 slot_troop_player_routed_agents                 = 146
