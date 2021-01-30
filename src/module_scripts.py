@@ -263,6 +263,8 @@ scripts = [
       (faction_set_slot, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
       (assign, "$g_player_luck", 200),
       (assign, "$g_player_luck", 200),
+      (assign, "$gpu_storage",0), 
+      (assign, "$gpu_data",0),
       (troop_set_slot, "trp_player", slot_troop_occupation, slto_kingdom_hero),
       (store_random_in_range, ":starting_training_ground", training_grounds_begin, training_grounds_end),
       (party_relocate_near_party, "p_main_party", ":starting_training_ground", 3),
