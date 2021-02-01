@@ -80,6 +80,7 @@ blend_in_continue = arf_blend_in_1
 # and unused_horse_anim_??? (??? = any number). You must not change used animations' ids.
 
 animations = [
+  
  ["stand", 0, amf_client_prediction,
 #   [3.0, "myanim", 0, 50, arf_cyclic|arf_loop_pos_0_25],
    [3.0, "anim_human", 50, 52, arf_use_stand_progress|arf_cyclic, 0, (0, 0, 0), 0.25],
@@ -2107,6 +2108,15 @@ animations = [
  ["unused_horse_anim_98", 0, 0, [1.0, "anim_horse", 0, 1, 0]],
  ["unused_horse_anim_99", 0, 0, [1.0, "anim_horse", 0, 1, 0]],
  ["unused_horse_anim_100", 0, 0, [1.0, "anim_horse", 0, 1, 0]],
+ ### Dismemberment Mod Kit Animations ###
+
+ ["handchop", 0, amf_priority_striked|amf_play,
+   [1.5, "strikes", 55, 71, arf_blend_in_3], 
+ ],
+
+ ["armchop", 0, amf_priority_striked|amf_play,
+   [1.6, "strikes", 2284, 2305, arf_blend_in_3], 
+ ],
  ]
 # modmerger_start version=201 type=2
 try:

@@ -1,5 +1,5 @@
 soundsfile version 3
-366
+372
  drum_3.ogg 769
  tutorial_1.ogg 1793
  tutorial_2.ogg 1793
@@ -138,6 +138,8 @@ soundsfile version 3
  shield_hit_metal_wood_2.ogg 2672
  shield_hit_metal_wood_3.ogg 2672
  shield_broken.ogg 144
+ shield_broken1.ogg 144
+ shield_broken2.ogg 144
  man_hit_5.ogg 1904
  man_hit_6.ogg 1904
  man_hit_7.ogg 1904
@@ -366,7 +368,11 @@ soundsfile version 3
  your_flag_returned.ogg 2721
  you_scored_a_point.ogg 2721
  enemy_scored_a_point.ogg 2721
-200
+ decap1.ogg 2960
+ decap2.ogg 2960
+ decap3.ogg 2960
+ decap4.ogg 2960
+201
 snd_click 769 1 0 0 
 snd_tutorial_1 1793 1 1 0 
 snd_tutorial_2 1793 1 2 0 
@@ -470,100 +476,101 @@ snd_shield_hit_wood_wood 2416 3 123 0 124 0 125 0
 snd_shield_hit_metal_metal 2672 4 126 0 127 0 128 0 129 0 
 snd_shield_hit_wood_metal 2672 4 130 0 131 0 132 0 133 0 
 snd_shield_hit_metal_wood 2672 3 134 0 135 0 136 0 
-snd_shield_broken 144 1 137 0 
-snd_man_hit 1904 20 138 0 139 0 140 0 141 0 142 0 143 0 144 0 145 0 146 0 147 0 148 0 149 0 150 0 151 0 152 0 153 0 154 0 155 0 156 0 157 0 
-snd_man_die 2208 14 158 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 168 0 169 0 170 0 171 0 
-snd_woman_hit 112 10 172 0 173 0 174 0 175 0 176 0 177 0 178 0 179 0 180 0 181 0 
-snd_woman_die 2464 2 182 0 183 0 
-snd_woman_yell 2432 2 184 0 185 0 
-snd_hide 0 1 186 0 
-snd_unhide 0 1 187 0 
-snd_neigh 0 6 188 0 189 0 190 0 191 0 192 0 193 0 
-snd_gallop 1024 3 194 0 195 0 196 0 
-snd_battle 1024 1 197 0 
-snd_arrow_hit_body 64 3 198 0 199 0 200 0 
-snd_metal_hit_low_armor_low_damage 2384 3 201 0 202 0 203 0 
-snd_metal_hit_low_armor_high_damage 2384 3 204 0 205 0 206 0 
-snd_metal_hit_high_armor_low_damage 2384 3 207 0 208 0 209 0 
-snd_metal_hit_high_armor_high_damage 2384 3 210 0 211 0 212 0 
-snd_wooden_hit_low_armor_low_damage 2384 3 213 0 214 0 215 0 
-snd_wooden_hit_low_armor_high_damage 2384 3 216 0 217 0 218 0 
-snd_wooden_hit_high_armor_low_damage 2384 2 219 0 220 0 
-snd_wooden_hit_high_armor_high_damage 2384 3 216 0 217 0 218 0 
-snd_mp_arrow_hit_target 2545 1 221 0 
-snd_blunt_hit 2384 4 222 0 223 0 223 0 224 0 
-snd_player_hit_by_arrow 2720 1 225 0 
-snd_pistol_shot 2720 1 226 0 
-snd_man_grunt 1120 3 227 0 228 0 229 0 
-snd_man_breath_hard 2096 7 230 0 231 0 232 0 233 0 234 0 235 0 236 0 
-snd_man_stun 2096 1 237 0 
-snd_man_grunt_long 1888 6 238 0 239 0 240 0 241 0 242 0 243 0 
-snd_man_yell 2128 19 244 0 245 0 246 0 247 0 248 0 249 0 250 0 251 0 252 0 253 0 254 0 255 0 256 0 257 0 258 0 259 0 260 0 261 0 262 0 
-snd_man_warcry 80 7 263 0 264 0 265 0 266 0 267 0 268 0 269 0 
-snd_encounter_looters 2049 5 270 0 271 0 272 0 273 0 274 0 
-snd_encounter_bandits 2049 7 275 0 276 0 277 0 278 0 279 0 280 0 281 0 
-snd_encounter_farmers 2049 4 282 0 283 0 284 0 285 0 
-snd_encounter_sea_raiders 2049 4 286 0 287 0 288 0 289 0 
-snd_encounter_steppe_bandits 2049 5 290 0 291 0 292 0 293 0 294 0 
-snd_encounter_nobleman 2049 1 295 0 
-snd_encounter_vaegirs_ally 2049 2 296 0 297 0 
-snd_encounter_vaegirs_neutral 2049 4 298 0 299 0 300 0 301 0 
-snd_encounter_vaegirs_enemy 2049 4 298 0 299 0 300 0 301 0 
-snd_sneak_town_halt 1 2 302 0 303 0 
-snd_horse_walk 1328 4 304 0 305 0 306 0 307 0 
-snd_horse_trot 1600 4 308 0 309 0 310 0 311 0 
-snd_horse_canter 1856 4 312 0 313 0 314 0 315 0 
-snd_horse_gallop 2128 4 316 0 317 0 318 0 319 0 
-snd_horse_breath 1040 4 320 0 321 0 322 0 323 0 
-snd_horse_snort 528 5 324 0 325 0 326 0 327 0 328 0 
-snd_horse_low_whinny 3072 2 329 0 330 0 
-snd_block_fist 0 2 331 0 332 0 
-snd_man_hit_blunt_weak 2640 5 146 0 153 0 154 0 155 0 156 0 
-snd_man_hit_blunt_strong 2640 5 146 0 153 0 154 0 155 0 156 0 
-snd_man_hit_pierce_weak 2640 5 146 0 153 0 154 0 155 0 156 0 
-snd_man_hit_pierce_strong 2640 5 146 0 153 0 154 0 155 0 156 0 
-snd_man_hit_cut_weak 2640 5 146 0 153 0 154 0 155 0 156 0 
-snd_man_hit_cut_strong 2640 5 146 0 153 0 154 0 155 0 156 0 
-snd_man_victory 2640 10 333 0 334 0 335 0 336 0 337 0 338 0 339 0 340 0 341 0 342 0 
-snd_fire_loop 1174 1 343 0 
-snd_torch_loop 1174 1 343 0 
+snd_shield_broken 144 3 137 0 138 0 139 0 
+snd_man_hit 1904 20 140 0 141 0 142 0 143 0 144 0 145 0 146 0 147 0 148 0 149 0 150 0 151 0 152 0 153 0 154 0 155 0 156 0 157 0 158 0 159 0 
+snd_man_die 2208 14 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 168 0 169 0 170 0 171 0 172 0 173 0 
+snd_woman_hit 112 10 174 0 175 0 176 0 177 0 178 0 179 0 180 0 181 0 182 0 183 0 
+snd_woman_die 2464 2 184 0 185 0 
+snd_woman_yell 2432 2 186 0 187 0 
+snd_hide 0 1 188 0 
+snd_unhide 0 1 189 0 
+snd_neigh 0 6 190 0 191 0 192 0 193 0 194 0 195 0 
+snd_gallop 1024 3 196 0 197 0 198 0 
+snd_battle 1024 1 199 0 
+snd_arrow_hit_body 64 3 200 0 201 0 202 0 
+snd_metal_hit_low_armor_low_damage 2384 3 203 0 204 0 205 0 
+snd_metal_hit_low_armor_high_damage 2384 3 206 0 207 0 208 0 
+snd_metal_hit_high_armor_low_damage 2384 3 209 0 210 0 211 0 
+snd_metal_hit_high_armor_high_damage 2384 3 212 0 213 0 214 0 
+snd_wooden_hit_low_armor_low_damage 2384 3 215 0 216 0 217 0 
+snd_wooden_hit_low_armor_high_damage 2384 3 218 0 219 0 220 0 
+snd_wooden_hit_high_armor_low_damage 2384 2 221 0 222 0 
+snd_wooden_hit_high_armor_high_damage 2384 3 218 0 219 0 220 0 
+snd_mp_arrow_hit_target 2545 1 223 0 
+snd_blunt_hit 2384 4 224 0 225 0 225 0 226 0 
+snd_player_hit_by_arrow 2720 1 227 0 
+snd_pistol_shot 2720 1 228 0 
+snd_man_grunt 1120 3 229 0 230 0 231 0 
+snd_man_breath_hard 2096 7 232 0 233 0 234 0 235 0 236 0 237 0 238 0 
+snd_man_stun 2096 1 239 0 
+snd_man_grunt_long 1888 6 240 0 241 0 242 0 243 0 244 0 245 0 
+snd_man_yell 2128 19 246 0 247 0 248 0 249 0 250 0 251 0 252 0 253 0 254 0 255 0 256 0 257 0 258 0 259 0 260 0 261 0 262 0 263 0 264 0 
+snd_man_warcry 80 7 265 0 266 0 267 0 268 0 269 0 270 0 271 0 
+snd_encounter_looters 2049 5 272 0 273 0 274 0 275 0 276 0 
+snd_encounter_bandits 2049 7 277 0 278 0 279 0 280 0 281 0 282 0 283 0 
+snd_encounter_farmers 2049 4 284 0 285 0 286 0 287 0 
+snd_encounter_sea_raiders 2049 4 288 0 289 0 290 0 291 0 
+snd_encounter_steppe_bandits 2049 5 292 0 293 0 294 0 295 0 296 0 
+snd_encounter_nobleman 2049 1 297 0 
+snd_encounter_vaegirs_ally 2049 2 298 0 299 0 
+snd_encounter_vaegirs_neutral 2049 4 300 0 301 0 302 0 303 0 
+snd_encounter_vaegirs_enemy 2049 4 300 0 301 0 302 0 303 0 
+snd_sneak_town_halt 1 2 304 0 305 0 
+snd_horse_walk 1328 4 306 0 307 0 308 0 309 0 
+snd_horse_trot 1600 4 310 0 311 0 312 0 313 0 
+snd_horse_canter 1856 4 314 0 315 0 316 0 317 0 
+snd_horse_gallop 2128 4 318 0 319 0 320 0 321 0 
+snd_horse_breath 1040 4 322 0 323 0 324 0 325 0 
+snd_horse_snort 528 5 326 0 327 0 328 0 329 0 330 0 
+snd_horse_low_whinny 3072 2 331 0 332 0 
+snd_block_fist 0 2 333 0 334 0 
+snd_man_hit_blunt_weak 2640 5 148 0 155 0 156 0 157 0 158 0 
+snd_man_hit_blunt_strong 2640 5 148 0 155 0 156 0 157 0 158 0 
+snd_man_hit_pierce_weak 2640 5 148 0 155 0 156 0 157 0 158 0 
+snd_man_hit_pierce_strong 2640 5 148 0 155 0 156 0 157 0 158 0 
+snd_man_hit_cut_weak 2640 5 148 0 155 0 156 0 157 0 158 0 
+snd_man_hit_cut_strong 2640 5 148 0 155 0 156 0 157 0 158 0 
+snd_man_victory 2640 10 335 0 336 0 337 0 338 0 339 0 340 0 341 0 342 0 343 0 344 0 
+snd_fire_loop 1174 1 345 0 
+snd_torch_loop 1174 1 345 0 
 snd_dummy_hit 144 2 130 0 132 0 
 snd_dummy_destroyed 144 1 137 0 
 snd_gourd_destroyed 144 1 137 0 
-snd_cow_moo 2193 1 344 0 
-snd_cow_slaughter 2193 1 345 0 
-snd_distant_dog_bark 2097 4 346 0 347 0 348 0 349 0 
-snd_distant_owl 2353 3 350 0 351 0 352 0 
-snd_distant_chicken 2097 2 353 0 354 0 
-snd_distant_carpenter 817 2 355 0 356 0 
-snd_distant_blacksmith 1073 1 357 0 
-snd_arena_ambiance 899 1 358 0 
-snd_town_ambiance 899 1 359 0 
-snd_tutorial_fail 1793 1 360 0 
-snd_your_flag_taken 2721 1 361 0 
-snd_enemy_flag_taken 2721 1 362 0 
-snd_flag_returned 2721 1 363 0 
-snd_team_scored_a_point 2721 1 364 0 
-snd_enemy_scored_a_point 2721 1 365 0 
-snd_ccoop_spawn_companion_0 2049 1 282 0 
-snd_ccoop_spawn_companion_1 2049 1 283 0 
-snd_ccoop_spawn_companion_2 2049 1 284 0 
-snd_ccoop_spawn_companion_3 2049 1 285 0 
-snd_ccoop_nobleman_taunt 2049 1 295 0 
-snd_ccoop_looter_taunt_0 2049 1 270 0 
-snd_ccoop_looter_taunt_1 2049 1 271 0 
-snd_ccoop_looter_taunt_2 2049 1 272 0 
-snd_ccoop_looter_taunt_3 2049 1 273 0 
-snd_ccoop_looter_taunt_4 2049 1 274 0 
-snd_ccoop_bandit_taunt_0 2049 1 275 0 
-snd_ccoop_bandit_taunt_1 2049 1 276 0 
-snd_ccoop_bandit_taunt_2 2049 1 277 0 
-snd_ccoop_bandit_taunt_3 2049 1 278 0 
-snd_ccoop_bandit_taunt_4 2049 1 279 0 
-snd_ccoop_bandit_taunt_5 2049 1 280 0 
-snd_ccoop_bandit_taunt_6 2049 1 281 0 
-snd_ccoop_sea_raider_taunt_0 2049 1 286 0 
-snd_ccoop_sea_raider_taunt_1 2049 1 287 0 
-snd_ccoop_sea_raider_taunt_2 2049 1 288 0 
-snd_ccoop_sea_raider_taunt_3 2049 1 289 0 
-snd_sounds_end 2721 1 365 0 
+snd_cow_moo 2193 1 346 0 
+snd_cow_slaughter 2193 1 347 0 
+snd_distant_dog_bark 2097 4 348 0 349 0 350 0 351 0 
+snd_distant_owl 2353 3 352 0 353 0 354 0 
+snd_distant_chicken 2097 2 355 0 356 0 
+snd_distant_carpenter 817 2 357 0 358 0 
+snd_distant_blacksmith 1073 1 359 0 
+snd_arena_ambiance 899 1 360 0 
+snd_town_ambiance 899 1 361 0 
+snd_tutorial_fail 1793 1 362 0 
+snd_your_flag_taken 2721 1 363 0 
+snd_enemy_flag_taken 2721 1 364 0 
+snd_flag_returned 2721 1 365 0 
+snd_team_scored_a_point 2721 1 366 0 
+snd_enemy_scored_a_point 2721 1 367 0 
+snd_ccoop_spawn_companion_0 2049 1 284 0 
+snd_ccoop_spawn_companion_1 2049 1 285 0 
+snd_ccoop_spawn_companion_2 2049 1 286 0 
+snd_ccoop_spawn_companion_3 2049 1 287 0 
+snd_ccoop_nobleman_taunt 2049 1 297 0 
+snd_ccoop_looter_taunt_0 2049 1 272 0 
+snd_ccoop_looter_taunt_1 2049 1 273 0 
+snd_ccoop_looter_taunt_2 2049 1 274 0 
+snd_ccoop_looter_taunt_3 2049 1 275 0 
+snd_ccoop_looter_taunt_4 2049 1 276 0 
+snd_ccoop_bandit_taunt_0 2049 1 277 0 
+snd_ccoop_bandit_taunt_1 2049 1 278 0 
+snd_ccoop_bandit_taunt_2 2049 1 279 0 
+snd_ccoop_bandit_taunt_3 2049 1 280 0 
+snd_ccoop_bandit_taunt_4 2049 1 281 0 
+snd_ccoop_bandit_taunt_5 2049 1 282 0 
+snd_ccoop_bandit_taunt_6 2049 1 283 0 
+snd_ccoop_sea_raider_taunt_0 2049 1 288 0 
+snd_ccoop_sea_raider_taunt_1 2049 1 289 0 
+snd_ccoop_sea_raider_taunt_2 2049 1 290 0 
+snd_ccoop_sea_raider_taunt_3 2049 1 291 0 
+snd_sounds_end 2721 1 367 0 
+snd_decapitation 2960 4 368 0 369 0 370 0 371 0 

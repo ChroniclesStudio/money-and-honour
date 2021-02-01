@@ -123,7 +123,9 @@ sounds = [
  ("shield_hit_metal_metal",sf_priority_7|sf_vol_10, ["shield_hit_metal_metal_1.ogg","shield_hit_metal_metal_2.ogg","shield_hit_metal_metal_3.ogg","shield_hit_metal_metal_4.ogg"]),
  ("shield_hit_wood_metal",sf_priority_7|sf_vol_10, ["shield_hit_cut_3.ogg","shield_hit_cut_4.ogg","shield_hit_cut_5.ogg","shield_hit_cut_10.ogg"]), #(shield is wood)
  ("shield_hit_metal_wood",sf_priority_7|sf_vol_10, ["shield_hit_metal_wood_1.ogg","shield_hit_metal_wood_2.ogg","shield_hit_metal_wood_3.ogg"]),#(shield is metal)
- ("shield_broken",sf_priority_9, ["shield_broken.ogg"]),
+ #("shield_broken",sf_priority_9, ["shield_broken.ogg"]),
+ ### Dismemberment Mod Kit - modified line ###
+ ("shield_broken",sf_priority_9, ["shield_broken.ogg","shield_broken1.ogg","shield_broken2.ogg"]),
  ("man_hit",sf_priority_7|sf_vol_7, ["man_hit_5.ogg","man_hit_6.ogg","man_hit_7.ogg","man_hit_8.ogg","man_hit_9.ogg","man_hit_10.ogg","man_hit_11.ogg","man_hit_12.ogg","man_hit_13.ogg","man_hit_14.ogg","man_hit_15.ogg",
                                       "man_hit_17.ogg","man_hit_18.ogg","man_hit_19.ogg","man_hit_22.ogg","man_hit_29.ogg","man_hit_32.ogg","man_hit_47.ogg","man_hit_57.ogg","man_hit_59.ogg"]),
  ("man_die",sf_priority_10|sf_vol_8,  ["man_death_1.ogg","man_death_8.ogg","man_death_8b.ogg","man_death_11.ogg","man_death_14.ogg","man_death_16.ogg","man_death_18.ogg","man_death_21.ogg","man_death_29.ogg","man_death_40.ogg","man_death_44.ogg","man_death_46.ogg","man_death_48.ogg","man_death_64.ogg"]),# ["man_fall_1.ogg","man_fall_2.ogg","man_fall_3.ogg","man_fall_4.ogg"]),
@@ -233,6 +235,9 @@ sounds = [
  ("ccoop_sea_raider_taunt_3",sf_2d|sf_vol_8, ["encounter_sea_raider_10.ogg"]),
  ("sounds_end", sf_2d|sf_priority_10|sf_vol_10, ["enemy_scored_a_point.ogg"]),
  #INVASION MODE END
+ ### Dismemberment Mod Kit Sound Effects ###
+
+ ("decapitation",sf_priority_9|sf_vol_11, ["decap1.ogg","decap2.ogg","decap3.ogg","decap4.ogg"]),
 ]
 # modmerger_start version=201 type=2
 try:

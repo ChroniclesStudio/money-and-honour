@@ -1,5 +1,5 @@
 itemsfile version 3
-626
+643
  itm_no_item INVALID_ITEM INVALID_ITEM 1  invalid_item 0  12582914 9223388529554358287 3 0 1.500000 100 0 0 0 0 16384 103 0 90 0 522 528
  0
 0
@@ -67,32 +67,32 @@ itemsfile version 3
  itm_flintlock_pistol_1 Flintlock_Pistol Flintlock_Pistol 1  flintlock_pistol_1 0  4259856 481036795904 230 0 1.500000 100 0 0 65 0 0 55 160 0 1 356 0
  0
 1
--51.000000  4 600 1 1152921504606847102 720 2 1 27 721 2 1 36 1969 3 1008806316530991135 1 15 
+-51.000000  4 600 1 1152921504606847102 720 2 1 27 721 2 1 36 1969 3 1008806316530991138 1 15 
 
  itm_flintlock_rifle Flintlock_Rifle Flintlock_Rifle 1  flintlock_rifle_1 0  544276497 555930353664 230 0 1.500000 90 0 0 99 0 0 38 160 0 1 416 0
  0
 1
--51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 139 1969 3 1008806316530991135 1 15 
+-51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 139 1969 3 1008806316530991138 1 15 
 
  itm_arquebus Arquebus Arquebus 1  arquebus 0  544276497 555930353664 230 0 1.500000 90 0 0 99 0 0 38 160 0 1 416 0
  0
 1
--51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 100 1969 3 1008806316530991135 1 15 
+-51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 100 1969 3 1008806316530991138 1 15 
 
  itm_blunderbus Blunderbus Blunderbus 1  blunderbus 0  544276497 555930353664 230 0 1.500000 90 0 0 99 0 0 38 160 0 1 416 0
  0
 1
--51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 72 1969 3 1008806316530991135 1 15 
+-51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 72 1969 3 1008806316530991138 1 15 
 
  itm_matchlock_2 Matchlock_Rifle Matchlock_Rifle 1  matchlock_2 0  544276497 555930353664 230 0 1.500000 90 0 0 99 0 0 38 160 0 1 416 0
  0
 1
--51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 112 1969 3 1008806316530991135 1 15 
+-51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 112 1969 3 1008806316530991138 1 15 
 
  itm_matchlock_1 Matchlock_Rifle Matchlock_Rifle 1  matchlock_1 0  544276497 555930353664 230 0 1.500000 90 0 0 99 0 0 38 160 0 1 416 0
  0
 1
--51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 107 1969 3 1008806316530991135 1 15 
+-51.000000  4 600 1 1152921504606847102 720 2 1 0 721 2 1 107 1969 3 1008806316530991138 1 15 
 
  itm_horse_meat Horse_Meat Horse_Meat 1  raw_meat 0  34078731 0 12 0 40.000000 100 30 0 0 0 0 0 0 0 40 0 0
  0
@@ -2305,12 +2305,12 @@ itemsfile version 3
  itm_flintlock_pistol Flintlock_Pistol Flintlock_Pistol 1  flintlock_pistol 0  4259856 481036795904 230 0 1.500000 100 0 0 65 0 0 38 160 0 1 301 0
  0
 1
--51.000000  4 600 1 1152921504606847102 720 2 1 27 721 2 1 36 1969 3 1008806316530991135 1 15 
+-51.000000  4 600 1 1152921504606847102 720 2 1 27 721 2 1 36 1969 3 1008806316530991138 1 15 
 
  itm_torch Torch Torch 1  club 0  4194306 9223388529554358286 11 0 2.500000 100 0 0 0 0 11264 95 0 95 0 256 523
  0
 1
--50.000000  5 1955 3 0 60 0 1965 1 1008806316530991116 1965 1 1008806316530991119 1950 3 150 130 70 1960 2 10 30 
+-50.000000  5 1955 3 0 60 0 1965 1 1008806316530991119 1965 1 1008806316530991122 1950 3 150 130 70 1960 2 10 30 
 
  itm_lyre Lyre Lyre 1  lyre 0  537133063 5905580032 118 0 2.500000 100 0 1 0 0 480 82 0 90 0 0 0
  0
@@ -2473,6 +2473,74 @@ itemsfile version 3
  itm_warhorse_steppe Steppe_Charger Steppe_Charger 1  warhorse_steppe 0  65537 0 1400 110595670016 0.000000 45 0 40 0 4 150 50 40 112 0 28 0
  2
  17 16
+0
+
+ itm_invisiblegloves Invisiblegloves Invisiblegloves 1  invisiblegloves 0  15 0 550 704643236 0.000000 5 0 0 0 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_looter_bully_handless_body Ragged_Stolen_Brigandine Ragged_Stolen_Brigandine 1  looter_bully_handless_body 0  553648141 0 27 0 2.000000 5 0 27 10 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_looter_thug_armless_body Ragged_Cloak Ragged_Cloak 1  looter_thug_armless_body 0  553648141 0 27 0 2.000000 5 0 27 10 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_thin_looter_armless_body Leather_Outfit Leather_Outfit 1  thin_looter_armless_body 0  553648141 0 27 0 2.000000 5 0 17 6 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_fat_peasant_handless_body Large_Peasant_Apron Large_Peasant_Apron 1  fat_peasant_handless_body 0  553648141 0 27 0 2.000000 5 0 18 8 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_severedhand Severed_Hand Severed_Hand 1  severedhand 0  262151 5100273664 42 0 2.000000 50 0 20 0 0 2 100 0 3 0 0 0
+ 0
+0
+
+ itm_fatseveredarm Severed_Arm Severed_Arm 1  fatseveredarm 0  262151 5100273664 42 0 2.000000 50 0 25 0 0 10 100 0 8 0 0 0
+ 0
+0
+
+ itm_severedarm Severed_Arm Severed_Arm 1  severedarm 0  262151 5100273664 42 0 2.000000 50 0 15 0 0 3 100 0 8 0 0 0
+ 0
+0
+
+ itm_invisible_head Headless Headless 1  invalid_item 0  2147483660 0 0 704643238 4.000000 100 0 0 0 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_cut_off_head_male Bloody_Male_Head Bloody_Male_Head 1  cut_off_head_male 0  2147483660 0 0 704643238 4.000000 100 0 0 0 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_cut_off_head_female Bloody_Female_Head Bloody_Female_Head 1  cut_off_head_female 0  2147483660 0 0 704643238 4.000000 100 0 0 0 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_default_male_no_right_arm Your_right_arm_is_missing! Your_right_arm_is_missing! 1  man_body_right_arm_gone 0  553648141 0 0 0 0.000000 5 0 0 0 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_default_male_no_left_arm Your_left_arm_is_missing! Your_left_arm_is_missing! 1  man_body_left_arm_gone 0  553648141 0 0 0 0.000000 5 0 0 0 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_default_male_no_arms Your_arms_are_missing! Your_arms_are_missing! 1  man_body_both_arms_gone 0  553648141 0 0 0 0.000000 5 0 0 0 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_supercrossbow Semi-Automatic_Crossbow Semi-Automatic_Crossbow 1  crossbow_b 0  17592192335881 5637160960 10 131082 3.000000 10 0 0 240 0 0 68 110 0 30 326 0
+ 0
+0
+
+ itm_super_bolts Super_Bolts Super_Bolts 4  bolt 0  bolt 2305843009213693952  bolt_bag 3458764513820540928  bolt_bag_b 3458768911867052032  16777222 1879048192 10 4398046511112 2.000000 5 0 0 0 0 0 0 0 63 200 316 0
+ 0
+0
+
+ itm_supersledge Power-Sledge Power-Sledge 1  maul_b 0  279246274563 9223635925844623584 1000 262164 10.000000 100 0 0 0 0 22528 100 0 90 0 256 662
+ 0
 0
 
  itm_items_end Items_End Items_End 1  shield_round_a 0  0 0 1 0 0.000000 100 0 0 0 0 0 0 0 0 0 0 0
