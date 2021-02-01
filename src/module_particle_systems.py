@@ -41,6 +41,34 @@ from header_particle_systems import *
 ####################################################################################################################
 
 particle_systems = [
+
+    ("water_hit_a", psf_billboard_3d | psf_randomize_size | psf_randomize_rotation | psf_global_emit_dir, "prtcl_splash_b",
+        80, 1.5, 4, 0.8, 0, 0, #num_particles, life, damping, gravity_strength, turbulance_size, turbulance_strength
+        (0.0, 1), (1, 0),     #alpha keys
+        (0.0, 0.95), (1, 0.95),          #red keys
+        (0.0, 0.90), (1, 0.90),           #green keys
+        (0.0, 0.70), (1, 0.70),          #blue keys
+        (0, 0.3), (1, 2),  #scale keys
+        (0, 0, 0),         #emit box size
+        (0, 0, 6),               #emit velocity
+        0,                      #emit dir randomness
+        100,                     #rotation speed
+        0.2                       #rotation damping
+    ),
+
+    ("water_hit_b",psf_randomize_size | psf_randomize_rotation | psf_turn_to_velocity|psf_global_emit_dir, "prtcl_splash_b",
+        4, 3, 0, 0, 0, 0, #num_particles, life, damping, gravity_strength, turbulance_size, turbulance_strength
+        (0.0, 1), (1, 0),     #alpha keys
+        (0.0, 0.95), (1, 0.95),          #red keys
+        (0.0, 0.90), (1, 0.90),           #green keys
+        (0.0, 0.70), (1, 0.70),          #blue keys
+        (0, 1), (1, 5),  #scale keys
+        (0.1, 0.1, 0),         #emit box size
+        (0, 0, -0.01),               #emit velocity
+        0,                      #emit dir randomness
+        25,                     #rotation speed
+        0.15                       #rotation damping
+    ),
   
     ("game_rain", psf_billboard_2d|psf_global_emit_dir|psf_always_emit, "prtcl_rain",
      500, 0.5, 0.33, 1.0, 10.0, 0.0,     #num_particles, life, damping, gravity_strength, turbulance_size, turbulance_strength

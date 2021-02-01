@@ -61,6 +61,18 @@ def modmerge(var_set):
 
 scripts = [
 
+  # script_game_missile_dives_into_water
+  # Input: arg1 = missile_item_id, pos1 = missile_position_on_water
+  # Output: none 
+    ("game_missile_dives_into_water",
+      [ 
+    #(store_script_param, ":missile_item_id", 1),
+      (copy_position, pos51, pos1), 
+      (particle_system_burst_no_sync, "psys_water_hit_a", pos51, 8),
+      (position_move_z, pos51, 5, 1),
+      (particle_system_burst_no_sync, "psys_water_hit_b", pos51, 4),
+    ]),
+
   # Easy regulars upgrading kit
   ("calculate_upgrade_troops", 
   [
