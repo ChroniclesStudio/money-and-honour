@@ -22436,6 +22436,24 @@ scripts = [
 
       (troop_clear_inventory, ":merchant_troop"),
       (troop_add_merchandise, ":merchant_troop", itp_type_goods, ":number_of_items_in_village"),
+      ### cultural restriction ###
+              (try_begin),
+                  (party_get_slot, ":culture", ":village_no", slot_center_culture),
+                  (store_add, ":number_of_eqslot", ":number_of_items_in_village", 10),
+                      (try_for_range, ":inv", 9, ":number_of_eqslot"),
+                          (try_begin), 
+                  (eq,":culture",fac_culture_6),#sarranids
+                              (troop_get_inventory_slot, ":haram", ":merchant_troop", ":inv"),
+                #(this_or_next|eq,":haram",itm_boar_meat),
+                #(this_or_next|eq,":haram",itm_deer_meat),
+                  (eq,":haram",itm_pork),
+                  (troop_remove_item, ":merchant_troop", ":haram"),
+                  (store_random_in_range, ":halyal", itm_cheese,itm_chicken),
+                  (troop_add_item,":merchant_troop",":halyal",0),
+            (try_end),
+        (try_end),
+              (try_end),
+      ### cultural restriction end ###		
       (troop_ensure_inventory_space, ":merchant_troop", 80),
 
       #Adding 1 prosperity to the village while reducing each 3000 gold from the elder
