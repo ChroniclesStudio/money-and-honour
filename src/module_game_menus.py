@@ -943,7 +943,7 @@ game_menus = [
 		   (troop_raise_proficiency, "trp_player",0,400),
 		   (troop_raise_proficiency, "trp_player",1,400),
            (troop_raise_proficiency, "trp_player",2,400),
-	    	(troop_raise_proficiency, "trp_player",3,400),
+	    	(troop_raise_proficiency, "trp_player",3,40),
         (troop_raise_proficiency, "trp_player",4,400),
 		(troop_raise_proficiency, "trp_player",5,400),
 		(troop_raise_proficiency, "trp_player",6,400),

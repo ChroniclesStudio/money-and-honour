@@ -1304,7 +1304,6 @@ enemy_talk_2
 party_encounter_routed_agents_are_caught
 party_encounter_routed_agents_are_caught2
 sell_prisoner_outlaws
-prisoner_chat_2
 prisoner_chat_accept_confirm
 prisoner_chat_accept3
 prisoner_chat_commoner
@@ -1333,6 +1332,7 @@ prisoner_chat_treason_not_guilty
 prisoner_chat_treason_guilty
 prisoner_chat_treason_final_words
 prisoner_chat_treason_execute
+prisoner_chat_2
 prisoner_chat_3
 prisoner_chat_4
 town_merchant_talk

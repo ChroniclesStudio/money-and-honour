@@ -25429,8 +25429,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone,"sell_prisoner_outlaws", [], "I suppose that'll be all, then.", "close_window",[]],
 # Ryan END
 
-  [anyone|plyr,"prisoner_chat", [], "Do not try running away or trying something stupid. I will be watching you.", "prisoner_chat_2",[]],
-  ###################################################################################################
+    ###################################################################################################
   # Prisoner Talk - Originally written by Leprechaun, majorly overhauled & extended by Mordachai
   ###################################################################################################
 
@@ -25708,6 +25707,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   ###################################################################################################
   # End Prisoner Talk
   ###################################################################################################
+  [anyone|plyr,"prisoner_chat", [], "Do not try running away or trying something stupid. I will be watching you.", "prisoner_chat_2",[]],
   [anyone,"prisoner_chat_2", [], "No, I swear I won't.", "prisoner_chat_3",[]],
   [anyone|plyr,"prisoner_chat_3", [(store_conversation_troop, "$g_talk_troop"),(neg|troop_is_hero, "$g_talk_troop"),], "I know you won't, because I gonna eat you!", "prisoner_chat_4",[]],
   [anyone|plyr,"prisoner_chat_3", [], "Good.", "close_window",[]],
