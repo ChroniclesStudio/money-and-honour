@@ -61,6 +61,79 @@ def modmerge(var_set):
 
 scripts = [
 
+  #---------------------------------------
+  #Party Hiding by cdvader.
+
+  #script_hide_center
+  #Input: center to hide.
+  #Output: center hidden.
+  ("hide_center",
+  [
+      (store_script_param, ":center", 1),
+      (party_set_flags, ":center", pf_disabled, 1),
+  ]),
+
+  #script_hide_centers_in_range
+  #Input 1: center to disable BEGIN.
+  #Input 2: center to disable END.
+  #Output: Disables centers.
+  ("hide_centers_in_range",
+  [
+      (store_script_param, ":center_begin", 1),
+  (store_script_param, ":center_end", 2),
+  (assign, ":temp_val", ":center_end"),
+  (val_add, ":temp_val", 1),
+  (try_for_range, ":center", ":center_begin", ":temp_val"),
+      (party_set_flags, ":center", pf_disabled, 1),
+  (try_end),
+  ]),
+
+  #script_hide_all_centers
+  #Input: None.
+  #Output: centers hidden.
+  ("hide_all_centers",
+  [
+      (try_for_range, ":center", centers_begin, centers_end),
+      (party_set_flags, ":center", pf_disabled, 1),
+  (try_end),
+  ]),
+
+  #script_enable_center
+  #Input: center to enable.
+  #Output: Enables the given center.
+  ("enable_center",
+  [
+      (store_script_param, ":center", 1),
+  (party_set_flags, ":center", pf_disabled, 0),
+  ]),
+
+  #script_enable_centers_in_range
+  #Input 1: centers to enable BEGIN.
+  #Input 2: centers to enable END.
+  #Output: Enables centers.
+  ("enable_centers_in_range",
+  [
+      (store_script_param, ":center_begin", 1),
+  (store_script_param, ":center_end", 2),
+  (assign, ":temp_val", ":center_end"),
+  (val_add, ":temp_val", 1),
+  (try_for_range, ":center", ":center_begin", ":temp_val"),
+      (party_set_flags, ":center", pf_disabled, 0),
+  (try_end),
+  ]),
+
+  #script_enable_all_centers
+  #Input: None.
+  #Output: None.
+  ("enable_all_centers",
+  [
+      (try_for_range, ":center", centers_begin, centers_end),
+      (party_set_flags, ":center", pf_disabled, 0),
+  (try_end),
+  ]),
+
+  #---------------------------------------
+
   # script_game_missile_dives_into_water
   # Input: arg1 = missile_item_id, pos1 = missile_position_on_water
   # Output: none 

@@ -4112,6 +4112,23 @@ simple_triggers = [
    []),
   (24,
    []),
+
+   #---------------------------------------
+  #Party Hiding by cdvader.
+
+  (0.1,
+  [
+      (try_for_range, ":center", centers_begin, centers_end),
+      (store_distance_to_party_from_party, ":dist", ":center", "p_main_party"),
+  (party_get_skill_level, ":skl_level", "p_main_party", skl_spotting),
+  (val_sub, ":dist", ":skl_level"),
+  (lt, ":dist", 10),
+  (assign, ":chosen_center", ":center"),
+  (party_set_flags, ":chosen_center", pf_disabled, 0),
+  (try_end),
+  ])
+
+  #---------------------------------------
 ]
 # modmerger_start version=201 type=2
 try:
