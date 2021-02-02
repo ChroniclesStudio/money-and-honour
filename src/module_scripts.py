@@ -14316,6 +14316,21 @@ scripts = [
 ##    ]),
 ##
 ##  #script_game_get_party_speed_multiplier
+  # This script is called from the game engine when a skill's modifiers are needed
+  # INPUT: arg1 = party_no
+  # OUTPUT: trigger_result = multiplier (scaled by 100, meaning that giving 100 as the trigger result does not change the party speed)
+  ("game_get_party_speed_multiplier",
+  [
+    (store_script_param_1, ":party_no"),
+
+    (assign,":speed_multiplier",100),
+    (try_begin), 
+  (eq,":party_no","p_main_party"),  
+  (val_sub,":speed_multiplier","$fatique_stamina"),  ## smooth scale of map speed
+    (try_end),
+    (val_max, ":speed_multiplier", 0),
+    (set_trigger_result, ":speed_multiplier"),
+  ]),
 ##  # This script is called from the game engine when a skill's modifiers are needed
 ##  # INPUT: arg1 = party_no
 ##  # OUTPUT: trigger_result = multiplier (scaled by 100, meaning that giving 100 as the trigger result does not change the party speed)

@@ -23,6 +23,26 @@ from module_constants import *
 
 simple_triggers = [
 
+(1, [
+  (try_begin),
+  (eq, "$g_camp_mode",0), 
+                  (val_add,"$fatique_stamina",1),  
+  (else_try), 
+  (try_begin),
+    (eq,"$g_camp_mode",2),  ## resting in town 
+    (val_sub,"$fatique_stamina",3), 
+  (else_try),   
+    (val_sub,"$fatique_stamina",2), 
+  (try_end), 
+  (try_begin),
+      (lt,"$fatique_stamina",0), ## stamina cant be lower than 0
+  (assign,"$fatique_stamina",0), 
+  (try_end),
+
+  (try_end),
+
+  ]),
+
 # This trigger is deprecated. Use "script_game_event_party_encounter" in module_scripts.py instead  
   (ti_on_party_encounter,
    [

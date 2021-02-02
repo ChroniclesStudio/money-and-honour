@@ -1270,6 +1270,7 @@ yael_status_box
 yael_requirement_box
 gpu_ccp_mode
 gpu_object
+fatique_stamina
 training_ground_position_changed
 bug_fix_version
 g_notification_menu_var2
