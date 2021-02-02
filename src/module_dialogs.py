@@ -5244,6 +5244,28 @@ dialogs = [
    "Surrender! Your situation is hopeless!", "player_siege_ask_surrender", []],
   [anyone|plyr,"player_siege_castle_commander_1", [], "Nothing. I'll leave you now.", "close_window", []],
 
+  ##Exa Native - Buy Fief in Siege
+  [anyone|plyr,"player_siege_castle_commander_1", [], "No more bloodshed for us in this place. I'll buy this fief.", "player_siege_buy_fief", []],
+
+  [anyone,"player_siege_buy_fief", [(lt, "$g_talk_troop_faction_relation", -60),],    "Never, A glory can't be exchange for money.", "close_window", []], # This is the response if you are too much hated by the enemy, just delete this if you doesn't want this
+  [anyone,"player_siege_buy_fief", 
+[(assign, reg3, "$g_enemy_fit_for_battle"),
+    (store_mul,"$g_enemy_need_money","$g_enemy_fit_for_battle",100), #This is the multiplier, just change if it too much
+(store_troop_gold,"$g_player_gold",trp_player),
+(assign, reg2,"$g_enemy_need_money"),
+],    "Give us {reg2} denars for {reg3} people as final salary, I'm sure they will be disbanded in peace", "player_siege_buy_fief_response", []],
+
+        [anyone|plyr,"player_siege_buy_fief_response", [(ge,"$g_player_gold","$g_enemy_need_money"),],  "Sure, for live of my troops and your troops", "player_siege_buy_fief_2", 
+[ (troop_remove_gold, "trp_player", "$g_enemy_need_money"),
+(val_add, "$g_talk_troop_faction_relation", 3),
+        (assign, "$g_next_menu", "mnu_castle_taken"),
+        (jump_to_menu, "mnu_total_victory"),]],
+
+        [anyone|plyr,"player_siege_buy_fief_response", [(assign, reg2,"$g_enemy_need_money"),],  "{reg2} denars?! Neverminds", "close_window", []],
+
+        [anyone,"player_siege_buy_fief_2", [],    "Like I said before, We will leave this place in peace", "close_window", []],
+  ##Exa Native - Buy Fief in Siege Ends
+
   
   [anyone,"player_siege_ask_surrender", [(lt, "$g_enemy_strength", 100), (store_mul,":required_str","$g_enemy_strength",5),(ge, "$g_ally_strength", ":required_str")],
    "Perhaps... Do you give your word of honour that we'll be treated well?", "player_siege_ask_surrender_treatment", []],

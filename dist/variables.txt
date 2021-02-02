@@ -107,6 +107,9 @@ disable_local_histories
 g_mission_result
 g_invite_faction
 g_invite_faction_lord
+g_enemy_need_money
+g_player_gold
+g_next_menu
 g_enemy_surrenders
 g_castle_left_to_player
 g_reset_mission_participation
@@ -283,7 +286,6 @@ g_ally_party
 new_encounter
 g_encounter_is_in_village
 g_encounter_type
-g_next_menu
 g_battle_result
 g_engaged_enemy
 g_village_raid_evil
