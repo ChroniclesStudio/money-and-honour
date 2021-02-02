@@ -31855,14 +31855,16 @@ scripts = [
     ]),
 
 
-  # script_create_village_farmer_party
+# script_create_village_farmer_party
   # Input: arg1 = village_no
   # Output: reg0 = party_no
   ("create_village_farmer_party",
    [(store_script_param, ":village_no", 1),
     (party_get_slot, ":town_no", ":village_no", slot_village_market_town),
     (store_faction_of_party, ":party_faction", ":town_no"),
-
+    (faction_get_slot, ":reinforcements_a", ":party_faction", slot_faction_reinforcements_a), # get template from owner faction just in case something screws up
+##    (faction_get_slot, ":reinforcements_b", ":party_faction", slot_faction_reinforcements_b), # you can insert stronger units if you want, a is weakest, b is medium, c is strongest
+##    (faction_get_slot, ":reinforcements_c", ":party_faction", slot_faction_reinforcements_c),
 	
 #    (store_faction_of_party, ":town_faction", ":town_no"),
 #    (try_begin),
@@ -31894,6 +31896,14 @@ scripts = [
 	    (party_set_slot, ":new_party", slot_party_type, spt_village_farmer),
 	    (party_set_slot, ":new_party", slot_party_ai_state, spai_trading_with_town),
 	    (party_set_slot, ":new_party", slot_party_ai_object, ":town_no"),
+		#(store_faction_of_party, ":village_faction", ":village_no"),
+		#(try_begin),
+		#  (eq, ":village_faction", "fac_player_supporters_faction"),
+		(party_get_slot, ":reinforcement_faction", ":village_no", slot_center_original_faction), # Script changed to make farmer troops local based on their village
+		(faction_get_slot, ":reinforcements_a", ":reinforcement_faction", slot_faction_reinforcements_a),
+	    #(try_end),
+	    (party_add_template, ":new_party", ":reinforcements_a"), #1 peasant/militia template
+#		(party_add_template, ":new_party", ":reinforcements_a"), #you can add multiple if you want, just uncomment and copy and paste
 	    (party_set_ai_behavior, ":new_party", ai_bhvr_travel_to_party),
 	    (party_set_ai_object, ":new_party", ":town_no"),
 	    (party_set_flags, ":new_party", pf_default_behavior, 0),
@@ -31905,6 +31915,25 @@ scripts = [
 	    (try_end),
 	    (assign, reg0, ":new_party"),
 	(try_end),
+
+#	(try_begin), # Template for reinforcements from caravan script, not actually part of the farmer party script but you can see how it works
+#	  (eq, ":party_type", spt_kingdom_caravan),
+#	  (try_begin),
+#		(eq, ":faction_no", "fac_player_supporters_faction"),
+#		(party_get_slot, ":reinforcement_faction", ":spawn_center", slot_center_original_faction),
+#		(faction_get_slot, ":reinforcements_b", ":reinforcement_faction", slot_faction_reinforcements_b),
+#	  (try_end),
+#	  (party_add_template, ":result", ":reinforcements_b"),
+#	  (party_add_template, ":result", ":reinforcements_b"),
+#	  (party_set_ai_behavior,":result",ai_bhvr_travel_to_party),
+#	  (party_set_ai_object,":result",":spawn_center"),
+#	  (party_set_flags, ":result", pf_default_behavior, 1),
+#	  (store_sub, ":item_to_price_slot", slot_town_trade_good_prices_begin, trade_goods_begin),
+#	  (try_for_range, ":cur_goods", trade_goods_begin, trade_goods_end),
+#		(store_add, ":cur_goods_price_slot", ":cur_goods", ":item_to_price_slot"),
+#		(party_set_slot, ":result", ":cur_goods_price_slot", average_price_factor),
+#	  (try_end),
+#	(try_end),
 	
     ]),
 
