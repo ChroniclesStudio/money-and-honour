@@ -1,4 +1,4 @@
-1255
+1256
 qstr_{reg1}_kills {reg1}_kills
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
@@ -1242,6 +1242,7 @@ qstr_Another_fool_come_to Another_fool_come_to_throw_{him/her}self_on_my_weapon,
 qstr_We_re_not_afraid_of_ We're_not_afraid_of_you,_{sirrah/wench}._Time_to_bust_some_heads!
 qstr_That_was_a_mistake._ That_was_a_mistake._Now_I'm_going_to_have_to_make_your_death_long_and_painful.
 qstr_Brave_words._Let_s_s Brave_words._Let's_see_you_back_them_up_with_deeds,_cur!
+qstr_{s1}_is_the_new_King {s1}_is_the_new_King_of_the_{s2}!!!
 qstr_A_{s5}?_Well..._Yes_ A_{s5}?_Well..._Yes,_I_suppose_it_is._What_a_strange_thing_to_ask.
 qstr_Eh?_No_it_most_certa Eh?_No,_it_most_certainly_is_not_a_{s5}._I'd_start_questioning_my_eyesight_if_I_were_you.
 qstr_This_is_the_{reg4?to This_is_the_{reg4?town:village}_of_{s5},_{sir/madam}.

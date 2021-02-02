@@ -25430,6 +25430,284 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 # Ryan END
 
   [anyone|plyr,"prisoner_chat", [], "Do not try running away or trying something stupid. I will be watching you.", "prisoner_chat_2",[]],
+  ###################################################################################################
+  # Prisoner Talk - Originally written by Leprechaun, majorly overhauled & extended by Mordachai
+  ###################################################################################################
+
+  # this is a dummy dialog - it sets up the globals we need
+  [anyone|plyr, "prisoner_chat", [
+    (store_conversation_troop,"$g_talk_troop"),
+    (store_troop_faction,"$g_talk_troop_faction","$g_talk_troop"),
+    (store_relation, "$g_talk_troop_faction_relation", "$g_talk_troop_faction", "fac_player_faction"),
+    (call_script, "script_troop_get_player_relation", "$g_talk_troop"),
+    (assign, "$g_talk_troop_relation", reg0),
+    (eq, 1, 0)
+  ], "", "close_window", []],
+
+  # the following is intended to catch when you free up space for a prisoner that already agreed to join you
+  [anyone|plyr, "prisoner_chat", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 1),(troops_can_join, 1)], "All right, I have made room for you.", "prisoner_chat_accept_confirm", []],
+  [anyone,      "prisoner_chat_accept_confirm", [], "I am at your command, my {lord/lady}.", "prisoner_chat_accept3", []],
+
+  # and we catch the case where you still don't have any room for a pending conscripted prisoner
+  [anyone|plyr, "prisoner_chat", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 1),(neg|troops_can_join, 1)], "I am sorry, I still have no room for you. You'll have to wait a while longer.", "close_window",[]],
+
+  # default entry (no prior join agreement, or they've previously refused)
+  [anyone|plyr, "prisoner_chat", [(neg|troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero)], "You there!", "prisoner_chat_commoner", []],
+  [anyone|plyr, "prisoner_chat", [(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),(str_store_troop_name, s1, "$g_talk_troop")], "{s1}", "prisoner_chat_lord", []],
+
+  # reaction to you based on noble or low-birth
+  [anyone,     "prisoner_chat_commoner", [], "Me?! (Gulp!)", "prisoner_chat_menu",[]],
+  [anyone,     "prisoner_chat_lord", [(str_store_troop_name, s1, "trp_player")], "Yes, {Lord/Lady} {s1}?", "prisoner_chat_noble",[]],
+
+  # nobles chat begin
+  [anyone|plyr,"prisoner_chat_noble", [], "You are free to go.", "prisoner_chat_noble_prerelease",[]],
+  [anyone|plyr,"prisoner_chat_noble", [], "You will remain my prisoner.", "prisoner_chat_noble_prekeep",[]],
+  [anyone|plyr,"prisoner_chat_noble", [(gt, "$players_kingdom", 0)], "You have committed high treason!", "prisoner_chat_treason",[]],
+
+  [anyone|plyr,"prisoner_chat_noble_prerelease", [], "Despite what you may have heard, I am a {man/woman} of honor.  You are free to go.", "prisoner_chat_noble_release", []],
+  [anyone,     "prisoner_chat_noble_release", [], "I will not forget this act of Chivalry!", "close_window",
+   [
+    # remove the troop from prison
+    (call_script, "script_remove_troop_from_prison", "$g_talk_troop"),
+    (party_remove_prisoners, "p_main_party", "$g_talk_troop", 1),
+
+    # determine how much honor and faction relation change this prisoner is worth
+    (try_begin),
+      # king
+      (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+      (assign, ":honor", 5),
+      (assign, ":fac_reln", 15),
+    (else_try),
+      # other lord
+      (assign, ":honor", 2),
+      (assign, ":fac_reln", 5),
+    (try_end),
+
+    # give the player their honor, faction relation, and lord relation change
+    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
+    (call_script, "script_change_player_honor", ":honor"),
+    (call_script, "script_change_player_relation_with_faction", "$g_talk_troop_faction", ":fac_reln" ),
+  ]],
+
+  [anyone|plyr,"prisoner_chat_noble_prekeep", [], "You will understand if I keep you hostage until your family can afford to... compensate me for certain expenses and hardships I have endured to keep you fed and ...safe... these past weeks.", "prisoner_chat_noble_keep",[]],
+
+  [anyone,     "prisoner_chat_noble_keep", [(ge, "$player_honor", 10),(ge, "$g_talk_troop_relation", 0)], "Truly, this is beneath you.", "close_window",[]],
+  [anyone,     "prisoner_chat_noble_keep", [], "And I trust you will be as understanding when I hunt you down like the dog you are!", "close_window",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1)]],
+
+  # commoners chat begin
+  [anyone|plyr,"prisoner_chat_menu", [], "Hmmm... perhaps you're not as stupid as the rest of those rabble.", "prisoner_chat_offer",[]],
+  [anyone|plyr,"prisoner_chat_menu", [], "As wretched as you are, I cannot help but feel sorry for you.", "prisoner_chat_release",[]],
+  [anyone|plyr,"prisoner_chat_menu", [], "The sight of you makes me sick! You.. Die.. Now!", "prisoner_chat_die1",[]],
+  [anyone|plyr,"prisoner_chat_menu", [], "Get back in line, Scum!", "close_window",[]],
+
+  [anyone|plyr,"prisoner_chat_release", [], "I'm feeling magnanimous today.  Begone, before I change my mind!", "prisoner_chat_release2", []],
+  [anyone,     "prisoner_chat_release2", [], "Oh, thank you, {sir/madam}.  Blessings on you!", "close_window",
+    [(remove_troops_from_prisoners, "$g_talk_troop", 1),(call_script, "script_change_player_honor", 1)]],
+
+  [anyone|plyr,"prisoner_chat_offer", [], "Listen, scum, you have one last chance to redeem yourself before I sell you to the slave-traders.  "\
+                                      "Drop all your previous allegiances and swear fealty to me, obey my every order to the letter, and you'll be paid, fed and equipped.  "\
+                                      "If you don't....well, let's just say that life as a slave will be seemingly unending years of agony, malnutrition and beatings.  "\
+                                      "I'd advise you to think very, very carefully before choosing.  ", "prisoner_chat_reaction",
+                                      [(call_script, "script_determine_prisoner_agreed", "$g_talk_troop", "$g_talk_troop_faction_relation")]],
+
+  [anyone,     "prisoner_chat_reaction", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 1)], "Thank you for your mercy, {sir/madam}. I swear on my mothers grave I will serve you, my {lord/lady}!","prisoner_chat_accept1",[]],
+  [anyone,     "prisoner_chat_reaction", [], "I'll show you what I think of your offer! (The prisoner spits at your feet) There. Now get lost, I'm not interested.", "prisoner_chat_refuse",[]],
+
+  [anyone|plyr,"prisoner_chat_refuse", [], "I see...", "prisoner_chat_menu",[]],
+
+  [anyone|plyr,"prisoner_chat_die1", [], "(You advance on the prisoner...)", "prisoner_chat_die2",[]],
+  [anyone,     "prisoner_chat_die2", [], "Please, {sir/madam}, don't kill me. I am a defenceless prisoner. Surely you're not that cruel?", "prisoner_chat_die3",[]],
+  [anyone|plyr,"prisoner_chat_die3", [], "(Kill the prisoner)", "prisoner_chat_die4",[]],
+  [anyone|plyr,"prisoner_chat_die3", [], "No, I will not sink that low.", "close_window",[]],
+  [anyone|plyr,"prisoner_chat_die4", [], "(The prisoner struggles against his shackles, desperate to free himself and escape you, but to no avail. You slit their throat with a knife and watch, satisfied, as his corpse sags to the floor.)", "close_window",
+   [(remove_troops_from_prisoners, "$g_talk_troop", 1),
+    (call_script, "script_change_player_honor", -1)]],
+
+  [anyone|plyr, "prisoner_chat_accept1", [], "If you so much as fail to tremble on my command, I will have you severely disciplined!", "prisoner_chat_accept2",[]],
+  [anyone|plyr, "prisoner_chat_accept1", [], "In my camp we are all treated as equals.  I expect your obedience, but also your trust.", "prisoner_chat_accept2",[]],
+
+  [anyone,      "prisoner_chat_accept2", [], "I will obey your wishes, my {lord/lady}.  I swear!", "prisoner_chat_accept3",[]],
+
+  [anyone|plyr, "prisoner_chat_accept3", [(neg|troops_can_join, 1)], "Oh! Apparently there isn't enough room for you in my party. I will be back when I have made space.", "close_window", []],
+  [anyone|plyr, "prisoner_chat_accept3", [(troops_can_join, 1)], "Excellent. Report to the quartermaster for provisions and equiment.  There is hard fighting ahead.", "close_window",
+   [(troop_set_slot, "$g_talk_troop", slot_prisoner_agreed, 0),
+    (remove_troops_from_prisoners, "$g_talk_troop",1),
+    (party_add_members, "p_main_party", "$g_talk_troop", 1),
+    (call_script, "script_change_troop_renown", "trp_player", 1),]],
+
+  [anyone|plyr, "prisoner_chat_treason", [(str_store_troop_name, s1, "$g_talk_troop"), (str_store_faction_name, s2, "$players_kingdom")],
+    "{s1}, you have committed cimes against the {s2}, for which you will now stand trial.^How plead you?", "prisoner_chat_treason_plead",
+    [
+      # determine the noble's reaction to this accusation
+      (store_random_in_range, reg0, 1, 5),#bug: must set upper number one higher to actually generate correct range
+      #TODO: weight the reaction according to the renown?  Or at least according to king or not...
+      (troop_set_slot, "$g_talk_troop", slot_prisoner_agreed, reg0),
+    ]
+  ],
+
+  [anyone,      "prisoner_chat_treason_plead", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 1),],
+    "Please have mercy upon my soul.  All I have done, I have done in the name of my King and Country!  I am but a patriot, as you, and I deserve your respect, if nothing else.", "prisoner_chat_treason_choose", []],
+  [anyone,      "prisoner_chat_treason_plead", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 2),],
+    "You are gravely mistaken!  I am an honorable Lord, and I have done nothing that you would not do were our roles exchanged.", "prisoner_chat_treason_choose", []],
+  [anyone,      "prisoner_chat_treason_plead", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 3),],
+    "I spit on you and yours!  You are but a cur come to put on airs, as though you were Noble and had any right whatsoever to judge me!  Me!  You are a nothing but a common brigand and a coward!  I do not bow to you.  You should drop to your knees and beg *my* forgiveness!", "prisoner_chat_treason_choose", []],
+  [anyone,      "prisoner_chat_treason_plead", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 4),],
+    "You dare accuse me?!  You sniveling whelpling!  I should see you flogged and put in chains in one of my prisons for your insolence!", "prisoner_chat_treason_choose", []],
+
+  [anyone|plyr, "prisoner_chat_treason_choose", [], "I am a {man/woman} of honor.  I shall spare your life this day!", "prisoner_chat_treason_not_guilty",
+    [
+      #TODO: have the relation with the prison have a mixed (random) result - relief, anger, etc, which dictates their final monologue to the player before exiting the dialog
+
+      # make sure we don't try to recruit this prisoner later!
+      (troop_set_slot, "$g_talk_troop", slot_prisoner_agreed, 0),
+    ]
+  ],
+
+  [anyone,      "prisoner_chat_treason_not_guilty", [(str_store_troop_name, s1, "trp_player")], "There is yet hope for you, {s1}.", "close_window", []],
+
+  [anyone|plyr, "prisoner_chat_treason_choose", [], "You do not deserve leiniency.  You must pay for your crimes with your life.", "prisoner_chat_treason_guilty", []],
+
+  [anyone|plyr, "prisoner_chat_treason_guilty", [], "For your many crimes against {s1}, I hereby sentence you to death, to be carried out immediately.  Have you any final words to say?", "prisoner_chat_treason_final_words",
+    [(store_random_in_range, reg0, 1, 6), (troop_set_slot, "$g_talk_troop", slot_prisoner_agreed, reg0)]],
+
+  [anyone,      "prisoner_chat_treason_final_words", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 1)], "I believe you will one day come to regret your actions.  There is only one who is worthy to decide another's fate... and that one is not you.", "prisoner_chat_treason_execute", []],
+  [anyone,      "prisoner_chat_treason_final_words", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 2)], "You are a coward and a dog!  May your soul rot eternal, damn you!", "prisoner_chat_treason_execute", []],
+  [anyone,      "prisoner_chat_treason_final_words", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 3)], "Winter's mortality,^locked in frozen indifference,^melts with Spring's rebirth.", "prisoner_chat_treason_execute", []],
+  [anyone,      "prisoner_chat_treason_final_words", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 4)], "You will find no peace on this earth!  I shall haunt thee eternal!  Unto death you will find nothing but unhappiness and fear.  And beyond... only torture and pain!", "prisoner_chat_treason_execute", []],
+  [anyone,      "prisoner_chat_treason_final_words", [(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 5)], "Who are you?^A day passes^We are but children", "prisoner_chat_treason_execute", []],
+
+  [anyone|plyr, "prisoner_chat_treason_execute", [],
+    "(The prisoner struggles against his shackles, desperate to free himself and escape you, but to no avail. You slit his throat and watch, satisfied, as his corpse sags to the floor.)",
+    "close_window",
+    [
+      # attempt to allow the player to see the consequences of their actions
+      #(set_show_messages, 1),  # this not only fails - but messages are hereafter disabled in the main game...
+
+      # make sure we don't try to recruit this prisoner stack later!
+      (troop_set_slot, "$g_talk_troop", slot_prisoner_agreed, 0),
+
+      # "kill" the NPC - force the 48 hr respawn kingdom heros trigger to ignore this troop (no party will be created for this troop, ever again)
+      # [q.v. script_create_kingdom_hero_party]
+      (troop_set_slot, "$g_talk_troop", slot_troop_occupation, slto_dead),
+
+      # remove them from their faction
+      (troop_set_slot, "$g_talk_troop", slot_troop_change_to_faction, "fac_no_faction"),
+      (troop_set_slot, "$g_talk_troop", slot_troop_original_faction, "fac_no_faction"),
+
+      # determine the penalty for this act (based on the honor of the troop they've killed)
+      (troop_get_slot, ":impact", "$g_talk_troop", slot_troop_renown),
+      (val_div, ":impact", -33),
+      (store_div, ":half", ":impact", 2),
+
+      # reduce the player's relationship with every village, town, and castle
+      (try_for_range, ":center", centers_begin, centers_end),
+        (store_faction_of_party, ":faction", ":center"),
+        (store_relation, ":relation", ":faction", "$g_talk_troop_faction"),
+        (try_begin),
+          (le, ":relation", -10),
+          # enemies, half impact
+          (call_script, "script_change_player_relation_with_center", ":center", ":half"),
+        (else_try),
+          # not at war, full impact
+          (call_script, "script_change_player_relation_with_center", ":center", ":impact"),
+        (try_end),
+      (try_end),
+
+      # reduce the player's relationship with every hero, companion, lady, and daughter
+      (try_for_range, ":troop", trp_npc1, trp_heroes_end),
+        # don't make the dead any angrier than they already are!
+        (neg|troop_slot_eq, ":troop", slot_troop_occupation, slto_dead),
+        (store_troop_faction, ":faction", ":troop"),
+        (store_relation, ":relation", ":faction", "$g_talk_troop_faction"),
+        (try_begin),
+          (le, ":relation", -10),
+          # enemies, half impact
+          (call_script, "script_change_player_relation_with_troop", ":troop", ":half"),
+        (else_try),
+          # not at war, full impact
+          (call_script, "script_change_player_relation_with_troop", ":troop", ":impact"),
+        (try_end),
+      (try_end),
+
+      # reduce the player's relationship with every faction (enemies 1/2 as much)
+      (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
+        (store_relation, ":relation", ":faction", "$g_talk_troop_faction"),
+        (try_begin),
+          (le, ":relation", -10),
+          # enemies, half impact
+          (call_script, "script_change_player_relation_with_faction", ":faction", ":half"),
+        (else_try),
+          # not at war, full impact
+          (call_script, "script_change_player_relation_with_faction", ":faction", ":impact"),
+        (try_end),
+      (try_end),
+
+      # apply the honor hit
+      (call_script, "script_change_player_honor", ":impact"),
+
+      # party morale takes a hit as well
+      (call_script, "script_change_player_party_morale", ":half"),
+
+      # but give them renown for this evil deed (their deed spreads upon every tongue, impressing some, and cowing others)
+      (val_mul, ":impact", -1),
+      (call_script, "script_change_troop_renown", "trp_player" , ":impact"),
+
+      # start with the assumption that the fief should return to its faction for redistribution
+      (assign, ":fief_faction", "$g_talk_troop_faction"),
+
+      (try_begin),
+        # handle executing the King!
+        (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+
+        # find best candidate to become king
+        (assign, ":best_troop", -1),
+        (assign, ":best_renown", -1),
+        (try_for_range, ":troop", trp_kingdom_heroes_including_player_begin, trp_knight_6_20),
+          (neg|troop_slot_eq, ":troop", slot_troop_occupation, slto_dead),  #can't choose a dead hero!
+          (store_troop_faction, ":faction", ":troop"),
+          (eq, ":faction", "$g_talk_troop_faction"),
+          (troop_slot_eq, ":troop", slot_troop_occupation, slto_kingdom_hero),  #only other heros of this faction may become the king
+          (troop_get_slot, ":renown", ":troop", slot_troop_renown),
+          (gt, ":renown", ":best_renown"),
+          (assign, ":best_troop", ":troop"),
+          (assign, ":best_renown", ":renown"),
+        (try_end),
+
+        (try_begin),
+          # check if a candidate was found
+          (neq, ":best_troop", -1),
+
+          # make them king
+          (faction_set_slot, "$g_talk_troop_faction", slot_faction_leader, ":best_troop"),
+
+          # announce it!
+          #TODO: generate a presentation for this! (start_presentation, "prsnt_enemy_succession"),
+          (str_store_troop_name, s1, ":best_troop"),
+          (str_store_faction_name, s2, "$g_talk_troop_faction"),
+          (display_message, "@{s1} is the new King of the {s2}!!!", 0xFFFF2222),
+          #TODO: update the game log for this event
+        (else_try),
+          # all of the lords have been eliminated - so eliminate the faction by making their last fief neutral (q.v. trigger: # Check if a faction is defeated every day)
+          (assign, ":fief_faction", "fac_no_faction"),
+        (try_end),
+      (try_end),
+
+      # free up the deceased's fief
+      (try_for_range, ":fief", centers_begin, centers_end),
+        (party_get_slot, ":lord", ":fief", slot_town_lord),
+        (eq, ":lord", "$g_talk_troop"),
+        (call_script, "script_give_center_to_faction", ":fief", ":fief_faction"),
+      (try_end),
+
+      # no longer our prisoner
+      (call_script, "script_remove_troop_from_prison", "$g_talk_troop"),
+      (remove_troops_from_prisoners, "$g_talk_troop", 1),
+    ]
+  ],
+
+  ###################################################################################################
+  # End Prisoner Talk
+  ###################################################################################################
   [anyone,"prisoner_chat_2", [], "No, I swear I won't.", "prisoner_chat_3",[]],
   [anyone|plyr,"prisoner_chat_3", [(store_conversation_troop, "$g_talk_troop"),(neg|troop_is_hero, "$g_talk_troop"),], "I know you won't, because I gonna eat you!", "prisoner_chat_4",[]],
   [anyone|plyr,"prisoner_chat_3", [], "Good.", "close_window",[]],

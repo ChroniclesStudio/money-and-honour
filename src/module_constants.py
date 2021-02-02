@@ -959,6 +959,10 @@ slot_troop_kingsupport_state			= 142
 slot_troop_kingsupport_argument			= 143
 slot_troop_kingsupport_opponent			= 144
 slot_troop_kingsupport_objection_state  = 145 #0, default, 1, needs to voice, 2, has voiced
+####Mordechai EPC Begin
+slto_dead                               = 146
+slot_prisoner_agreed                    = 147
+####Mordechai EPC End
 
 slot_troop_days_on_mission		        = 150
 slot_troop_current_mission			    = 151

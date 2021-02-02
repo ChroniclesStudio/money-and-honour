@@ -61,6 +61,53 @@ def modmerge(var_set):
 
 scripts = [
 
+  #MORDACHAI - update whether the specified prisoner would like to join the player's party
+  # script_determine_prisoner_agreed
+  # Input: arg1 = troop, arg2 = troop faction relation
+  # Output: slot_prisoner_agreed is set to 1 if they agreed, or 0 if not
+  #         reg0 = agreed or not
+  ("determine_prisoner_agreed",
+    [
+      (store_script_param, ":troop", 1),
+      (store_script_param, ":relation", 2),
+
+      # upper bound = Persuasion*3 + Charisma + Leadership*3 + Honor/2 + Renown/100
+      (store_attribute_level, ":charisma", "trp_player", ca_charisma),
+      (store_skill_level, ":persuasion", "skl_persuasion", "trp_player"),
+      (store_skill_level, ":leadership", "skl_leadership", "trp_player"),
+      (val_mul, ":persuasion", 3),
+      (val_mul, ":leadership", 3),
+      (store_div, ":half_honor", "$player_honor", 2),
+      (troop_get_slot, ":renown_factor", slot_troop_renown),
+      (val_div, ":renown_factor", 100),
+      (assign, ":upper_bound", ":persuasion"),
+      (val_add, ":upper_bound", ":leadership"),
+      (val_add, ":upper_bound", ":charisma"),
+      (val_add, ":upper_bound", ":half_honor"),
+      (val_add, ":upper_bound", ":renown_factor"),
+      (val_min, ":relation", ":upper_bound"),
+
+      # determine their reaction (relation...upper_bound)
+      (store_random_in_range, ":reaction", ":relation", ":upper_bound"),
+      (assign, reg1, ":reaction"),
+      (assign, reg2, ":relation"),
+      (assign, reg3, ":upper_bound"),
+      #(display_message, "@Prisoner Agrees Check: rolled a {reg1} out of a possible {reg2}-{reg3}"),#diagnostic only
+
+      # record whether they agree or not
+      (try_begin),
+        (ge, ":reaction", 0),
+        (troop_set_slot, ":troop", slot_prisoner_agreed, 1),
+      (else_try),
+        (troop_set_slot, ":troop", slot_prisoner_agreed, 0),
+      (try_end),
+
+      # return the results
+      (troop_get_slot, reg0, ":troop", slot_prisoner_agreed),
+      #(display_message, "@Prisoner Agrees Check: slot_prisoner_agreed = {reg0?yes:no}"),#diagnostic only
+    ]
+  ),
+
   #---------------------------------------
   #Party Hiding by cdvader.
 
