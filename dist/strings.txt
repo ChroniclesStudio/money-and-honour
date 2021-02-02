@@ -1,5 +1,5 @@
 stringsfile version 1
-3735
+3736
 str_no_string NO_STRING!
 str_empty_string _
 str_yes Yes.
@@ -3403,6 +3403,7 @@ str_profit_from_company_ Profit_from_your_companies._
 str_your_ally_ Your_ally_
 str_s5_has_a_ally_with_s14_ {s21}^*_{s5}_has_a_ally_with_{s14}._
 str_seek_an_ally seek_an_ally
+str_date Date_is_{reg1}_/_{reg2}_/_{reg3}_
 str_faction_troop_tree Faction's_Troop_Tree
 str_lord_defects_rebel Lord_Defects^^{s1}_has_denounced_{s4}_right_to_rule_{s3},_and_joined_{s2}_as_the_rightful_ruler
 str_lord_defects_marshall Lord_Defects^^{s1}_Marshall_of_{s3}_has_abandonded__{reg4?her:his}_allegiance_to_the_{s3},_and_joined_{s2}

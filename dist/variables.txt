@@ -1,3 +1,6 @@
+day
+month
+year
 caravan_escort_state
 qst_bring_back_runaway_serfs_num_parties_fleed
 qst_bring_back_runaway_serfs_num_parties_returned

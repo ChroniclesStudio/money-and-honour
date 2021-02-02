@@ -4343,6 +4343,8 @@ We apologize sincerely if you contributed your suggestions and feedback but were
 ("your_ally_", "Your ally "),
 ("s5_has_a_ally_with_s14_", "{s21}^* {s5} has a ally with {s14}. "),
 ("seek_an_ally", "seek an ally"),
+
+("date","Date is {reg1} / {reg2} / {reg3} "),
   
 ]# modmerger_start version=201 type=2
 try:

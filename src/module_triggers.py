@@ -31,6 +31,17 @@ num_merchandise_goods = 36
 
 
 triggers = [
+
+  #Calender Thingy
+  (0.0, 0, ti_once, [], [(assign,"$day",0), (assign,"$month",1), (assign,"$year",1)]),
+
+  (0.0, 0, 24.0, [(lt, "$day", 31)], [(val_add,"$day",1)]),
+  (0.0, 0, 0.0, [(eq,"$day",31),(lt,"$month",13)], [(val_add,"$month",1), (assign,"$day",1)]),
+  (0.0, 0, 0.0, [(eq,"$month",13)], [(val_add,"$year",1), (assign,"$month",1)]),
+
+  #show  date every 6 hours
+  (0.0, 0, 6.0, [], [(assign,reg(1),"$day"),(assign,reg(2),"$month"),(assign,reg(3),"$year"),(display_message,"str_date")]),
+
 # Tutorial:
   (0.1, 0, ti_once, [(map_free,0)], [(dialog_box,"str_tutorial_map1")]),
 
