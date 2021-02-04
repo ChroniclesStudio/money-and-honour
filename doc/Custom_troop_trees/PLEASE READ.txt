@@ -1,0 +1,41 @@
+HOW DO I INSTALL THIS MOD?
+
+Just copy the Custom Troop Trees folder into your Modules folder (e.g. C:\Program Files (x86)\Mount&Blade Warband\Modules).
+
+CAN I PLAY EXISTING SAVES WITH THIS MOD?
+
+No. This mod is not save game compatible with Diplomacy, Native or any other mod. It is also not compatible with saves from earlier versions of the mod. That sucks I know, but there's only so much I have control over. If you were already playing Custom Troop Trees and wanted to keep going with this update, I'm afraid it won't be possible at this time.
+
+HOW DO I ACCESS THE TROOP CREATION MENU?
+
+You must first become the ruler of your own kingdom. When you start a new game, there will be a character creation option saying your father was an adventurer who became a king, this will make you start the game as a king and immediately have access to troop customisation. When you rule a kingdom, you can either speak to your constable and find the option under recruits and training or use the town menu option "Customise your kingdom's troops" at your court.
+
+CAN I TRANSFER A TROOP TREE I'VE CUSTOMISED TO ANOTHER SAVE?
+
+Not at this time. Maybe the save game editor will work if you select heroes and non-hero troops in the transfer option, but I haven't tested it (back up saves before trying anything). I may look into it in the future.
+
+HOW CAN I MAKE NEW ITEMS APPEAR AS EQUIPMENT OPTIONS FOR MY CUSTOM TROOPS?
+
+If you add items to the mod, whether it be through Morgh's Editor, direct text-editing or source code, you only need to ensure that 3 conditions are met for them to show up in the troop customisation screen:
+
+1. The merchandise flag must be set
+2. The value must be set to a number greater than 0
+3. The item must be positioned before itm_items_end
+
+As of the 24/08/2017 version, new items will show up without needing to start a new game.
+
+I'VE ENCOUNTERED A BUG, WHAT SHOULD I DO?
+
+Bug reports are very helpful for fixing the mod and greatly appreciated. Please check out the following link to see if the bug has already been reported:
+
+https://docs.google.com/spreadsheets/d/1GJjKWGQtCI2ZEiSfqCXYq0BY2wT6lvyoGneT8RXLiE4/edit?usp=sharing
+
+If it hasn't, or if you would like to add more detail and/or your save file or screenshots to help the process of fixing it, you can use the following form:
+
+https://goo.gl/forms/ihtKSuMtDokm3dBy1
+
+Adding a file (e.g. save file or screenshots) is completely optional, if you just want to give a description of the bug that is fine. The more detail you can provide the more likely it'll be that I can find and fix it. If there are error messages, try to let me know exactly what they said. Give me a good run down of what you did leading up to the error. Etc. If you only give me a short message like "[some feature] doesn't work", I can't really figure out how to solve it.
+
+CAN I COMBINE THIS WITH ANOTHER MOD?
+
+If you're just a player, unfortunately not. Combining different Warband mods can be a difficult process and requires that you have Python installed correctly and some idea how the module system works. If you are a modder (one who uses the Module System, not text-editing and Morgh's/TweakMB) then you can absolutely combine this mod with your own or any others you have source code for! I actually designed it in a way that I hoped would make it easy. It uses the ModMerger framework; if you're not familiar with this, it allows you to put your mod's changes into separate files rather directly editing the module files. To merge in Custom Troop Trees, you should not have to directly change any of your module files, just add the new files (all starting with cstm_) along with the modmerger_ and util_ files. You'll then need to run modmerger_installer and follow the prompts to install. If you already had ModMerger set up, remember to add "cstm" to your modmerger_options. With that all done, you might be lucky and have it work right away, or you might need to make changes to make it work. The Constable dialog options won't work for example if your mod doesn't have Diplomacy's Constable troop. You'll very likely want to edit numbers like the numbers of tiers, levels per tier and funds per level for balance purposes. Overall it will hopefully be flexible enough to work with your mod without much extra work, but there have already been examples of this definitely not happening and I'll keep working to try to improve that.

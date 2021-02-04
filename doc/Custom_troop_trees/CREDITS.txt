@@ -1,0 +1,7 @@
+The base of the mod is Diplomacy (https://forums.taleworlds.com/index.php?topic=116424.0)
+
+Some scripting was borrowed from Silverstag: http://www.moddb.com/mods/silverstag
+
+The source uses Lav's Warband Refined & Enhanced Compiler Kit: http://forums.taleworlds.com/index.php/topic,324874.0.html
+
+If you believe I've missed any credits, please just let me know and I'll be happy to add them.

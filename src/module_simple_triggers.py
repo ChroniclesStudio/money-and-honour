@@ -22,7 +22,6 @@ from module_constants import *
 
 
 simple_triggers = [
-
 (1, [
   (try_begin),
   (eq, "$g_camp_mode",0), 
@@ -116,6 +115,75 @@ simple_triggers = [
         (try_end),
 
     (try_end),
+    ]),
+
+(24,
+    [
+      (try_for_parties, ":party_no"),
+        (neq, ":party_no", "p_main_party"),
+        (neq, ":party_no", "p_temp_party"),
+        (assign, ":continue", 0),
+        (try_begin),
+          (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_kingdom_hero_party),
+          (party_slot_eq, ":party_no", slot_party_type, spt_kingdom_caravan),
+          (party_is_active, ":party_no"),
+          (assign, ":continue", 1),
+        (else_try),
+          (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_castle),
+          (party_slot_eq, ":party_no", slot_party_type, spt_town),
+          (neg|party_slot_eq, ":party_no", slot_town_lord, "trp_player"),
+          (assign, ":continue", 1),
+        (try_end),
+        (eq, ":continue", 1),
+        (party_get_num_companion_stacks, ":num_stacks", ":party_no"),
+        (assign, ":last_stack", ":num_stacks"),
+        
+        # start to sort
+        (try_for_range, ":unused", 0, ":num_stacks"),
+          # find highest-level troop
+          (assign, ":best_stack", -1),
+          (assign, ":best_level", -999999),
+          (try_for_range, ":cur_stack", 0, ":last_stack"),
+            (party_stack_get_troop_id, ":cur_troop", ":party_no", ":cur_stack"),
+            (neg|troop_is_hero, ":cur_troop"),
+            (store_character_level, ":troop_level", ":cur_troop"),
+            # level*3 with extra bonuse to differentiate troop types with the same level
+            (val_mul, ":troop_level", 3), 
+            (try_begin),
+              (troop_is_guarantee_horse, ":cur_troop"),
+              (val_add, ":troop_level", 2), # horseman
+            (else_try),
+              (troop_is_guarantee_ranged, ":cur_troop"), # archers
+            (else_try),
+              (val_add, ":troop_level", 1), # footman
+            (try_end),
+            # sort by factions at the same time
+            (store_troop_faction, ":troop_faction", ":cur_troop"),
+            (store_mul, ":faction_bonuse", ":troop_faction", -1000),
+            (val_add, ":troop_level", ":faction_bonuse"),
+            # bonuse for trp_caravan_master of spt_kingdom_caravan
+            (try_begin),
+              (party_slot_eq, ":party_no", slot_party_type, spt_kingdom_caravan),
+              (eq, ":cur_troop", "trp_caravan_master"),
+              (val_add, ":troop_level", 100000000),
+            (try_end),
+            (gt, ":troop_level", ":best_level"),
+            (assign, ":best_level", ":troop_level"),
+            (assign, ":best_stack", ":cur_stack"),
+          (try_end),
+          # already found, move to the end
+          (try_begin),
+            (gt, ":best_stack", -1),
+            (party_stack_get_troop_id, ":stack_troop", ":party_no", ":best_stack"),
+            (party_stack_get_size, ":stack_size", ":party_no", ":best_stack"),
+            (party_stack_get_num_wounded, ":num_wounded", ":party_no", ":best_stack"),
+            (party_remove_members, ":party_no", ":stack_troop", ":stack_size"),
+            (party_add_members, ":party_no", ":stack_troop", ":stack_size"),
+            (party_wound_members, ":party_no", ":stack_troop", ":num_wounded"),
+            (val_sub, ":last_stack", 1),
+          (try_end),
+        (try_end),
+      (try_end),
     ]),
 
   (0,
