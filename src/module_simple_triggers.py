@@ -225,6 +225,37 @@ simple_triggers = [
       (party_relocate_near_party, "p_main_party", "$capturer_party", 0),
     ]),
 
+# exchange villages between lords by the bound_center
+  (24, 
+    [
+      (try_for_range, ":village_no", villages_begin, villages_end),
+        (party_get_slot, ":village_lord", ":village_no", slot_town_lord),
+        (ge, ":village_lord", 1),
+        (party_get_slot, ":bound_center", ":village_no", slot_village_bound_center),
+        (party_get_slot, ":bound_center_lord", ":bound_center", slot_town_lord),
+        (ge, ":bound_center_lord", 1),
+        (neq, ":bound_center_lord", ":village_lord"),
+        # need to exchange villages
+        (assign, ":end_cond", villages_end),
+        (try_for_range, ":village_no_2", villages_begin, ":end_cond"),
+          (party_get_slot, ":village_lord_2", ":village_no_2", slot_town_lord),
+          (eq, ":village_lord_2", ":bound_center_lord"),
+          (party_get_slot, ":bound_center_2", ":village_no_2", slot_village_bound_center),
+          (party_get_slot, ":bound_center_lord_2", ":bound_center_2", slot_town_lord),
+          (ge, ":bound_center_lord_2", 1),
+          (neq, ":bound_center_lord_2", ":bound_center_lord"),
+          # already found, exchange now
+          (party_set_slot, ":village_no", slot_town_lord, ":village_lord_2"),
+          (party_set_slot, ":village_no_2", slot_town_lord, ":village_lord"),
+          (call_script, "script_update_troop_notes", ":village_lord"),
+          (call_script, "script_update_troop_notes", ":village_lord_2"),
+          (call_script, "script_update_center_notes", ":village_no"),
+          (call_script, "script_update_center_notes", ":village_no_2"),
+          (call_script, "script_troop_change_relation_with_troop", ":village_lord", ":village_lord_2", 10),
+          (assign, ":end_cond", 0), # stop
+        (try_end),
+      (try_end),
+    ]),
 
 #Auto-menu
   (0,

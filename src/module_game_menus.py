@@ -3092,6 +3092,59 @@ game_menus = [
        [(jump_to_menu, "mnu_camp_action"),
         ]
        ),
+
+    ## CC
+      ("camp_exchange_village",
+      [
+        (assign, ":has_village", 0),
+        (assign, ":end_cond", villages_end),
+        (try_for_range, ":village_no", villages_begin, ":end_cond"),
+          (party_slot_eq, ":village_no", slot_town_lord, "trp_player"),
+          (assign, ":has_village", 1),
+          (assign, ":end_cond", 0), # stop
+        (try_end),
+        (eq, ":has_village", 1),
+      ],
+      "Exchange villages with lords.",
+       [
+        (assign, ":can_exchange", 0),
+        (assign, ":end_cond", villages_end),
+        (try_for_range, ":village_no", villages_begin, ":end_cond"),
+          (party_get_slot, ":village_lord", ":village_no", slot_town_lord),
+          (ge, ":village_lord", 0),
+          (party_get_slot, ":bound_center", ":village_no", slot_village_bound_center),
+          (party_get_slot, ":bound_center_lord", ":bound_center", slot_town_lord),
+          (ge, ":bound_center_lord", 0),
+          (neq, ":bound_center_lord", ":village_lord"),
+          # need to exchange villages
+          (assign, ":end_cond_2", villages_end),
+          (try_for_range, ":village_no_2", villages_begin, ":end_cond_2"),
+            (neq, ":village_no_2", ":village_no"),
+            (party_get_slot, ":village_lord_2", ":village_no_2", slot_town_lord),
+            (eq, ":village_lord_2", ":bound_center_lord"),
+            (party_get_slot, ":bound_center_2", ":village_no_2", slot_village_bound_center),
+            (party_get_slot, ":bound_center_lord_2", ":bound_center_2", slot_town_lord),
+            (ge, ":bound_center_lord_2", 0),
+            (neq, ":bound_center_lord_2", ":bound_center_lord"),
+            (this_or_next|eq, ":village_lord", "trp_player"),
+            (eq, ":village_lord_2", "trp_player"),
+            # stop
+            (assign, ":end_cond", 0), 
+            (assign, ":end_cond_2", 0),
+            (assign, ":can_exchange", 1),
+            (assign, "$temp_3", ":village_no"),
+          (try_end),
+        (try_end),
+        (try_begin),
+          (eq, ":can_exchange", 0),
+          (jump_to_menu, "mnu_no_village_can_exchange"),
+        (else_try),
+          (jump_to_menu, "mnu_exchange_village"),
+        (try_end),
+        ]
+       ),
+      ## CC
+
       ("camp_wait_here",[],"Wait here for some time.",
        [
            (assign,"$g_camp_mode", 1),
@@ -15051,6 +15104,114 @@ game_menus = [
          (change_screen_return),
         ]),
      ]
+  ),
+
+   ("exchange_village",0,
+   "{s3} wants to exchange {s2} for {s1} with you. What is your answer?",
+   "none",
+   [
+      (try_begin),
+        (ge, "$temp_3", villages_end),
+        (jump_to_menu, "mnu_camp"),
+      (try_end),
+      (assign, ":can_exchange", 0),
+      (assign, ":end_cond", villages_end),
+      (try_for_range, ":village_no", "$temp_3", ":end_cond"),
+        (party_get_slot, ":village_lord", ":village_no", slot_town_lord),
+        (ge, ":village_lord", 0),
+        (party_get_slot, ":bound_center", ":village_no", slot_village_bound_center),
+        (party_get_slot, ":bound_center_lord", ":bound_center", slot_town_lord),
+        (ge, ":bound_center_lord", 0),
+        (neq, ":bound_center_lord", ":village_lord"),
+        # need to exchange villages
+        (assign, ":end_cond_2", villages_end),
+        (try_for_range, ":village_no_2", villages_begin, ":end_cond_2"),
+          (neq, ":village_no_2", ":village_no"),
+          (party_get_slot, ":village_lord_2", ":village_no_2", slot_town_lord),
+          (eq, ":village_lord_2", ":bound_center_lord"),
+          (party_get_slot, ":bound_center_2", ":village_no_2", slot_village_bound_center),
+          (party_get_slot, ":bound_center_lord_2", ":bound_center_2", slot_town_lord),
+          (ge, ":bound_center_lord_2", 0),
+          (neq, ":bound_center_lord_2", ":bound_center_lord"),
+          (this_or_next|eq, ":village_lord", "trp_player"),
+          (eq, ":village_lord_2", "trp_player"),
+          # stop
+          (assign, ":end_cond", 0), 
+          (assign, ":end_cond_2", 0),
+          (assign, ":can_exchange", 1),
+          # string
+          (try_begin),
+            (eq, ":village_lord", "trp_player"),
+            (str_store_party_name, s1, ":village_no"),
+            (str_store_party_name, s2, ":village_no_2"),
+            (str_store_troop_name, s3, ":village_lord_2"),
+          (else_try),
+            (eq, ":village_lord_2", "trp_player"),
+            (str_store_party_name, s1, ":village_no_2"),
+            (str_store_party_name, s2, ":village_no"),
+            (str_store_troop_name, s3, ":village_lord"),
+          (try_end),
+          # output
+          (assign, "$temp", ":village_no"),
+          (assign, "$temp_2", ":village_no_2"),
+          # tableau_mesh
+          (set_fixed_point_multiplier, 100),
+          (position_set_x, pos0, 62),
+          (position_set_y, pos0, 30),
+          (position_set_z, pos0, 170),
+          (set_game_menu_tableau_mesh, "tableau_center_note_mesh", ":village_no", pos0),
+          # new begin
+          (assign, "$temp_3", ":village_no"),
+        (try_end),
+      (try_end),
+      (try_begin),
+        (eq, ":can_exchange", 0),
+        (jump_to_menu, "mnu_camp"),
+      (try_end),
+    ],
+    [
+      ("exchange_village_reject",[],"Let me think it over.",
+       [
+        (val_add, "$temp_3", 1), # begin from next village
+        (jump_to_menu, "mnu_exchange_village"),
+        ]
+       ),
+      ("exchange_village_accept",[],"Accept.",
+       [
+        # exchange now
+        (assign, ":village_no", "$temp"),
+        (assign, ":village_no_2", "$temp_2"),
+        (party_get_slot, ":village_lord", ":village_no", slot_town_lord),
+        (party_get_slot, ":village_lord_2", ":village_no_2", slot_town_lord),
+        (party_set_slot, ":village_no", slot_town_lord, ":village_lord_2"),
+        (party_set_slot, ":village_no_2", slot_town_lord, ":village_lord"),
+        (call_script, "script_update_troop_notes", ":village_lord"),
+        (call_script, "script_update_troop_notes", ":village_lord_2"),
+        (call_script, "script_update_center_notes", ":village_no"),
+        (call_script, "script_update_center_notes", ":village_no_2"),
+        (try_begin), # skip if trp_player is faction leader
+          (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
+          (faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, "trp_player"),
+        (else_try),
+          (call_script, "script_troop_change_relation_with_troop", ":village_lord", ":village_lord_2", 10),
+        (try_end),
+        (val_add, "$temp_3", 1), # begin from next village
+        (jump_to_menu, "mnu_exchange_village"),
+        ]
+       ),
+      ]
+  ),
+
+    ("no_village_can_exchange",0,
+   "No lord wants to exchange villages with you.",
+   "none",
+   [],
+    [
+      ("continue",[],"Continue...",
+       [(jump_to_menu, "mnu_camp"),
+        ]
+       ),
+      ]
   ),
   
  ]

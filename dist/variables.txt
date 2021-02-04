@@ -274,6 +274,7 @@ g_player_eligible_feast_center_no
 g_use_alternative_ai
 g_player_reading_book
 g_player_icon_state
+temp_3
 g_camp_mode
 g_yael_eqmgr_state
 cheat_find_item_range_begin
@@ -376,7 +377,6 @@ last_sneak_attempt_town
 last_sneak_attempt_time
 g_training_ground_melee_training_scene
 g_training_ground_training_count
-temp_3
 g_presentation_marshall_selection_max_renown_2
 g_presentation_marshall_selection_max_renown_2_troop
 g_presentation_marshall_selection_max_renown_1
