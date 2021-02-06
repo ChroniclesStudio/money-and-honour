@@ -598,10 +598,12 @@ merchant_sign_count
 g_city_merchant_troop_id
 g_city_merchant_agent_id
 g_presentation_obj_1
+g_presentation_obj_5
+g_presentation_obj_6
+g_current_opened_item_details
 g_presentation_obj_2
 g_presentation_obj_3
 g_presentation_obj_4
-g_presentation_obj_5
 g_battle_map_width
 g_battle_map_scale
 g_battle_map_height
@@ -756,7 +758,6 @@ g_presentation_obj_item_select_14
 g_presentation_obj_item_select_15
 g_presentation_obj_item_select_16
 g_presentation_obj_item_select_17
-g_current_opened_item_details
 g_inside_obj_1
 g_inside_obj_2
 g_inside_obj_3
@@ -1071,7 +1072,6 @@ kaos_king_titles
 kaos_use_custom_title
 kaos_use_custom_name
 kaos_use_suffixes
-g_presentation_obj_6
 g_presentation_obj_7
 g_presentation_obj_8
 g_presentation_obj_9

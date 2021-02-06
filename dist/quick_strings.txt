@@ -1,4 +1,8 @@
-1256
+1259
+qstr_Weapons Weapons
+qstr_Armors Armors
+qstr_Others Others
+qstr_Done Done
 qstr_{reg1}_kills {reg1}_kills
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
@@ -7,7 +11,6 @@ qstr_Upgrade_to_{s1}_{reg Upgrade_to_{s1}({reg3})
 qstr__ _
 qstr_Previous Previous
 qstr_Next Next
-qstr_Done Done
 qstr_{s0} {s0}
 qstr_Next_Page Next_Page
 qstr_Game_Rules:^ Game_Rules:^

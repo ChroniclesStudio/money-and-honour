@@ -547,6 +547,15 @@ game_menus = [
        [(jump_to_menu, "mnu_faction_orders"),
         ]
        ),
+
+      ## CC
+      ("action_view_all_items",[],"View all items.",
+       [
+        (assign, "$temp", 0),
+        (start_presentation, "prsnt_all_items"),
+        ]
+       ),
+      ## CC
 	   
       ("view_character_report",[],"View character report.",
        [(jump_to_menu, "mnu_character_report"),
