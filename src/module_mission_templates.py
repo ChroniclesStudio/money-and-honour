@@ -3433,6 +3433,107 @@ mission_templates = [
 ##          (store_mission_timer_a,reg(1)),(ge,reg(1),4),
 ##          (call_script, "script_battle_tactic_apply"),
 ##          ], []),
+
+############DDFG Lancer  AI  
+    (1, 0, 0,
+      [
+      ],
+      [
+       (try_for_agents,":agent_no"),
+           (agent_is_alive, ":agent_no"),
+           (agent_is_human, ":agent_no"),
+           (agent_is_non_player,":agent_no"),
+           (agent_get_horse,":horse_no",":agent_no"),
+           (ge,":horse_no",0),                                                                                #cavalry判断是有坐骑，是骑兵
+           (assign, ":isqiangqi", 0),                                
+           (assign, ":gw", 0),
+           (assign, ":id_polearm", 0),
+           (assign, ":id_onehand", 0),
+           (assign, ":id_twohand", 0),
+           (assign, ":id_gw", 0),
+           (try_for_range,":i",0,4),                                                                #cavalry骑兵所带武器类型判断
+               (agent_get_item_slot, ":gitm", ":agent_no", ":i"),
+               (gt,":gitm", 0),
+               (item_get_type,":gtyp",":gitm"),
+               (try_begin),
+                   (eq,":gtyp", itp_type_polearm  ),
+                   (assign, ":isqiangqi", 1),                                                #cavalry骑带有枪
+                   (assign, ":id_polearm", ":gitm"),
+              (else_try),
+                  (eq,":gtyp", itp_type_one_handed_wpn ),
+                  (assign, ":gw", 1),                                                                #cavalry骑带有枪，且有可换单手武器
+                  (assign, ":id_onehand", ":gitm"),
+              (else_try),
+                  (eq,":gtyp", itp_type_two_handed_wpn ),
+                  (assign, ":gw", 1),                                                                #cavalry骑带有枪，且有可换双手武器
+                  (assign, ":id_twohand", ":gitm"),
+             (try_end),
+         (try_end),
+         (eq, ":isqiangqi", 1),                                                                                #cavalry骑带有枪，
+         (eq, ":gw", 1),                                                                                        #cavalry骑带有枪，且有可换单手武器或双手武器
+   ###find the best use weapon
+   ###判断单双手都有时用单手还是双手，（双手熟练度比单手高60时才用双手，否则用单手）
+         (try_begin),
+             (gt,":id_onehand", 0),                                        #cavalry骑带有单手武器，
+             (eq,":id_twohand", 0),                                        #cavalry骑带无双手武器，
+             (assign, ":id_gw", ":id_onehand"),                #cavalry骑可切换武器为单手武器，
+         (else_try),
+             (eq,":id_onehand", 0),
+             (gt,":id_twohand", 0),
+             (assign, ":id_gw", ":id_twohand"),                #cavalry骑无单手有双手可切换武器为双手武器，
+         (else_try),
+             (gt,":id_onehand", 0),                                        #cavalry骑有单手武器，
+             (gt,":id_twohand", 0),                                        #cavalry骑有双手武器，
+             (agent_get_troop_id,":trp1", ":agent_no"),
+             (store_proficiency_level,":p1",":trp1",wpt_one_handed_weapon),
+             (store_proficiency_level,":p2",":trp1",wpt_two_handed_weapon),
+             (store_sub,":cha",":p2",":p1"),                
+             (try_begin),
+                 (gt,":cha", 60),                                        #cavalry骑有双手武器比单手武器熟练度高60时，优先用双手武器
+                 (assign, ":id_gw", ":id_twohand"),
+             (else_try),
+                 (assign, ":id_gw", ":id_onehand"),        #cavalry骑有双手武器比单手武器熟练度低于60时，优先用单手武器
+             (try_end),
+         (try_end),
+   ###
+         (agent_get_team  ,":team_no", ":agent_no"),
+         (agent_get_position, pos34, ":agent_no"),
+         (assign, ":min_dist", 3000),
+   #find mindist enemy判断最近敌距多少
+         (try_for_agents,":cur_agent"),
+             (agent_is_alive, ":cur_agent"),
+             (agent_is_human, ":cur_agent"),
+             (agent_get_team, ":agent_team", ":cur_agent"),
+             (teams_are_enemies, ":agent_team", ":team_no"),
+             (agent_get_position, pos36, ":cur_agent"),
+             (get_distance_between_positions,":cur_dist",pos36,pos34),
+             (lt, ":cur_dist", ":min_dist"),
+             (assign, ":min_dist", ":cur_dist"),
+        (try_end),
+   #find end
+        (set_fixed_point_multiplier, 100),
+        (agent_get_speed, pos35, ":agent_no"),                #获取马速
+        (position_get_y,":speedmul",pos35),
+        (convert_from_fixed_point, ":speedmul"),
+        (agent_get_wielded_item, ":cur_item", ":agent_no"),
+        (gt,":cur_item", 0),
+        (item_get_type,":cur_type",":cur_item"),#武器切换判断逻辑：当最近敌距低于400且马速低于4时切换为单手或双手，否则当马速大于6或最近敌距大于600时（附近无敌）切换为长枪
+        (try_begin),                                        
+            (lt,":min_dist",400),
+            (le,":speedmul",4),
+            (eq,":cur_type",itp_type_polearm),
+            (agent_set_wielded_item, ":agent_no", ":id_gw"),
+        (else_try),
+            (this_or_next|gt,":speedmul",6),
+            (gt,":min_dist",600),
+            (this_or_next|eq,":cur_type",itp_type_one_handed_wpn),
+            (eq,":cur_type",itp_type_two_handed_wpn),
+            (agent_set_wielded_item, ":agent_no", ":id_polearm"),
+       (try_end),
+   (try_end),
+]),
+############DDFE Lancer  AI    
+
     ],
   ),
 
@@ -3948,6 +4049,37 @@ mission_templates = [
       common_battle_order_panel_tick,
       (0, 0, ti_once, [], [(start_presentation, "prsnt_killcount")]), # Personal Kill Count
       common_inventory_not_available,
+
+      ## CC
+      (ti_before_mission_start, 0, 0, [],
+        [
+          (call_script, "script_get_num_ladders"), 
+          (assign, "$num_ladders", reg0),
+          (assign, "$cur_ladder_to_assign_archers", 0),
+          (assign, "$cur_ladder_to_assign_others", 0),
+        ]),
+       
+      (ti_on_agent_spawn, 0, 0, [], 
+        [
+          (store_trigger_param_1, ":cur_agent"),
+          (ge, "$num_ladders", 2),
+          (call_script, "script_setup_bot_initials", ":cur_agent"),
+        ]),
+
+      (0, 2, ti_once, [], 
+        [
+          (set_show_messages, 0),
+          (team_give_order, "$attacker_team", grc_everyone, mordr_charge),
+          (team_give_order, "$attacker_team_2", grc_everyone, mordr_charge),
+          (set_show_messages, 1),
+        ]),
+
+      (0.1, 0, 0, [], 
+       [
+          (ge, "$num_ladders", 2),
+          (call_script, "script_process_siege_attackers"),
+       ]),
+      ## CC
 
       (ti_on_agent_killed_or_wounded, 0, 0, [],
        [

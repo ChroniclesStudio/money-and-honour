@@ -1,0 +1,149 @@
+分享个枪骑近身换成单双手武器AI，16年末就写好了
+一、前言      在写枪骑AI前就有mod有换武器的骑兵AI了，当时领军者潘德法亚都加有骑兵换武器AI，但我发现有频繁换武器的问题，近身会换，反应有点慢，停住了有时呆住三四秒才换剑，快接近敌时才换枪，枪没刺出马又要停了又换回剑，最关键NPC不会换，应该是把npc排除了，我比较喜欢培养重骑NPC,觉得不好用，决定自己学下MSpy整理一个枪骑AI（MS:Module System）
+
+二、找资料研究
+（1）发现基于领军者的骑兵AI(http://bbs.mountblade.com.cn/forum.php?mod=viewthread&tid=446879  by greole)
+骑兵装备到身上的武器不足4件且没有装备长杆武器的话，就会从自己物品栏选一件长杆武器装备上
+骑兵根据自身的速度来自动切换武器，速度过低时换短武器作战，反之换长杆武器
+附近没有敌人时，不论速度如何，骑兵都不会换武器，继续使用当前武器
+弓骑兵(包括投掷骑兵)速度快的时候，使用弓/弩/投掷。速度慢下来的时候，就换近战武器作战(优先使用单手武器，然后是双手武器，最后是长杆)。
+当弓骑兵弹药耗尽时，武器切换行为跟近战骑兵一样。
+玩家发了使用钝器命令之后，骑兵就不再根据情况自动切换长枪和近战武器。骑兵在马上时，会尽量选择长杆武器作战。
+骑兵落马后行为将与步兵一样
+（2）找没多加城镇没大改技能前的领军者1.384的MS看了下，几个兵种合一处写的，大致看了下根据马速切换，长杆还分可否冲刺，太长了加上觉得有频繁换武器问题没细看，领军者发布贴里描述如下：骑兵根据自身的速度来自动切换武器，速度过低时换短武器作战，反之换长杆武器作
+      附近没有敌人时，不论速度如何，骑兵都不会换武器，继续使用当前武器
+      弓骑兵速度快的时候，使用弓。速度慢下来的时候，就换近战武器作战
+      骑射为0级的角色，在马上不会切换出远程武器来使用
+      骑兵在马上的时候，会尽量选择长杆武器。下马之后一定不会使用长杆武器，除非只有长杆武器
+和上面一段差不多，上面段多了使用钝器命令的效果，第二行表示的附近没有敌人时不论速度如何骑兵都不会换武器，我觉得会有问题，除了近身马慢为短兵器，其他情况应该都用长杆我认为，当前为附近没有敌人时也应该为切为长杆，如果为短兵，被别人骑兵快速逼近时再切回长杆，没来及刺，已近身，又切回短兵，这就出现频繁换武器问题；骑射我觉得最主要骚扰，吸引对方骑兵，拖时间，骑射0级不应禁远程；
+（3）在一个实现一键切换NPC同伴长杆/远程的讨论贴里我要的是野战前一键给NPC卸下远程全上长枪，要攻城了或守城了就一键给全体NPC卸下长枪换上远程，省得NPC多一个个点，海涵狮心王理查给出了一段骑兵战场根据马速换武器(http://bbs.mountblade.com.cn/thread-1895874-1-1.html 二楼by海涵狮心王理查)，没有敌距判断，不是我要的，但获取马速的表示有用，和领军者1.384里面对比下，领军者里放大了10倍表示，
+         (agent_get_speed, pos35, ":agent_no"),
+         (position_get_y,":speedmul",pos35),
+         (convert_from_fixed_point, ":speedmul"),
+其他一些不全的弓枪骑AI，script不全没细看
+（4）根据论坛上分享的MS入门资料熟悉MS,了解MS的语法结构，枪骑AI需要的距离判断，获取马速，自己总结整理一个枪骑AI,
+   枪骑AI逻辑：
+   1）判断是枪骑（装有骑枪长杆，有可换单双手武器）
+   2）判断单双手都有时用单手还是双手，（双手熟练度比单手高60时才用双手，否则用单手）
+   3）判断最近敌距
+   4）判断马速
+   5）武器切换判断逻辑：
+        当最近敌距低于400且马速低于4时切换为单手或双手，
+        否则当马速大于6或最近敌距大于600时切换为长枪
+
+
+三、编码实现
+枪骑AI：低速且附近有敌人时才用单双手近战武器，如果近战武器单手双手都有，双手熟练高于单手60以上才用双手；马速高或附近无敌人都持枪；
+############DDFG Lancer  AI  
+    (1, 0, 0,
+      [
+      ],
+      [
+       (try_for_agents,":agent_no"),
+           (agent_is_alive, ":agent_no"),
+           (agent_is_human, ":agent_no"),
+           (agent_is_non_player,":agent_no"),
+           (agent_get_horse,":horse_no",":agent_no"),
+           (ge,":horse_no",0),                                                                                #cavalry判断是有坐骑，是骑兵
+           (assign, ":isqiangqi", 0),                                
+           (assign, ":gw", 0),
+           (assign, ":id_polearm", 0),
+           (assign, ":id_onehand", 0),
+           (assign, ":id_twohand", 0),
+           (assign, ":id_gw", 0),
+           (try_for_range,":i",0,4),                                                                #cavalry骑兵所带武器类型判断
+               (agent_get_item_slot, ":gitm", ":agent_no", ":i"),
+               (gt,":gitm", 0),
+               (item_get_type,":gtyp",":gitm"),
+               (try_begin),
+                   (eq,":gtyp", itp_type_polearm  ),
+                   (assign, ":isqiangqi", 1),                                                #cavalry骑带有枪
+                   (assign, ":id_polearm", ":gitm"),
+              (else_try),
+                  (eq,":gtyp", itp_type_one_handed_wpn ),
+                  (assign, ":gw", 1),                                                                #cavalry骑带有枪，且有可换单手武器
+                  (assign, ":id_onehand", ":gitm"),
+              (else_try),
+                  (eq,":gtyp", itp_type_two_handed_wpn ),
+                  (assign, ":gw", 1),                                                                #cavalry骑带有枪，且有可换双手武器
+                  (assign, ":id_twohand", ":gitm"),
+             (try_end),
+         (try_end),
+         (eq, ":isqiangqi", 1),                                                                                #cavalry骑带有枪，
+         (eq, ":gw", 1),                                                                                        #cavalry骑带有枪，且有可换单手武器或双手武器
+   ###find the best use weapon
+   ###判断单双手都有时用单手还是双手，（双手熟练度比单手高60时才用双手，否则用单手）
+         (try_begin),
+             (gt,":id_onehand", 0),                                        #cavalry骑带有单手武器，
+             (eq,":id_twohand", 0),                                        #cavalry骑带无双手武器，
+             (assign, ":id_gw", ":id_onehand"),                #cavalry骑可切换武器为单手武器，
+         (else_try),
+             (eq,":id_onehand", 0),
+             (gt,":id_twohand", 0),
+             (assign, ":id_gw", ":id_twohand"),                #cavalry骑无单手有双手可切换武器为双手武器，
+         (else_try),
+             (gt,":id_onehand", 0),                                        #cavalry骑有单手武器，
+             (gt,":id_twohand", 0),                                        #cavalry骑有双手武器，
+             (agent_get_troop_id,":trp1", ":agent_no"),
+             (store_proficiency_level,":p1",":trp1",wpt_one_handed_weapon),
+             (store_proficiency_level,":p2",":trp1",wpt_two_handed_weapon),
+             (store_sub,":cha",":p2",":p1"),                
+             (try_begin),
+                 (gt,":cha", 60),                                        #cavalry骑有双手武器比单手武器熟练度高60时，优先用双手武器
+                 (assign, ":id_gw", ":id_twohand"),
+             (else_try),
+                 (assign, ":id_gw", ":id_onehand"),        #cavalry骑有双手武器比单手武器熟练度低于60时，优先用单手武器
+             (try_end),
+         (try_end),
+   ###
+         (agent_get_team  ,":team_no", ":agent_no"),
+         (agent_get_position, pos34, ":agent_no"),
+         (assign, ":min_dist", 3000),
+   #find mindist enemy判断最近敌距多少
+         (try_for_agents,":cur_agent"),
+             (agent_is_alive, ":cur_agent"),
+             (agent_is_human, ":cur_agent"),
+             (agent_get_team, ":agent_team", ":cur_agent"),
+             (teams_are_enemies, ":agent_team", ":team_no"),
+             (agent_get_position, pos36, ":cur_agent"),
+             (get_distance_between_positions,":cur_dist",pos36,pos34),
+             (lt, ":cur_dist", ":min_dist"),
+             (assign, ":min_dist", ":cur_dist"),
+        (try_end),
+   #find end
+        (set_fixed_point_multiplier, 100),
+        (agent_get_speed, pos35, ":agent_no"),                #获取马速
+        (position_get_y,":speedmul",pos35),
+        (convert_from_fixed_point, ":speedmul"),
+        (agent_get_wielded_item, ":cur_item", ":agent_no"),
+        (gt,":cur_item", 0),
+        (item_get_type,":cur_type",":cur_item"),#武器切换判断逻辑：当最近敌距低于400且马速低于4时切换为单手或双手，否则当马速大于6或最近敌距大于600时（附近无敌）切换为长枪
+        (try_begin),                                        
+            (lt,":min_dist",400),
+            (le,":speedmul",4),
+            (eq,":cur_type",itp_type_polearm),
+            (agent_set_wielded_item, ":agent_no", ":id_gw"),
+        (else_try),
+            (this_or_next|gt,":speedmul",6),
+            (gt,":min_dist",600),
+            (this_or_next|eq,":cur_type",itp_type_one_handed_wpn),
+            (eq,":cur_type",itp_type_two_handed_wpn),
+            (agent_set_wielded_item, ":agent_no", ":id_polearm"),
+       (try_end),
+   (try_end),
+]),
+############DDFE Lancer  AI         
+使用方法：module_mission_templates.py搜索lead_charge 拉到AI Triggers部分后面添加，去掉注释部分就行了；
+
+txt修改方法见http://bbs.mountblade.com.cn/thread-1929341-1-1.html，这里txt改的双手熟练高于单手30以上才用双手，方便添加到其他没加的mod玩枪骑
+
+
+四、改进：
+      近战武器有两个以上时，最优近战武器判断简单了点，严格点可以根据，武器ID得武器类型 获取 agent相应熟练度，综合熟练度，武器伤害武器攻速武器长度等得出使用评分，通过比较两个评分选取，这里简单比较熟练度选取了；其实两枪骑高速时，马速想近近身时相对静止，也可以换单手；关于马上可挥砍长杆，需要马上用可挥砍长杆时，前面归为可切换武器就行，近身一般没短兵好用……
+
+
+五、做MOD引用请注明。
+
+---
+
+By https://bbs.mountblade.com.cn/home.php?mod=space&uid=2741644

@@ -608,6 +608,9 @@ slot_center_last_reconnoitered_by_faction_time 				= 350
 
 slot_root_troop                             = 251 
 
+slot_agent_siege_state            = 33
+slot_agent_target_ladder          = 34
+slot_party_ladders_count          = 104
 
 #slot_party_type values
 ##spt_caravan            = 1

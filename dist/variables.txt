@@ -464,6 +464,9 @@ attacker_team
 defender_team_2
 attacker_team_2
 belfry_positioned
+num_ladders
+cur_ladder_to_assign_archers
+cur_ladder_to_assign_others
 trainer_help_message
 g_training_ground_training_success_ratio
 scene_num_total_gourds_destroyed
