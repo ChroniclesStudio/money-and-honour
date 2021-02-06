@@ -1,8 +1,14 @@
 1259
+qstr_Factions Factions
+qstr_Show_towns Show_towns
+qstr_Show_castles Show_castles
+qstr_Show_villages Show_villages
+qstr_Tip:_move_the_mouse_ Tip:_move_the_mouse_onto_the_black_blocks_to_show_their_names.
+qstr_The_World_Map The_World_Map
+qstr_Done Done
 qstr_Weapons Weapons
 qstr_Armors Armors
 qstr_Others Others
-qstr_Done Done
 qstr_{reg1}_kills {reg1}_kills
 qstr_{reg3}_{s0}_can_upgr {reg3}_{s0}_can_upgrade.
 qstr_{reg1}^^Upgrade_to_{ {reg1}^^Upgrade_to_{s1}
@@ -100,12 +106,6 @@ qstr_Current_Wage:_{reg23 Current_Wage:_{reg23}_denars.
 qstr_Next_Pay/Promotion_d Next_Pay/Promotion_day:_{s25}
 qstr_Army_size:_{reg26} Army_size:_{reg26}
 qstr_Commander_s_Army Commander's_Army
-qstr_Factions Factions
-qstr_Show_towns Show_towns
-qstr_Show_castles Show_castles
-qstr_Show_villages Show_villages
-qstr_Tip:_move_the_mouse_ Tip:_move_the_mouse_onto_the_black_blocks_to_show_their_names.
-qstr_The_World_Map The_World_Map
 qstr_What_will_your_party What_will_your_party_be_known_as?
 qstr_By_the_name_entered_ By_the_name_entered_above.
 qstr_Simply_by_my_name:_{ Simply_by_my_name:_{s5}.

@@ -556,6 +556,12 @@ game_menus = [
         ]
        ),
       ## CC
+
+      ("action_view_world_map",[],"View world map.",
+       [
+        (start_presentation, "prsnt_world_map"),
+        ]
+       ),
 	   
       ("view_character_report",[],"View character report.",
        [(jump_to_menu, "mnu_character_report"),
