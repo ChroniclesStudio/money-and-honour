@@ -2702,6 +2702,28 @@ troops = [
 
 ### Dismemberment Mod Kit Troops END ###
 
+## ZZ Custom Kingdom Troops begin
+  ["kingdom_temp","Kingdom Temp","Kingdom Temps",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(4),wp(0),0,swadian_face_younger_1, swadian_face_middle_2],#420 #2
+  ["kingdom_recruit","Kingdom Recruit","Kingdom Recruits",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(4),wp(0),0,swadian_face_younger_1, swadian_face_middle_2],#420 #2
+  ["kingdom_militia","Kingdom Militia","Kingdom Militia",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(9),wp(0),0,swadian_face_young_1, swadian_face_old_2],#525 #3
+  ["kingdom_footman","Kingdom Footman","Kingdom Footmen",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(14),wp(0),0,swadian_face_young_1, swadian_face_old_2],#600 #10
+  ["kingdom_infantry","Kingdom Infantry","Kingdom Infantries",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(20),wp(0),0,swadian_face_middle_1, swadian_face_old_2],#740 #14
+  ["kingdom_sergeant","Kingdom Sergeant","Kingdom Sergeants",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(25),wp(0),0,swadian_face_middle_1, swadian_face_older_2],#900 #20
+  ["kingdom_skirmisher","Kingdom Skirmisher","Kingdom Skirmishers",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(14),wp(0),0,swadian_face_young_1, swadian_face_middle_2],#600 #10
+  ["kingdom_crossbowman","Kingdom Crossbowman","Kingdom Crossbowmen",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(20),wp(0),0,swadian_face_young_1, swadian_face_old_2],#740 #14
+  ["kingdom_sharpshooter","Kingdom Sharpshooter","Kingdom Sharpshooters",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(25),wp(0),0,swadian_face_middle_1, swadian_face_older_2],#900 #20
+  ["kingdom_man_at_arms","Kingdom Man at Arms","Kingdom Men at Arms",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(20),wp(0),0,swadian_face_middle_1, swadian_face_old_2],#740 #14
+  ["kingdom_knight","Kingdom Knight","Kingdom Knights",tf_guarantee_all,0,0,fac_neutral,[],str_10|agi_10|int_10|cha_10|level(25),wp(0),0,swadian_face_middle_1, swadian_face_older_2], #900 #20  
+
+  ["array_a","{!}temp_array_a","{!}temp_array_a",tf_hero|tf_inactive, 0,reserved,  fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+  ["array_b","{!}temp_array_b","{!}temp_array_b",tf_hero|tf_inactive, 0,reserved,  fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+  ["array_c","{!}temp_array_c","{!}temp_array_c",tf_hero|tf_inactive, 0,reserved,  fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+  ["array_d","{!}temp_array_d","{!}temp_array_d",tf_hero|tf_inactive, 0,reserved,  fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+
+  ["kingdom_inventory","{!}na","{!}na",0,0,0,fac_neutral,[itm_velvet],def_attrib|level(1),wp(60),knows_common|knows_inventory_management_10,swadian_face_middle_1, swadian_face_older_2],
+  ["copy_inventory","{!}copy_inventory","{!}copy_inventory",tf_hero|tf_inactive, 0,reserved,  fac_neutral,[],def_attrib|level(18),wp(60),knows_common|knows_inventory_management_10, 0],
+## ZZ Custom Kingdom Troops end
+
 ]
 
 
@@ -2798,6 +2820,17 @@ upgrade(troops,"hunter_woman","fighter_woman")
 upgrade(troops,"fighter_woman","sword_sister")
 upgrade(troops,"refugee","follower_woman")
 upgrade(troops,"peasant_woman","follower_woman")
+
+## ZZ Custom Kingdom Troops begin
+upgrade(troops,"kingdom_recruit","kingdom_militia")
+upgrade2(troops,"kingdom_militia","kingdom_footman","kingdom_skirmisher")
+upgrade2(troops,"kingdom_footman","kingdom_man_at_arms","kingdom_infantry")
+upgrade(troops,"kingdom_infantry","kingdom_sergeant")
+upgrade(troops,"kingdom_skirmisher","kingdom_crossbowman")
+upgrade(troops,"kingdom_crossbowman","kingdom_sharpshooter")
+upgrade(troops,"kingdom_man_at_arms","kingdom_knight")
+## ZZ Custom Kingdom Troops end
+
 # modmerger_start version=201 type=2
 try:
     component_name = "troops"

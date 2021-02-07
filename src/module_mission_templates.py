@@ -34,6 +34,30 @@ from module_constants import *
 # 
 ####################################################################################################################
 
+horse_fall_damage_xw=(
+  ti_on_agent_dismount, 0, 0, [],
+  [
+    (store_trigger_param_1, ":agent_no"), 
+    (store_trigger_param_2, ":horse_agent_no"),
+        (set_fixed_point_multiplier,1000),
+        (agent_get_speed,pos1,":horse_agent_no"), 
+        # (position_get_x,reg1,pos1),
+        # (position_get_y,reg2,pos1),
+        # (display_message,"@agent_get_speed:x->{reg1},y->{reg2}"),
+        #(position_get_x,":speed_x",pos1),
+        (position_get_y,":speed_y",pos1),
+        (store_div,":fall_hurt",":speed_y",1000),
+        (neg|agent_is_alive,":horse_agent_no"), 
+        (store_agent_hit_points,":hit",":agent_no",1),
+        (val_sub,":hit",":fall_hurt"),
+        (agent_set_hit_points,":agent_no",":hit",1),
+        (agent_deliver_damage_to_agent,":horse_agent_no",":agent_no"),
+        (get_player_agent_no,":player_no"),
+        (eq,":agent_no",":player_no"),
+        (assign,reg1,":fall_hurt"),
+        (display_message,"@you fall off your horse, and got {reg1} damage"),
+    ])
+
 ##BEAN BEGIN - Deathcam
 common_init_deathcam = (
    0, 0, ti_once,

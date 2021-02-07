@@ -853,6 +853,7 @@ g_tutorial_displayed_mouse_click
 g_presentation_obj_name_kingdom_1
 g_presentation_obj_name_kingdom_2
 players_kingdom_name_set
+g_player_culture
 g_presentation_obj_banner_selection_1
 g_presentation_obj_custom_banner_22
 g_presentation_obj_custom_banner_23
@@ -1030,6 +1031,15 @@ g_cur_week_half_daily_wage_payments
 g_game_before_quit_state
 g_multiplayer_duel_start_counter_overlay
 g_multiplayer_last_duel_start_counter_value
+g_presentation_obj_13
+temp_troop
+skill_points
+weapon_points
+attribute_points
+g_presentation_obj_20
+current_item
+g_presentation_obj_11
+g_presentation_obj_12
 g_presentation_obj_assign_drop_container
 g_presentation_obj_coop_assign_drop_player
 g_coop_assign_drop_companion_1
@@ -1042,7 +1052,6 @@ g_multiplayer_ccoop_victory_overlay
 g_multiplayer_ccoop_victory_subtitle_overlay
 g_presentation_obj_21
 faction_display
-g_presentation_obj_20
 g_presentation_obj_22
 g_presentation_obj_23
 g_presentation_obj_24
@@ -1054,9 +1063,6 @@ g_presentation_obj_30
 kaos_has_custom_title
 g_cln_edit
 g_presentation_obj_10
-g_presentation_obj_11
-g_presentation_obj_12
-g_presentation_obj_13
 g_presentation_obj_14
 g_presentation_obj_15
 g_presentation_obj_16

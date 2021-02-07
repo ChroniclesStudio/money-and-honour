@@ -611,6 +611,14 @@ meshes = [
   ("ccoop_ranged_class", 0, "ccoop_ranged_class", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("ccoop_mounted_class", 0, "ccoop_mounted_class", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 #INVASION MODE END
+
+  ## ZZ Custom Kingdom Troops begin
+  ("troop_info_win_1", 0, "troop_info_win_1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("troop_info_win_2", 0, "troop_info_win_2", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("button1_up", 0, "button1_up", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("button1_down", 0, "button1_down", 0, 0, 0, 0, 0, 0, 1, 1, 1),  
+  ## ZZ Custom Kingdom Troops end
+
 ]
 # modmerger_start version=201 type=2
 try:

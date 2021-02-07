@@ -1,3 +1,9 @@
+'''
+Date: 21/01/2021 03.49.52 +0800
+Author: KnowsCount
+LastEditTime: 07/02/2021 11.10.47 +0800
+FilePath: /money-and-honour/src/module_factions.py
+'''
 from header_factions import *
 
 ####################################################################################################################
@@ -36,17 +42,34 @@ factions = [
   ("culture_5",  "{!}culture_5", 0, 0.9, [], []),
   ("culture_6",  "{!}culture_6", 0, 0.9, [], []),
 
+## ZZ Custom Kingdom Troops begin
+  ("culture_player",  "{!}culture_7", 0, 0.9, [], []),
+## ZZ Custom Kingdom Troops end
+
 #  ("swadian_caravans","Swadian Caravans", 0, 0.5,[("outlaws",-0.8), ("dark_knights",-0.2)], []),
 #  ("vaegir_caravans","Vaegir Caravans", 0, 0.5,[("outlaws",-0.8), ("dark_knights",-0.2)], []),
 
   ("player_faction","Player Faction",0, 0.9, [], []),
   ("player_supporters_faction","Player's Supporters",0, 0.9, [("player_faction",1.00),("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xFF4433), #changed name so that can tell difference if shows up on map
-  ("kingdom_1",  "Archduchy of Austria ", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xEE7744),
+  ("kingdom_1",  "Archduchy of Austria", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xEE7744),
   ("kingdom_2",  "Russian Empire",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCCBB99),
   ("kingdom_3",  "Kingdom of Poland", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC99FF),
   ("kingdom_4",  "Kingdom of Sweden",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DDDD),
   ("kingdom_5",  "Kingdom of Spain",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DD33),
   ("kingdom_6",  "Ottoman Empire",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xDDDD33),
+
+## ZZ Custom Kingdom Troops begin
+  ("troop_name_temp_1",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_2",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_3",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_4",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_5",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_6",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_7",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_8",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_9",  "{!}", 0, 0.9, [], []),
+  ("troop_name_temp_10",  "{!}", 0, 0.9, [], []),
+## ZZ Custom Kingdom Troops end
 
 ##  ("kingdom_1_rebels",  "Swadian rebels", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 ##  ("kingdom_2_rebels",  "Vaegir rebels",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),

@@ -8,6 +8,19 @@ from ID_factions import *
 # that it will be easy to change it if you need to.
 ##############################################################
 
+## ZZ Custom Kingdom Troops begin
+slot_item_difficulty                = 101
+slot_item_weight                    = 102
+slot_item_price                     = 103
+slot_custom_troop_wage              = 313
+slot_custom_troop_weight            = 314
+slot_custom_troop_ap                = 315
+slot_custom_troop_sp                = 316
+slot_custom_troop_wp                = 317
+custom_troop_begin = "trp_kingdom_recruit"
+custom_troop_end = "trp_array_a"
+## ZZ Custom Kingdom Troops end
+
 ########################################################
 ##  ITEM SLOTS             #############################
 ########################################################

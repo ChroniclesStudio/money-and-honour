@@ -3447,6 +3447,17 @@ game_menus = [
         ]
        ),
 
+## ZZ Custom Kingdom Troops begin
+      ("action_promote_kingdom_custom_troop",
+       [
+         (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
+         (faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, "trp_player"),
+         ],"Promote your kingdom custom troop.",
+       [(start_presentation, "prsnt_custom_kingdom_troop"), 
+        ]
+       ),	   
+## ZZ Custom Kingdom Troops end
+
       ("action_modify_banner",[(eq, "$cheat_mode", 1)],"{!}Cheat: Modify your banner.",
        [
            (start_presentation, "prsnt_banner_selection"),
