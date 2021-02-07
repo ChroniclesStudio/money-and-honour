@@ -2016,6 +2016,9 @@ ACHIEVEMENT_QUEEN = 77,
 ACHIEVEMENT_EMPRESS = 78,
 ACHIEVEMENT_TALK_OF_THE_TOWN = 79,
 ACHIEVEMENT_LADY_OF_THE_LAKE = 80,
+
+slot_ren =319
+
 # modmerger_start version=201 type=1
 try:
     from util_common import logger

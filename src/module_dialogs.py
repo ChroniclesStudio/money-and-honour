@@ -24281,6 +24281,8 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
                                            (store_troop_gold, ":gold", "trp_player"),
                                            (store_div, ":gold_capacity", ":gold", 10),#10 denars per man
                                            (val_min, ":num_volunteers", ":gold_capacity"),
+                                           (party_get_slot, ":ren", "$current_town", slot_ren),#人口 
+                                           (this_or_next|le, ":ren", 200),#如果人口小于200
                                            (le, ":num_volunteers", 0),
                                            ],
    "I don't think anyone would be interested, {sir/madam}. Is there anything else I can do for you?", "village_elder_talk",[]],
@@ -24316,7 +24318,15 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone|plyr,"village_elder_recruit_decision", [(assign, ":num_volunteers", "$temp"),
                                                   (ge, ":num_volunteers", 1),
                                                   (store_add, reg7, ":num_volunteers", -1)],
-   "Tell {reg7?them:him} to make ready.", "village_elder_pretalk",[(call_script, "script_village_recruit_volunteers_recruit"),]],
+   "Tell {reg7?them:him} to make ready.", "village_elder_pretalk",[
+     (party_get_slot, ":ren", "$current_town", slot_ren),#人口
+     (party_get_num_companions,":party_number_a", "p_main_party"),  #获取招兵前 部队人数
+     (call_script, "script_village_recruit_volunteers_recruit"),
+     (party_get_num_companions,":party_number_b", "p_main_party"),  #获取招兵后 部队人数
+     (val_add,":ren",":party_number_a"),#我添加的
+     (val_sub,":ren",":party_number_b"),#我添加的
+     (party_set_slot,"$current_town", slot_ren, ":ren"),#人口
+    ]],
 
   [anyone|plyr,"village_elder_recruit_decision", [(party_slot_ge, "$current_town", slot_center_volunteer_troop_amount, 1)],
    "No, not now.", "village_elder_pretalk",[]],

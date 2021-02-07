@@ -32,6 +32,23 @@ num_merchandise_goods = 36
 
 triggers = [
 
+(0, 0, ti_once, [], [
+
+      (try_for_range, ":center_no", centers_begin, centers_end),
+          (try_begin),
+            (party_slot_eq, ":center_no", slot_party_type, spt_village),
+            (store_random_in_range, ":ren", 450, 689),
+          (else_try),
+            (party_slot_eq, ":center_no", slot_party_type, spt_castle),
+            (store_random_in_range, ":ren", 101, 249),
+          (else_try),  
+            (party_slot_eq, ":center_no", slot_party_type, spt_town),
+            (store_random_in_range, ":ren", 4500, 6890),
+          (try_end),
+          (party_set_slot, ":center_no", slot_ren, ":ren"),
+        (try_end),
+]),
+
   #Calender Thingy
   (0.0, 0, ti_once, [], [(assign,"$day",0), (assign,"$month",1), (assign,"$year",1)]),
 

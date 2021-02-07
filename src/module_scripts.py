@@ -32635,11 +32635,11 @@ scripts = [
   #script_update_volunteer_troops_in_village
   # INPUT: arg1 = center_no
   # OUTPUT: none
-  ("update_volunteer_troops_in_village",
+  ("update_volunteer_troops_in_village",#村庄招兵类型与数量的判断
     [
        (store_script_param, ":center_no", 1),
-       (party_get_slot, ":player_relation", ":center_no", slot_center_player_relation),
-       (party_get_slot, ":center_culture", ":center_no", slot_center_culture),
+       (party_get_slot, ":player_relation", ":center_no", slot_center_player_relation),#村庄与玩家关系
+       (party_get_slot, ":center_culture", ":center_no", slot_center_culture),#开局村庄所属势力文化
 	   
 	   
 ##	   (try_begin),
@@ -32650,23 +32650,23 @@ scripts = [
 ##	   (try_end),
 	   
        (faction_get_slot, ":volunteer_troop", ":center_culture", slot_faction_tier_1_troop),
-       (assign, ":volunteer_troop_tier", 1),
-       (store_div, ":tier_upgrades", ":player_relation", 10),
+       (assign, ":volunteer_troop_tier", 1),#招兵数量用
+       (store_div, ":tier_upgrades", ":player_relation", 10),#关系除10
        (try_for_range, ":unused", 0, ":tier_upgrades"),
          (store_random_in_range, ":random_no", 0, 100),
-         (lt, ":random_no", 10),
+         (lt, ":random_no", 10),#10%几率招高级兵
          (store_random_in_range, ":random_no", 0, 2),
-         (troop_get_upgrade_troop, ":upgrade_troop_no", ":volunteer_troop", ":random_no"),
+         (troop_get_upgrade_troop, ":upgrade_troop_no", ":volunteer_troop", ":random_no"),# 兵种1升级后
          (try_begin),
-           (le, ":upgrade_troop_no", 0),
-           (troop_get_upgrade_troop, ":upgrade_troop_no", ":volunteer_troop", 0),
+           (le, ":upgrade_troop_no", 0),#如果不存在
+           (troop_get_upgrade_troop, ":upgrade_troop_no", ":volunteer_troop", 0),#兵种1
          (try_end),
          (gt, ":upgrade_troop_no", 0),
-         (val_add, ":volunteer_troop_tier", 1),
+         (val_add, ":volunteer_troop_tier", 1),#招兵数量用
          (assign, ":volunteer_troop", ":upgrade_troop_no"),
        (try_end),
        
-       (assign, ":upper_limit", 8),
+       (assign, ":upper_limit", 8),#招兵数量用
        (try_begin),
          (ge, ":player_relation", 4),
          (assign, ":upper_limit", ":player_relation"),
@@ -32679,11 +32679,20 @@ scripts = [
 
        (val_mul, ":upper_limit", 3),   
        (store_add, ":amount_random_divider", 2, ":volunteer_troop_tier"),
-       (val_div, ":upper_limit", ":amount_random_divider"),
+       (val_div, ":upper_limit", ":amount_random_divider"),#最大招兵数
        
-       (store_random_in_range, ":amount", 0, ":upper_limit"),
-       (party_set_slot, ":center_no", slot_center_volunteer_troop_type, ":volunteer_troop"),
-       (party_set_slot, ":center_no", slot_center_volunteer_troop_amount, ":amount"),
+       (store_random_in_range, ":amount", 0, ":upper_limit"),#在0和最大招兵数 之间 随机一个数
+
+       (store_random_in_range, ":ren_amount", 101, 199),
+        (try_begin),
+          (party_get_slot, ":ren", ":center_no", slot_ren),#人口 
+          (lt,":ren",":ren_amount"),
+          (gt,":ren",10),#
+          (assign, ":amount", 0),
+        (try_end), 
+
+       (party_set_slot, ":center_no", slot_center_volunteer_troop_type, ":volunteer_troop"),#保存要招募兵种
+       (party_set_slot, ":center_no", slot_center_volunteer_troop_amount, ":amount"),#保存要招募兵数量
      ]),
 
   #script_update_npc_volunteer_troops_in_village

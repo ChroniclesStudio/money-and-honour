@@ -728,10 +728,44 @@ simple_triggers = [
          (faction_slot_eq,  ":party_faction", slot_faction_marshall, ":troop_no"),
          (val_add, ":num_hiring_rounds", 1),
        (try_end),
+
+       (try_begin),
+            (party_slot_eq, ":cur_attached_party", slot_party_type, spt_castle),#城堡
+            (try_for_range, ":cur_village", villages_begin, villages_end),          
+              (party_get_slot, ":bound_center", ":cur_village", slot_village_bound_center),#村庄所属城堡
+              (eq, ":cur_attached_party", ":bound_center"),#村庄是城堡下属
+              (party_get_slot, ":ren", ":cur_village", slot_ren),#人口
+              (assign, ":village", ":cur_village"),
+                   (try_end),
+         (else_try),#不是城堡
+            (party_get_slot, ":ren", ":cur_attached_party", slot_ren),#人口
+         (try_end),
+         (party_get_num_companions,":party_recruiting_former_number_now", ":party_no"),    #获取招兵前领主部队人数 
                 
-       (try_for_range, ":unused", 0, ":num_hiring_rounds"),         
-         (call_script, "script_hire_men_to_kingdom_hero_party", ":troop_no"), #Hiring men with current wealth        
-       (try_end),  
+       (try_for_range, ":unused", 0, ":num_hiring_rounds"),
+       # population change
+       (try_begin),
+         (party_slot_eq, ":cur_attached_party", slot_party_type, spt_town),#城市
+         (gt,":ren",1500),
+       # population change
+         (call_script, "script_hire_men_to_kingdom_hero_party", ":troop_no"), #Hiring men with current wealth
+       # population change
+         (else_try),
+         (gt,":ren",150),        
+       (call_script, "script_hire_men_to_kingdom_hero_party", ":troop_no"), #Hiring men with current wealth          
+       (try_end),
+       # population change
+     (try_end),
+
+     (party_get_num_companions,":party_after_recruiting_number_now", ":party_no"),  #获取招兵后领主部队人数   
+       (val_add,":ren",":party_recruiting_former_number_now"),#我添加的
+       (val_sub,":ren",":party_after_recruiting_number_now"),#我添加的     
+         (try_begin),
+           (party_slot_eq, ":cur_attached_party", slot_party_type, spt_castle),#城堡
+           (party_set_slot, ":village", slot_ren, ":ren"),#保存招兵后人口数
+         (else_try),
+           (party_set_slot, ":cur_attached_party", slot_ren, ":ren"),#保存招兵后人口数
+         (try_end),
      (try_end),
        
      (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
@@ -762,7 +796,20 @@ simple_triggers = [
            (store_random_in_range, ":num_hiring_rounds", 0, 2),
          (try_end),           
        (try_end),
+
+       (try_begin),
+            (party_slot_eq, ":center_no", slot_party_type, spt_castle),#城堡
+            (try_for_range, ":cur_village", villages_begin, villages_end),          
+              (party_get_slot, ":bound_center", ":cur_village", slot_village_bound_center),#村庄所属城堡
+              (eq, ":center_no", ":bound_center"),#村庄是城堡下属
+              (party_get_slot, ":ren", ":cur_village", slot_ren),#人口
+              (assign, ":village", ":cur_village"),#保存村庄
+            (try_end),
+         (else_try),
+           (party_get_slot, ":ren", ":center_no", slot_ren),#人口
+         (try_end),
        
+       (party_get_num_companions,":party_recruiting_former_number_now", ":center_no"),    #获取招兵前驻守部队人数
        (try_for_range, ":unused", 0, ":num_hiring_rounds"), 		 
          (party_get_slot, ":cur_wealth", ":center_no", slot_town_wealth),
          (assign, ":hiring_budget", ":cur_wealth"),
@@ -771,7 +818,16 @@ simple_triggers = [
          (call_script, "script_cf_reinforce_party", ":center_no"),       
          (val_sub, ":cur_wealth", ":reinforcement_cost"),
          (party_set_slot, ":center_no", slot_town_wealth, ":cur_wealth"),
-       (try_end),  
+       (try_end),
+       (party_get_num_companions,":party_after_recruiting_number_now", ":center_no"),    #获取招兵后驻守部队人数         
+     (val_add,":ren",":party_recruiting_former_number_now"),#我添加的
+     (val_sub,":ren",":party_after_recruiting_number_now"),#我添加的     
+         (try_begin),
+           (party_slot_eq, ":center_no", slot_party_type, spt_castle),#城堡
+           (party_set_slot, ":village", slot_ren, ":ren"),#保存招兵后人口数
+         (else_try),
+           (party_set_slot, ":center_no", slot_ren, ":ren"),#保存招兵后人口数
+         (try_end),
      (try_end),
 
      #this is moved up from below , from a 24 x 15 slot to a 24 slot
@@ -1731,15 +1787,21 @@ simple_triggers = [
             (party_slot_eq, ":center_no", slot_party_type, spt_village),
             (try_begin),
               (party_slot_eq, ":center_no", slot_village_state, svs_normal),
-              (assign, ":cur_rents", 1200),
+########xia mian
+              (party_get_slot, ":ren", ":center_no", slot_ren),
+              (store_mul, ":cur_rents", ":ren",3),
+              #(assign, ":cur_rents", 900),
             (try_end),
           (else_try),
             (party_slot_eq, ":center_no", slot_party_type, spt_castle),
-            (assign, ":cur_rents", 1200),
+            (assign, ":cur_rents", 600),
           (else_try),  
             (party_slot_eq, ":center_no", slot_party_type, spt_town),
-            (assign, ":cur_rents", 2400),
+            (party_get_slot, ":ren", ":center_no", slot_ren),
+              (store_mul, ":cur_rents", ":ren",2),
+            #(assign, ":cur_rents", 3600),
           (try_end),
+#######shang mian
 		
           (party_get_slot, ":prosperity", ":center_no", slot_town_prosperity), #prosperty changes between 0..100     
           (store_add, ":multiplier", 20, ":prosperity"), #multiplier changes between 20..120
@@ -1779,6 +1841,96 @@ simple_triggers = [
 		(try_end),		
       (try_end),
     ]),
+
+(24,
+[
+
+    (try_for_range, ":center_no", centers_begin, centers_end),                                            
+
+          (party_get_slot, ":prosperity", ":center_no", slot_town_prosperity),
+          (party_get_slot, ":ren", ":center_no", slot_ren),
+          (party_get_slot, ":center_relation", ":center_no", slot_center_player_relation),
+
+       (try_begin),
+          (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+          (try_begin),
+               (gt,":prosperity",59),
+               (lt,":center_relation",0),
+               (val_add,":center_relation",1),
+          (try_end),
+          (try_begin),
+               (gt,":prosperity",79),
+               (lt,":center_relation",19),
+               (val_add,":center_relation",2),
+          (try_end),
+          (try_begin),
+               (lt,":prosperity",40),
+               (gt,":center_relation",59),
+               (val_sub,":center_relation",1),
+          (try_end),
+          (try_begin),
+               (lt,":prosperity",20),
+               (gt,":center_relation",39),
+               (val_sub,":center_relation",2),
+          (try_end),
+       (try_end),
+       (party_set_slot, ":center_no", slot_center_player_relation, ":center_relation"),
+###genju ":prosperity" :    ":center_relation"  +/-  N  =  ":center_relation"
+
+          (try_begin),
+               (store_sub,":a",":prosperity",39),
+               (val_mul,":a",":ren"),
+               (val_div,":a",1000),
+               (val_add,":ren",":a"),
+          (try_end),
+          (try_begin),
+               (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+               (store_mul,":a",":center_relation",":ren"),
+               (val_div,":a",1800),
+               (try_begin),
+               (lt,":center_relation",-19),
+               (val_mul,":a",2),
+               (else_try),
+               (lt,":center_relation",-39),
+               (val_mul,":a",3),
+               (try_end),
+               (val_add,":ren",":a"),
+          (else_try),
+               (store_random_in_range, ":a", -30, 59),
+               (val_mul,":a",":ren"),
+               (val_div,":a",1800),
+               (val_add,":ren",":a"),
+          (try_end),
+
+          (try_begin),
+            (party_slot_eq, ":center_no", slot_party_type, spt_village),
+            (store_random_in_range, ":a", -5, 5),
+            (val_add,":ren",":a"),
+            (try_begin),
+               (lt,":ren",100),
+               (assign,":ren",100),
+            (else_try),
+               (gt,":ren",1450),
+               (assign,":ren",1450),
+            (try_end),
+          (else_try),
+            (party_slot_eq, ":center_no", slot_party_type, spt_castle),
+          (else_try),  
+            (party_slot_eq, ":center_no", slot_party_type, spt_town),
+            (store_random_in_range, ":a", -50, 50),
+            (val_add,":ren",":a"),
+            (try_begin),
+               (lt,":ren",1000),
+               (assign,":ren",1000),
+            (else_try),
+               (gt,":ren",25000),
+               (assign,":ren",25000),
+            (try_end),
+          (try_end),
+
+          (party_set_slot, ":center_no", slot_ren, ":ren"),
+    (try_end),
+]),
 
 #   (7 * 24,
 #   [

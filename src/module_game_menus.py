@@ -7528,7 +7528,7 @@ game_menus = [
 
   (
     "village",mnf_enable_hot_keys,
-    "{s10} {s12}^{s11}^{s6}{s7}",
+    "{s10}With {reg21} people. {s12}^{s11}^{s6}{s7}{21}",
     "none",
     [
         (assign, "$current_town", "$g_encountered_party"),
@@ -7707,6 +7707,16 @@ game_menus = [
         (else_try),
           (assign, "$town_nighttime", 1),
         (try_end),
+
+#############xia mian
+       # (str_clear, s21),
+        (try_begin),
+          (party_slot_eq,"$current_town",slot_party_type, spt_village),
+          (party_get_slot, reg21, "$current_town", slot_ren),
+         # (str_store_string, s21, "@With {reg21} people."),
+        (try_end),
+##############shang mian
+
     ],
     [
       ("village_manage",
@@ -7895,7 +7905,7 @@ game_menus = [
         ]),
 
       ("village_leave",[],"Leave...",[(change_screen_return,0)]),
-      
+
     ],
   ),
 
@@ -8013,7 +8023,13 @@ game_menus = [
       ],
       "Recruit them ({reg6} denars).",
       [
+        (party_get_slot, ":ren", "$current_town", slot_ren),#人口 
+        (party_get_num_companions,":party_number_a", "p_main_party"),  #获取招兵前 部队人数
         (call_script, "script_village_recruit_volunteers_recruit"),
+        (party_get_num_companions,":party_number_b", "p_main_party"),  #获取招兵后 部队人数   
+        (val_add,":ren",":party_number_a"),#我添加的
+        (val_sub,":ren",":party_number_b"),#我添加的     
+        (party_set_slot,"$current_town", slot_ren, ":ren"),#人口
                         
         (jump_to_menu,"mnu_village"),
       ]),
@@ -8746,9 +8762,9 @@ game_menus = [
  
   (
     "town",mnf_enable_hot_keys|mnf_scale_picture,
-    "{s10} {s14}^{s11}{s12}{s13}",
+    "{s10}With {reg21} people. {s14}^{s11}{s12}{s13}",
     "none",
-    [    
+    [
         (try_begin),
           (eq, "$sneaked_into_town", 1),
           (call_script, "script_music_set_situation_with_culture", mtf_sit_town_infiltrate),
@@ -8961,6 +8977,16 @@ game_menus = [
 #			(try_end),
 #			(assign, "$last_town_log_entry_checked", "$num_log_entries"),
 #		(try_end),
+
+#############xia mian
+        (try_begin),
+          (this_or_next|party_slot_eq,"$current_town",slot_party_type, spt_town),
+          (party_slot_eq,"$current_town",slot_party_type, spt_castle),
+          (party_get_slot, reg21, "$current_town", slot_ren),
+          #(str_store_string, s21, "@With {reg21} people."),
+        (try_end),
+##############shang mian 
+
         ],
     [
       ("castle_castle",
